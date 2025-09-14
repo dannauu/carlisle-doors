@@ -30,6 +30,7 @@ import {
   Phone,
   ArrowForward,
   ArrowBack,
+  CameraAlt,
 } from '@mui/icons-material';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -320,6 +321,9 @@ export default function DoorVisualizerPage() {
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  // Mobile detection helper
+  const isMobile = typeof window !== 'undefined' && /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
   const categories = ['Traditional', 'Modern', 'Carriage', 'Glass'];
 
   // Handle drag start for door divs
@@ -592,7 +596,10 @@ export default function DoorVisualizerPage() {
                       variant="outlined"
                       onClick={() => fileInputRef.current?.click()}
                     >
-                      Choose Different Photo
+                      {isMobile
+                        ? 'Take New Photo'
+                        : 'Choose Different Photo'
+                      }
                     </Button>
                     <Button
                       variant="contained"
@@ -619,12 +626,21 @@ export default function DoorVisualizerPage() {
                   }}
                   onClick={() => fileInputRef.current?.click()}
                 >
-                  <CloudUpload sx={{ fontSize: 80, color: 'primary.main', mb: 2 }} />
+                  {isMobile 
+                    ? <CameraAlt sx={{ fontSize: 80, color: 'primary.main', mb: 2 }} />
+                    : <CloudUpload sx={{ fontSize: 80, color: 'primary.main', mb: 2 }} />
+                  }
                   <Typography variant="h6" gutterBottom>
-                    Click to upload or drag and drop
+                    {isMobile 
+                      ? 'Tap to take a photo or select from gallery'
+                      : 'Click to upload or drag and drop'
+                    }
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Supports JPG, PNG files up to 10MB
+                    {isMobile
+                      ? 'Take a photo of your home or choose an existing image'
+                      : 'Supports JPG, PNG files up to 10MB'
+                    }
                   </Typography>
                 </Box>
               )}
@@ -634,6 +650,7 @@ export default function DoorVisualizerPage() {
                   ref={fileInputRef}
                   onChange={handleFileUpload}
                   accept="image/*"
+                  capture="environment"
                   style={{ display: 'none' }}
                 />
 
