@@ -235,10 +235,10 @@ export default function GarageRevealHero() {
           </div>
         )}
 
-        {/* ---- Headline over the closed door ---- */}
+        {/* ---- Headline over the closed door: centered on mobile, bottom on desktop ---- */}
         <div
           data-hero-head
-          className="absolute inset-x-0 bottom-0 z-10 px-5 pb-20 md:px-10 md:pb-16"
+          className="absolute inset-0 z-10 flex flex-col justify-center px-5 pb-10 md:inset-x-0 md:inset-y-auto md:bottom-0 md:block md:px-10 md:pb-16"
         >
           <div className="mx-auto w-full max-w-[1400px]">
             <p className="eyebrow mb-5 flex items-center gap-3">

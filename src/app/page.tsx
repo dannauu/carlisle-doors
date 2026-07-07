@@ -32,21 +32,21 @@ const stats = [
 const testimonials = [
   {
     quote:
-      "Spring snapped at 7 AM with my truck trapped inside. They had a tech out before 9 and I still made my shift. Fair price, zero drama.",
-    name: "Mike R.",
-    city: "Blue Springs, MO",
+      "Responded promptly and diagnosed what was going on with my garage door. Very professional and cleaned up after. If I need garage door work in the future he will be the first call!",
+    name: "Taylor Frazier",
+    source: "Facebook Review",
   },
   {
     quote:
-      "Three quotes for a new insulated double door. Carlisle was the only one who actually measured, explained R-values, and didn't push the priciest option.",
-    name: "Sarah K.",
-    city: "Overland Park, KS",
+      "Tyler was prompt and took the time to make sure everything came together. His price was very reasonable and he cleaned up well. Will be sure to look him up if I ever need garage doors again.",
+    name: "Nic Hamilton",
+    source: "Facebook Review",
   },
   {
     quote:
-      "They maintain all eleven dock doors at our warehouse. Since we started the quarterly program we haven't lost a single day to a down door.",
-    name: "D. Foster",
-    city: "North Kansas City, MO",
+      "Carlisle Overhead door did an amazing job on this project. Highly recommended.",
+    name: "Project Comment",
+    source: "Facebook",
   },
 ];
 
@@ -212,7 +212,7 @@ export default function Home() {
                 <figcaption className="mt-8">
                   <span className="display block text-lg text-amber">{t.name}</span>
                   <span className="font-mono text-[0.65rem] tracking-[0.2em] text-muted">
-                    {t.city.toUpperCase()}
+                    {t.source.toUpperCase()}
                   </span>
                 </figcaption>
               </figure>

@@ -4,19 +4,19 @@ import { BreadcrumbJsonLd } from "@/components/JsonLd";
 import { site } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Call for a Free Garage Door Estimate in Kansas City",
-  description: `Call ${site.phone} for garage door repair, installation, and free estimates across the Kansas City metro. 24/7 emergency line. A real technician answers.`,
+  title: "Contact Tyler | Free Garage Door Estimates in Kansas City",
+  description: `Call Tyler at ${site.phone} for garage door repair, installation, and free estimates across the Kansas City metro. 24/7 emergency line. The owner answers.`,
   alternates: { canonical: "/contact" },
 };
 
 const reasons = [
   {
     title: "Repairs & emergencies",
-    body: "Describe the symptom and we'll diagnose most problems right on the phone, then give you an honest arrival window.",
+    body: "Describe the symptom and Tyler will diagnose most problems right on the phone, then give you an honest arrival window.",
   },
   {
     title: "Free estimates",
-    body: "New door or opener? We'll talk through options, styles, and budget on the call, then schedule a free in-home measure.",
+    body: "New door or opener? Talk through options, styles, and budget on the call, then schedule a free in-home measure.",
   },
   {
     title: "Commercial service",
@@ -38,14 +38,14 @@ export default function ContactPage() {
         <Reveal>
           <p className="eyebrow mb-4">Contact</p>
           <h1 className="display max-w-4xl text-6xl md:text-8xl">
-            One number.
+            Contact
             <br />
-            <span className="text-amber">A real person.</span>
+            <span className="text-amber">Tyler.</span>
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-muted">
             No forms, no ticket queues, no callback robots. Call or text and you
-            get someone who knows garage doors and can actually put a truck on
-            the road.
+            get Tyler Carlisle: the owner, the lead installer, and the guy whose
+            name is on the truck.
           </p>
         </Reveal>
       </section>
@@ -54,7 +54,7 @@ export default function ContactPage() {
       <section className="border-y border-line bg-ink-2">
         <div className="mx-auto max-w-[1400px] px-5 py-16 text-center md:px-10 md:py-24">
           <Reveal>
-            <p className="eyebrow mb-6">Call or text, day or night</p>
+            <p className="eyebrow mb-6">Call or text Tyler, day or night</p>
             <a
               href={site.phoneHref}
               className="display inline-block text-6xl leading-none text-amber transition-colors hover:text-amber-hot md:text-[7.5rem]"
