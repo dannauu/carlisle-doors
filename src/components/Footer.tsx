@@ -3,16 +3,20 @@ import { site } from "@/data/site";
 import { services } from "@/data/services";
 import { locations } from "@/data/locations";
 
+// Ordered by monthly search volume (Semrush, July 2026) so internal
+// linking favors the highest-value city pages. Oak Grove stays as home base.
 const footerCities = [
   "kansas-city-mo",
   "overland-park-ks",
-  "lees-summit-mo",
-  "independence-mo",
+  "lenexa-ks",
   "olathe-ks",
-  "blue-springs-mo",
-  "liberty-mo",
-  "shawnee-ks",
+  "lees-summit-mo",
+  "topeka-ks",
   "lawrence-ks",
+  "shawnee-ks",
+  "liberty-mo",
+  "independence-mo",
+  "blue-springs-mo",
   "oak-grove-mo",
 ];
 

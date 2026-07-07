@@ -132,6 +132,23 @@ export default async function LocationPage({ params }: Props) {
         </div>
       </section>
 
+      {/* City deep-dive (high-search-volume cities only) */}
+      {l.deepDive && (
+        <section className="border-b border-line bg-ink-2">
+          <div className="mx-auto flex max-w-[1400px] flex-col gap-14 px-5 py-20 md:px-10 md:py-28">
+            {l.deepDive.map((sec, i) => (
+              <Reveal key={sec.title} className="grid gap-6 md:grid-cols-[80px_1fr]">
+                <span className="display text-2xl text-amber">0{i + 1}</span>
+                <div>
+                  <h2 className="display mb-4 text-3xl md:text-4xl">{sec.title}</h2>
+                  <p className="max-w-3xl text-base leading-relaxed text-muted">{sec.body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* Services available in this city */}
       <section className="mx-auto max-w-[1400px] px-5 py-20 md:px-10 md:py-28">
         <Reveal>
