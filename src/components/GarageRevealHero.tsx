@@ -65,9 +65,9 @@ export default function GarageRevealHero() {
         );
       });
 
-      // headline rides up with the door face
-      tl.to("[data-hero-head]", { opacity: 0, y: -90, duration: 0.16 }, 0);
-      tl.to("[data-hero-hint]", { opacity: 0, duration: 0.08 }, 0);
+      // headline rides up with the door face (autoAlpha hides it from clicks once faded)
+      tl.to("[data-hero-head]", { autoAlpha: 0, y: -90, duration: 0.16 }, 0);
+      tl.to("[data-hero-hint]", { autoAlpha: 0, duration: 0.08 }, 0);
 
       // light spills as the curtain clears
       tl.fromTo(
@@ -80,20 +80,20 @@ export default function GarageRevealHero() {
       // payoff: type first, then the real-work cards
       tl.fromTo(
         "[data-payoff-line]",
-        { opacity: 0, y: 70 },
-        { opacity: 1, y: 0, duration: 0.16, stagger: 0.05, ease: "power2.out" },
+        { autoAlpha: 0, y: 70 },
+        { autoAlpha: 1, y: 0, duration: 0.16, stagger: 0.05, ease: "power2.out" },
         0.52
       );
       tl.fromTo(
         "[data-payoff-card]",
-        { opacity: 0, y: 90, rotate: (i: number) => (i - 1) * 2.5 },
-        { opacity: 1, y: 0, rotate: (i: number) => (i - 1) * 1.25, duration: 0.2, stagger: 0.06, ease: "power2.out" },
+        { autoAlpha: 0, y: 90, rotate: (i: number) => (i - 1) * 2.5 },
+        { autoAlpha: 1, y: 0, rotate: (i: number) => (i - 1) * 1.25, duration: 0.2, stagger: 0.06, ease: "power2.out" },
         0.62
       );
       tl.fromTo(
         "[data-payoff-cta]",
-        { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, duration: 0.14, ease: "power2.out" },
+        { autoAlpha: 0, y: 40 },
+        { autoAlpha: 1, y: 0, duration: 0.14, ease: "power2.out" },
         0.78
       );
 
@@ -123,12 +123,12 @@ export default function GarageRevealHero() {
 
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-8 px-5 pt-10 md:gap-10">
           <div className="text-center">
-            <p data-payoff-line className={`eyebrow mb-5 ${reduced ? "" : "opacity-0"}`}>
+            <p data-payoff-line className={`eyebrow mb-5 ${reduced ? "" : "invisible opacity-0"}`}>
               No stock photos. Our actual installs.
             </p>
             <h2
               data-payoff-line
-              className={`display text-5xl md:text-7xl ${reduced ? "" : "opacity-0"}`}
+              className={`display text-5xl md:text-7xl ${reduced ? "" : "invisible opacity-0"}`}
             >
               Sales. Service.
               <br />
@@ -144,7 +144,7 @@ export default function GarageRevealHero() {
                 data-payoff-card
                 href="/gallery"
                 className={`group relative w-1/3 max-w-56 overflow-hidden border border-line bg-ink-2 transition-colors hover:border-amber ${
-                  reduced ? "" : "opacity-0"
+                  reduced ? "" : "invisible opacity-0"
                 } ${i === 1 ? "md:-mt-6" : "md:mt-4"}`}
               >
                 <Image
@@ -162,7 +162,7 @@ export default function GarageRevealHero() {
             ))}
           </div>
 
-          <div data-payoff-cta className={`flex flex-wrap items-center justify-center gap-4 ${reduced ? "" : "opacity-0"}`}>
+          <div data-payoff-cta className={`flex flex-wrap items-center justify-center gap-4 ${reduced ? "" : "invisible opacity-0"}`}>
             <a
               href={site.phoneHref}
               className="display bg-amber px-7 py-4 text-xl text-ink transition-colors hover:bg-amber-hot"
@@ -180,7 +180,7 @@ export default function GarageRevealHero() {
 
         {/* ---- The door: steel curtain of slats ---- */}
         {!reduced && (
-          <div className="absolute inset-0" aria-hidden>
+          <div className="pointer-events-none absolute inset-0" aria-hidden>
             {Array.from({ length: SLATS }, (_, i) => (
               <div
                 key={i}
