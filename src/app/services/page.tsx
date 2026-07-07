@@ -1,298 +1,88 @@
-'use client';
+import Link from "next/link";
+import type { Metadata } from "next";
+import Reveal from "@/components/Reveal";
+import ServiceIcon from "@/components/ServiceIcon";
+import { BreadcrumbJsonLd } from "@/components/JsonLd";
+import { services } from "@/data/services";
+import { site } from "@/data/site";
 
-import {
-  Box,
-  Container,
-  Typography,
-  Grid,
-  Card,
-  CardContent,
-  Button,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Chip,
-} from '@mui/material';
-import {
-  Build,
-  Emergency,
-  Schedule,
-  Settings,
-  Home,
-  Business,
-  CheckCircle,
-  Phone,
-  ArrowForward,
-} from '@mui/icons-material';
-import Link from 'next/link';
-import Image from 'next/image';
-
-const services = [
-  {
-    title: 'Garage Door Installation',
-    description: 'Professional installation of new garage doors for residential and commercial properties.',
-    icon: <Build fontSize="large" />,
-    features: [
-      'Residential and commercial installations',
-      'Wide selection of door styles and materials',
-      'Professional measurement and fitting',
-      'Warranty on all installations',
-      'Same-day installation available',
-    ],
-    pricing: 'Starting at $899',
-    image: '/api/placeholder/400/300',
-  },
-  {
-    title: 'Emergency Repair Services',
-    description: '24/7 emergency repair services for urgent garage door issues.',
-    icon: <Emergency fontSize="large" />,
-    features: [
-      '24/7 emergency availability',
-      'Rapid response time',
-      'Spring replacement and repair',
-      'Cable and track repair',
-      'Opener troubleshooting',
-    ],
-    pricing: 'Starting at $199',
-    image: '/api/placeholder/400/300',
-  },
-  {
-    title: 'Maintenance & Tune-ups',
-    description: 'Regular maintenance services to keep your garage door running smoothly.',
-    icon: <Schedule fontSize="large" />,
-    features: [
-      'Comprehensive safety inspection',
-      'Lubrication of moving parts',
-      'Spring tension adjustment',
-      'Track alignment check',
-      'Opener performance testing',
-    ],
-    pricing: 'Starting at $149',
-    image: '/api/placeholder/400/300',
-  },
-  {
-    title: 'Garage Door Opener Services',
-    description: 'Installation, repair, and replacement of garage door openers.',
-    icon: <Settings fontSize="large" />,
-    features: [
-      'Smart opener installation',
-      'Belt and chain drive options',
-      'Remote programming',
-      'Safety feature setup',
-      'Wi-Fi connectivity setup',
-    ],
-    pricing: 'Starting at $299',
-    image: '/api/placeholder/400/300',
-  },
-];
-
-const serviceAreas = [
-  'Residential Properties',
-  'Commercial Buildings',
-  'Industrial Facilities',
-  'Multi-unit Housing',
-  'Storage Facilities',
-  'Auto Dealerships',
-];
+export const metadata: Metadata = {
+  title: "Garage Door Services Kansas City | Repair, Installation & More",
+  description: `Full-service garage door company in Kansas City: repair, installation, springs, openers, off-track doors, maintenance & commercial overhead doors. Call ${site.phone}.`,
+  alternates: { canonical: "/services" },
+};
 
 export default function ServicesPage() {
   return (
-    <Box>
-      {/* Hero Section */}
-      <Box
-        sx={{
-          background: 'linear-gradient(135deg, #1976d2 0%, #1565c0 100%)',
-          color: 'white',
-          py: 8,
-        }}
-      >
-        <Container maxWidth="lg">
-          <Grid container spacing={4} alignItems="center">
-            <Grid item xs={12} md={8}>
-              <Typography variant="h1" component="h1" gutterBottom sx={{ fontSize: { xs: '2.5rem', md: '3rem' } }}>
-                Our Garage Door Services
-              </Typography>
-              <Typography variant="h5" component="p" sx={{ opacity: 0.9 }}>
-                Comprehensive garage door solutions for all your needs. From installation to emergency repairs,
-                we&apos;ve got you covered with professional service you can trust.
-              </Typography>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Box sx={{ textAlign: 'center' }}>
-                <Emergency sx={{ fontSize: 100, opacity: 0.8 }} />
-              </Box>
-            </Grid>
-          </Grid>
-        </Container>
-      </Box>
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Services", href: "/services" },
+        ]}
+      />
 
-      {/* Emergency Service CTA */}
-      <Box sx={{ backgroundColor: 'error.main', color: 'white', py: 8, mt: 2 }}>
-        <Container maxWidth="lg">
-          <Grid container spacing={4} alignItems="center">
-            <Grid item xs={12} md={8}>
-              <Typography variant="h3" component="h2" gutterBottom>
-                Need Emergency Service?
-              </Typography>
-              <Typography variant="h6" sx={{ opacity: 0.9 }}>
-                We&apos;re available 24/7 for emergency garage door repairs.
-                Don&apos;t let a broken garage door disrupt your day.
-              </Typography>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Box sx={{ textAlign: 'center' }}>
-                <Button
-                  variant="contained"
-                  size="large"
-                  sx={{
-                    backgroundColor: 'white',
-                    color: 'error.main',
-                    '&:hover': { backgroundColor: 'grey.100' }
-                  }}
-                  startIcon={<Phone />}
-                  href="tel:18162883574"
-                >
-                  Call Now: (816) 288-3574
-                </Button>
-              </Box>
-            </Grid>
-          </Grid>
-        </Container>
-      </Box>
+      <section className="mx-auto max-w-[1400px] px-5 pt-36 pb-16 md:px-10 md:pt-48">
+        <Reveal>
+          <p className="eyebrow mb-4">Services</p>
+          <h1 className="display max-w-4xl text-6xl md:text-8xl">
+            If it rolls up,
+            <br />
+            <span className="text-amber">we work on it.</span>
+          </h1>
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-muted">
+            Residential and commercial overhead door service across the Kansas
+            City metro: same-day repairs, honest quotes, and installations
+            that protect the manufacturer&apos;s warranty.
+          </p>
+        </Reveal>
+      </section>
 
-      {/* Services Grid */}
-      <Container maxWidth="lg" sx={{ py: 8 }}>
-        <Grid container spacing={4}>
-          {services.map((service, index) => (
-            <Grid item xs={12} key={index}>
-              <Card
-                sx={{
-                  mb: 4,
-                  transition: 'transform 0.2s',
-                  '&:hover': { transform: 'translateY(-2px)' }
-                }}
+      <section className="mx-auto max-w-[1400px] px-5 pb-28 md:px-10">
+        <div className="flex flex-col border-t border-line">
+          {services.map((s, i) => (
+            <Reveal key={s.slug}>
+              <Link
+                href={`/services/${s.slug}`}
+                className="group grid items-center gap-4 border-b border-line py-8 transition-colors duration-300 md:grid-cols-[80px_56px_1fr_auto] md:gap-8 hover:bg-ink-2"
               >
-                <Grid container>
-                  <Grid item xs={12} md={4}>
-                    <Image
-                      src={service.image}
-                      alt={service.title}
-                      width={400}
-                      height={300}
-                      style={{
-                        width: '100%',
-                        height: '300px',
-                        objectFit: 'cover',
-                      }}
-                      unoptimized
-                    />
-                  </Grid>
-                  <Grid item xs={12} md={8}>
-                    <CardContent sx={{ p: 4, height: '100%', display: 'flex', flexDirection: 'column' }}>
-                      <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                        <Box sx={{ color: 'primary.main', mr: 2 }}>
-                          {service.icon}
-                        </Box>
-                        <Typography variant="h4" component="h2">
-                          {service.title}
-                        </Typography>
-                      </Box>
-
-                      <Typography variant="body1" paragraph color="text.secondary">
-                        {service.description}
-                      </Typography>
-
-                      <List dense sx={{ mb: 2 }}>
-                        {service.features.map((feature, featureIndex) => (
-                          <ListItem key={featureIndex} sx={{ px: 0 }}>
-                            <ListItemIcon>
-                              <CheckCircle color="success" fontSize="small" />
-                            </ListItemIcon>
-                            <ListItemText primary={feature} />
-                          </ListItem>
-                        ))}
-                      </List>
-
-                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 'auto' }}>
-                        <Chip
-                          label={service.pricing}
-                          color="primary"
-                          variant="outlined"
-                          size="medium"
-                        />
-                        <Button
-                          variant="contained"
-                          endIcon={<ArrowForward />}
-                          href="tel:18162883574"
-                        >
-                          Get Quote
-                        </Button>
-                      </Box>
-                    </CardContent>
-                  </Grid>
-                </Grid>
-              </Card>
-            </Grid>
+                <span className="font-mono text-sm text-muted">0{i + 1}</span>
+                <span className="hidden text-amber md:block">
+                  <ServiceIcon icon={s.icon} className="h-10 w-10" />
+                </span>
+                <span>
+                  <span className="display block text-3xl transition-colors duration-300 group-hover:text-amber md:text-5xl">
+                    {s.name}
+                  </span>
+                  <span className="mt-2 block max-w-2xl text-sm leading-relaxed text-muted">
+                    {s.intro.split(". ").slice(0, 1).join(". ")}.
+                  </span>
+                </span>
+                <span className="display hidden text-2xl text-line transition-all duration-300 group-hover:translate-x-2 group-hover:text-amber md:block">
+                  →
+                </span>
+              </Link>
+            </Reveal>
           ))}
-        </Grid>
-      </Container>
+        </div>
 
-      {/* Service Areas */}
-      <Box sx={{ backgroundColor: 'grey.50', py: 8 }}>
-        <Container maxWidth="lg">
-          <Typography variant="h2" component="h2" textAlign="center" gutterBottom>
-            We Service All Property Types
-          </Typography>
-          <Typography variant="h6" textAlign="center" color="text.secondary" paragraph sx={{ mb: 6 }}>
-            Professional garage door services for residential and commercial properties
-          </Typography>
-
-          <Grid container spacing={3}>
-            {serviceAreas.map((area, index) => (
-              <Grid item xs={12} sm={6} md={4} key={index}>
-                <Card sx={{ textAlign: 'center', p: 3, height: '100%' }}>
-                  <Box sx={{ color: 'primary.main', mb: 2 }}>
-                    {index % 2 === 0 ? <Home fontSize="large" /> : <Business fontSize="large" />}
-                  </Box>
-                  <Typography variant="h6" component="h3">
-                    {area}
-                  </Typography>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
-      </Box>
-
-      {/* Contact CTA */}
-      <Container maxWidth="lg" sx={{ py: 8, textAlign: 'center' }}>
-        <Typography variant="h3" component="h2" gutterBottom>
-          Ready to Schedule Service?
-        </Typography>
-        <Typography variant="h6" color="text.secondary" paragraph sx={{ mb: 4 }}>
-          Contact us today for a free estimate on any of our garage door services
-        </Typography>
-        <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
-          <Button
-            variant="contained"
-            size="large"
-            startIcon={<Phone />}
-            href="tel:18162883574"
-          >
-            Call (816) 288-3574
-          </Button>
-          <Link href="/contact" style={{ textDecoration: 'none' }}>
-            <Button
-              variant="outlined"
-              size="large"
-              endIcon={<ArrowForward />}
+        <Reveal className="mt-16 border border-amber/40 bg-ink-2 p-8 md:p-12">
+          <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+            <div>
+              <p className="eyebrow mb-3">Not sure what&apos;s wrong?</p>
+              <p className="display text-3xl md:text-4xl">
+                Describe the symptom. We&apos;ll diagnose it on the phone, free.
+              </p>
+            </div>
+            <a
+              href={site.phoneHref}
+              className="display shrink-0 bg-amber px-8 py-4 text-xl text-ink transition-colors hover:bg-amber-hot"
             >
-              Get Free Quote Online
-            </Button>
-          </Link>
-        </Box>
-      </Container>
-    </Box>
+              {site.phone}
+            </a>
+          </div>
+        </Reveal>
+      </section>
+    </>
   );
 }

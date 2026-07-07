@@ -1,120 +1,141 @@
-'use client';
+import Link from "next/link";
+import { site } from "@/data/site";
+import { services } from "@/data/services";
+import { locations } from "@/data/locations";
 
-import {
-  Box,
-  Container,
-  Grid,
-  Typography,
-  Link,
-  IconButton,
-  Divider,
-} from '@mui/material';
-import {
-  Phone,
-  Email,
-  LocationOn,
-  Facebook,
-  Instagram,
-  Twitter,
-} from '@mui/icons-material';
+const footerCities = [
+  "kansas-city-mo",
+  "overland-park-ks",
+  "lees-summit-mo",
+  "independence-mo",
+  "olathe-ks",
+  "blue-springs-mo",
+  "liberty-mo",
+  "shawnee-ks",
+  "lawrence-ks",
+  "oak-grove-mo",
+];
 
 export default function Footer() {
+  const cities = footerCities
+    .map((slug) => locations.find((l) => l.slug === slug))
+    .filter((l): l is NonNullable<typeof l> => Boolean(l));
+
   return (
-    <Box
-      component="footer"
-      sx={{
-        backgroundColor: 'primary.dark',
-        color: 'white',
-        py: 6,
-        mt: 'auto',
-      }}
-    >
-      <Container maxWidth="lg">
-        <Grid container spacing={4}>
-          {/* Company Info */}
-          <Grid item xs={12} md={4}>
-            <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>
-              Carlisle Overhead Doors & Services
-            </Typography>
-            <Typography variant="body2" paragraph>
-              Professional garage door installation, repair, and emergency services.
-              Serving the Kansas City area with quality craftsmanship and reliable service.
-            </Typography>
-            <Box sx={{ display: 'flex', gap: 1 }}>
-              <IconButton color="inherit" size="small">
-                <Facebook />
-              </IconButton>
-              <IconButton color="inherit" size="small">
-                <Instagram />
-              </IconButton>
-              <IconButton color="inherit" size="small">
-                <Twitter />
-              </IconButton>
-            </Box>
-          </Grid>
+    <footer className="border-t border-line bg-ink-2">
+      {/* CTA band */}
+      <div className="border-b border-line">
+        <div className="mx-auto flex max-w-[1400px] flex-col gap-6 px-5 py-16 md:flex-row md:items-end md:justify-between md:px-10">
+          <div>
+            <p className="eyebrow mb-4">Ready when you are</p>
+            <p className="display text-5xl md:text-7xl">
+              Let&apos;s fix
+              <br />
+              <span className="text-amber">your door.</span>
+            </p>
+          </div>
+          <div className="flex flex-col gap-3">
+            <a
+              href={site.phoneHref}
+              className="display inline-block bg-amber px-8 py-4 text-center text-2xl text-ink transition-colors hover:bg-amber-hot"
+            >
+              {site.phone}
+            </a>
+            <span className="text-center font-mono text-xs tracking-widest text-muted">
+              SAME-DAY SERVICE · KC METRO
+            </span>
+          </div>
+        </div>
+      </div>
 
-          {/* Services */}
-          <Grid item xs={12} md={4}>
-            <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>
-              Our Services
-            </Typography>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-              <Link href="/services" color="inherit" underline="hover">
-                Garage Door Installation
-              </Link>
-              <Link href="/services" color="inherit" underline="hover">
-                Garage Door Repair
-              </Link>
-              <Link href="/services" color="inherit" underline="hover">
-                Emergency Service
-              </Link>
-              <Link href="/services" color="inherit" underline="hover">
-                Maintenance & Tune-ups
-              </Link>
-              <Link href="/services" color="inherit" underline="hover">
-                Opener Installation
-              </Link>
-            </Box>
-          </Grid>
+      {/* Link columns */}
+      <div className="mx-auto grid max-w-[1400px] gap-10 px-5 py-14 md:grid-cols-4 md:px-10">
+        <div>
+          <p className="display mb-4 text-xl">{site.shortName}</p>
+          <p className="mb-4 text-sm leading-relaxed text-muted">
+            Family-owned garage door company based in Oak Grove, MO, serving
+            homes and businesses across the Kansas City metro and a 100-mile
+            radius on both sides of the state line.
+          </p>
+          <address className="text-sm not-italic leading-relaxed text-muted">
+            {site.address.city}, {site.address.state} {site.address.zip}
+            <br />
+            <a href={site.phoneHref} className="text-amber hover:text-amber-hot">
+              {site.phone}
+            </a>
+          </address>
+        </div>
 
-          {/* Contact Info */}
-          <Grid item xs={12} md={4}>
-            <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>
-              Contact Us
-            </Typography>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <Phone fontSize="small" />
-                <Link href="tel:18162883574" color="inherit" underline="hover">
-                  (816) 288-3574
+        <div>
+          <p className="eyebrow mb-5">Services</p>
+          <ul className="flex flex-col gap-2.5">
+            {services.map((s) => (
+              <li key={s.slug}>
+                <Link
+                  href={`/services/${s.slug}`}
+                  className="text-sm text-ivory/70 transition-colors hover:text-amber"
+                >
+                  {s.name}
                 </Link>
-              </Box>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <Email fontSize="small" />
-                <Link href="" color="inherit" underline="hover">
-                  Tylers Email Goes Here
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <p className="eyebrow mb-5">Service Areas</p>
+          <ul className="flex flex-col gap-2.5">
+            {cities.map((c) => (
+              <li key={c.slug}>
+                <Link
+                  href={`/service-areas/${c.slug}`}
+                  className="text-sm text-ivory/70 transition-colors hover:text-amber"
+                >
+                  {c.name}, {c.state}
                 </Link>
-              </Box>
-            </Box>
-          </Grid>
-        </Grid>
+              </li>
+            ))}
+            <li>
+              <Link
+                href="/service-areas"
+                className="text-sm font-semibold text-amber hover:text-amber-hot"
+              >
+                All {locations.length} cities →
+              </Link>
+            </li>
+          </ul>
+        </div>
 
-        <Divider sx={{ my: 4, backgroundColor: 'rgba(255, 255, 255, 0.2)' }} />
+        <div>
+          <p className="eyebrow mb-5">Hours</p>
+          <ul className="flex flex-col gap-2.5">
+            {site.hours.map((h) => (
+              <li key={h.days} className="text-sm text-ivory/70">
+                <span className="block font-mono text-[0.65rem] tracking-widest text-muted">
+                  {h.days.toUpperCase()}
+                </span>
+                {h.hours}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-5 border border-line px-4 py-3 text-xs leading-relaxed text-muted">
+            <span className="text-amber">24/7 emergency service</span> for doors
+            stuck open, off track, or blocking a vehicle.
+          </p>
+        </div>
+      </div>
 
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 2 }}>
-          <Typography variant="body2">
-            © 2025 Carlisle Overhead Doors & Services. All rights reserved.
-          </Typography>
-          <Box sx={{ display: 'flex', gap: 2 }}>
-            <Link href="/privacy" color="inherit" underline="hover" variant="body2">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" color="inherit" underline="hover" variant="body2">
-              Terms of Service
-            </Link>
-          </Box>
-        </Box>
-      </Container>
-    </Box>
+      {/* Bottom bar */}
+      <div className="border-t border-line">
+        <div className="mx-auto flex max-w-[1400px] flex-col items-center justify-between gap-3 px-5 py-6 text-xs text-muted md:flex-row md:px-10">
+          <span>
+            © {new Date().getFullYear()} {site.name}. All rights reserved.
+          </span>
+          <span className="font-mono tracking-widest">
+            OAK GROVE, MO → KANSAS CITY METRO
+          </span>
+        </div>
+      </div>
+    </footer>
   );
 }

@@ -1,21 +1,61 @@
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
+import { Anton, Archivo, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import ThemeProvider from "@/components/ThemeProvider";
-import Navigation from "@/components/Navigation";
+import { site } from "@/data/site";
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Box } from "@mui/material";
+import SmoothScroll from "@/components/SmoothScroll";
+import { LocalBusinessJsonLd } from "@/components/JsonLd";
 
-const roboto = Roboto({
-  weight: ['300', '400', '500', '700'],
-  subsets: ['latin'],
-  display: 'swap',
+const anton = Anton({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-anton",
+  display: "swap",
+});
+
+const archivo = Archivo({
+  subsets: ["latin"],
+  variable: "--font-archivo",
+  display: "swap",
+});
+
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Kansas City Doors - Professional Garage Door Services",
-  description: "Expert garage door installation, repair, and emergency services in Kansas City, MO. Quality craftsmanship and reliable service for all your garage door needs.",
-  keywords: "garage door, installation, repair, emergency service, Kansas City, MO",
+  metadataBase: new URL(site.url),
+  title: {
+    default: `Garage Door Repair & Installation Kansas City | ${site.shortName}`,
+    template: `%s | ${site.shortName}`,
+  },
+  description: `${site.name}: garage door repair, installation, springs, openers & commercial overhead doors across the Kansas City metro. Same-day service from Oak Grove, MO. Call ${site.phone}.`,
+  keywords: [
+    "garage door repair Kansas City",
+    "garage door installation Kansas City",
+    "garage door spring repair",
+    "garage door opener repair",
+    "commercial overhead doors Kansas City",
+    "emergency garage door repair",
+  ],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: site.url,
+    siteName: site.name,
+    title: `Garage Door Repair & Installation Kansas City | ${site.shortName}`,
+    description: `Same-day garage door repair & installation across the Kansas City metro. Call ${site.phone}.`,
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -24,17 +64,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={roboto.className}>
-        <ThemeProvider>
-          <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-            <Navigation />
-            <Box component="main" sx={{ flexGrow: 1 }}>
-              {children}
-            </Box>
-            <Footer />
-          </Box>
-        </ThemeProvider>
+    <html lang="en" className={`${anton.variable} ${archivo.variable} ${jetbrains.variable}`}>
+      <body>
+        <LocalBusinessJsonLd />
+        <SmoothScroll>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   );

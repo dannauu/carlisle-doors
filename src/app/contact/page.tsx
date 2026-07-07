@@ -1,389 +1,120 @@
-'use client';
+import type { Metadata } from "next";
+import Reveal from "@/components/Reveal";
+import { BreadcrumbJsonLd } from "@/components/JsonLd";
+import { site } from "@/data/site";
 
-import React, { useState } from 'react';
-import {
-  Box,
-  Container,
-  Typography,
-  Grid,
-  Card,
-  CardContent,
-  TextField,
-  Button,
-  MenuItem,
-  Alert,
-  CircularProgress,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-} from '@mui/material';
-import {
-  Phone,
-  Email,
-  LocationOn,
-  Schedule,
-  Send,
-  CheckCircle,
-} from '@mui/icons-material';
-import { sendContactEmail, ContactFormData } from '@/lib/emailjs';
+export const metadata: Metadata = {
+  title: "Contact Us | Call for a Free Garage Door Estimate in Kansas City",
+  description: `Call ${site.phone} for garage door repair, installation, and free estimates across the Kansas City metro. 24/7 emergency line. A real technician answers.`,
+  alternates: { canonical: "/contact" },
+};
 
-const services = [
-  'Garage Door Installation',
-  'Emergency Repair',
-  'Maintenance & Tune-up',
-  'Opener Installation/Repair',
-  'Spring Replacement',
-  'Other',
-];
-
-const businessHours = [
-  { day: 'Monday - Friday', hours: '8:00 AM - 6:00 PM' },
-  { day: 'Saturday', hours: '9:00 AM - 4:00 PM' },
-  { day: 'Sunday', hours: 'Emergency Service Only' },
+const reasons = [
+  {
+    title: "Repairs & emergencies",
+    body: "Describe the symptom and we'll diagnose most problems right on the phone, then give you an honest arrival window.",
+  },
+  {
+    title: "Free estimates",
+    body: "New door or opener? We'll talk through options, styles, and budget on the call, then schedule a free in-home measure.",
+  },
+  {
+    title: "Commercial service",
+    body: "Down dock door or planned maintenance program: call and ask for commercial dispatch. Program customers get priority.",
+  },
 ];
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState<ContactFormData>({
-    name: '',
-    email: '',
-    phone: '',
-    service: '',
-    message: '',
-  });
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState('');
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
-    setSuccess(false);
-
-    try {
-      const emailSent = await sendContactEmail(formData);
-      
-      if (emailSent) {
-        setSuccess(true);
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          service: '',
-          message: '',
-        });
-      } else {
-        setError('Failed to send message. Please try again or call us directly.');
-      }
-    } catch {
-      setError('An error occurred. Please try again or call us directly.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
-    <Box>
-      {/* Hero Section */}
-      <Box
-        sx={{
-          background: 'linear-gradient(135deg, #1976d2 0%, #1565c0 100%)',
-          color: 'white',
-          py: 8,
-        }}
-      >
-        <Container maxWidth="lg">
-          <Typography variant="h1" component="h1" textAlign="center" gutterBottom sx={{ fontSize: { xs: '2.5rem', md: '3rem' } }}>
-            Contact Kansas City Doors
-          </Typography>
-          <Typography variant="h5" component="p" textAlign="center" sx={{ opacity: 0.9 }}>
-            Get in touch for a free estimate or emergency service
-          </Typography>
-        </Container>
-      </Box>
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Contact", href: "/contact" },
+        ]}
+      />
 
-      <Container maxWidth="lg" sx={{ py: 8 }}>
-        <Grid container spacing={6}>
-          {/* Contact Form */}
-          <Grid item xs={12} md={8}>
-            <Card>
-              <CardContent sx={{ p: 4 }}>
-                <Typography variant="h4" component="h2" gutterBottom>
-                  Get Your Free Estimate
-                </Typography>
-                <Typography variant="body1" color="text.secondary" paragraph>
-                  Fill out the form below and we&apos;ll get back to you within 24 hours with a free estimate.
-                </Typography>
+      <section className="mx-auto max-w-[1400px] px-5 pt-36 pb-16 md:px-10 md:pt-48">
+        <Reveal>
+          <p className="eyebrow mb-4">Contact</p>
+          <h1 className="display max-w-4xl text-6xl md:text-8xl">
+            One number.
+            <br />
+            <span className="text-amber">A real person.</span>
+          </h1>
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-muted">
+            No forms, no ticket queues, no callback robots. Call or text and you
+            get someone who knows garage doors and can actually put a truck on
+            the road.
+          </p>
+        </Reveal>
+      </section>
 
-                {success && (
-                  <Alert severity="success" sx={{ mb: 3 }}>
-                    Thank you! Your message has been sent successfully. We&apos;ll contact you within 24 hours.
-                  </Alert>
-                )}
+      {/* Giant phone CTA */}
+      <section className="border-y border-line bg-ink-2">
+        <div className="mx-auto max-w-[1400px] px-5 py-16 text-center md:px-10 md:py-24">
+          <Reveal>
+            <p className="eyebrow mb-6">Call or text, day or night</p>
+            <a
+              href={site.phoneHref}
+              className="display inline-block text-6xl leading-none text-amber transition-colors hover:text-amber-hot md:text-[7.5rem]"
+            >
+              {site.phone}
+            </a>
+            <p className="mx-auto mt-8 max-w-md text-sm leading-relaxed text-muted">
+              24/7 emergency line for doors stuck open, off track, or trapping a
+              vehicle. After-hours rates quoted on the phone before we roll a
+              truck.
+            </p>
+            <a
+              href={site.phoneHref}
+              className="display mt-8 inline-block bg-amber px-10 py-5 text-2xl text-ink transition-colors hover:bg-amber-hot"
+            >
+              Tap to Call
+            </a>
+          </Reveal>
+        </div>
+      </section>
 
-                {error && (
-                  <Alert severity="error" sx={{ mb: 3 }}>
-                    {error}
-                  </Alert>
-                )}
+      {/* What to call about + practical info */}
+      <section className="mx-auto max-w-[1400px] px-5 py-20 md:px-10 md:py-28">
+        <Reveal stagger="[data-card]" className="grid gap-px border border-line bg-line md:grid-cols-3">
+          {reasons.map((r, i) => (
+            <div key={r.title} data-card className="bg-ink p-8">
+              <span className="font-mono text-xs text-amber">0{i + 1}</span>
+              <h2 className="display mt-3 mb-3 text-2xl">{r.title}</h2>
+              <p className="text-sm leading-relaxed text-muted">{r.body}</p>
+            </div>
+          ))}
+        </Reveal>
 
-                <Box component="form" onSubmit={handleSubmit}>
-                  <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6}>
-                      <TextField
-                        fullWidth
-                        label="Full Name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <TextField
-                        fullWidth
-                        label="Email Address"
-                        name="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <TextField
-                        fullWidth
-                        label="Phone Number"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        required
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <TextField
-                        fullWidth
-                        select
-                        label="Service Needed"
-                        name="service"
-                        value={formData.service}
-                        onChange={handleChange}
-                        required
-                      >
-                        {services.map((service) => (
-                          <MenuItem key={service} value={service}>
-                            {service}
-                          </MenuItem>
-                        ))}
-                      </TextField>
-                    </Grid>
-                    <Grid item xs={12}>
-                      <TextField
-                        fullWidth
-                        multiline
-                        rows={4}
-                        label="Message"
-                        name="message"
-                        value={formData.message}
-                        onChange={handleChange}
-                        placeholder="Please describe your garage door needs or any specific issues you're experiencing..."
-                        required
-                      />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <Button
-                        type="submit"
-                        variant="contained"
-                        size="large"
-                        disabled={loading}
-                        startIcon={loading ? <CircularProgress size={20} /> : <Send />}
-                        sx={{ minWidth: 200 }}
-                      >
-                        {loading ? 'Sending...' : 'Send Message'}
-                      </Button>
-                    </Grid>
-                  </Grid>
-                </Box>
-              </CardContent>
-            </Card>
-          </Grid>
+        <div className="mt-6 grid gap-6 md:grid-cols-2">
+          <Reveal className="border border-line bg-ink-2 p-7">
+            <p className="eyebrow mb-4">Hours</p>
+            <ul className="flex flex-col gap-3">
+              {site.hours.map((h) => (
+                <li key={h.days} className="flex items-baseline justify-between gap-4 text-sm">
+                  <span className="text-muted">{h.days}</span>
+                  <span className="text-ivory/85">{h.hours}</span>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
 
-          {/* Contact Information */}
-          <Grid item xs={12} md={4}>
-            <Grid container spacing={4}>
-              {/* Contact Details */}
-              <Grid item xs={12}>
-                <Card>
-                  <CardContent>
-                    <Typography variant="h5" component="h3" gutterBottom>
-                      Contact Information
-                    </Typography>
-                    <List>
-                      <ListItem sx={{ px: 0 }}>
-                        <ListItemIcon>
-                          <Phone color="primary" />
-                        </ListItemIcon>
-                        <ListItemText 
-                          primary="Phone"
-                          secondary="(816) 288-3574"
-                        />
-                      </ListItem>
-                      <ListItem sx={{ px: 0 }}>
-                        <ListItemIcon>
-                          <Email color="primary" />
-                        </ListItemIcon>
-                        <ListItemText 
-                          primary="Email"
-                          secondary="info@kansascitydoors.com"
-                        />
-                      </ListItem>
-                      <ListItem sx={{ px: 0 }}>
-                        <ListItemIcon>
-                          <LocationOn color="primary" />
-                        </ListItemIcon>
-                        <ListItemText 
-                          primary="Address"
-                          secondary="123 Main Street, Kansas City, MO 64101"
-                        />
-                      </ListItem>
-                    </List>
-                  </CardContent>
-                </Card>
-              </Grid>
-
-              {/* Business Hours */}
-              <Grid item xs={12}>
-                <Card>
-                  <CardContent>
-                    <Typography variant="h5" component="h3" gutterBottom>
-                      Business Hours
-                    </Typography>
-                    <List>
-                      {businessHours.map((schedule, index) => (
-                        <ListItem key={index} sx={{ px: 0 }}>
-                          <ListItemIcon>
-                            <Schedule color="primary" />
-                          </ListItemIcon>
-                          <ListItemText 
-                            primary={schedule.day}
-                            secondary={schedule.hours}
-                          />
-                        </ListItem>
-                      ))}
-                    </List>
-                  </CardContent>
-                </Card>
-              </Grid>
-
-              {/* Emergency Service */}
-              <Grid item xs={12}>
-                <Card sx={{ backgroundColor: 'error.main', color: 'white' }}>
-                  <CardContent>
-                    <Typography variant="h5" component="h3" gutterBottom>
-                      Emergency Service
-                    </Typography>
-                    <Typography variant="body1" paragraph>
-                      Need immediate garage door repair? We offer 24/7 emergency service for urgent situations.
-                    </Typography>
-                    <Button
-                      variant="contained"
-                      fullWidth
-                      sx={{ 
-                        backgroundColor: 'white', 
-                        color: 'error.main',
-                        '&:hover': { backgroundColor: 'grey.100' }
-                      }}
-                      startIcon={<Phone />}
-                      href="tel:18162883574"
-                    >
-                      Call Now
-                    </Button>
-                  </CardContent>
-                </Card>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Container>
-
-      {/* Service Areas */}
-      <Box sx={{ backgroundColor: 'grey.50', py: 8 }}>
-        <Container maxWidth="lg">
-          <Typography variant="h3" component="h2" textAlign="center" gutterBottom>
-            Service Areas
-          </Typography>
-          <Typography variant="h6" textAlign="center" color="text.secondary" paragraph sx={{ mb: 6 }}>
-            We proudly serve the following areas in Jackson County, MO
-          </Typography>
-          
-          <Grid container spacing={2} justifyContent="center">
-            {['Kansas City', 'Independence', 'Lee\'s Summit', 'Blue Springs', 'Raytown', 'Overland Park'].map((area) => (
-              <Grid item key={area}>
-                <Card sx={{ p: 2, textAlign: 'center', minWidth: 150 }}>
-                  <Typography variant="h6">{area}</Typography>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-          
-          <Box sx={{ textAlign: 'center', mt: 4 }}>
-            <Typography variant="body1" color="text.secondary">
-              Don&apos;t see your area listed? Call us to check if we service your location.
-            </Typography>
-          </Box>
-        </Container>
-      </Box>
-
-      {/* Why Choose Us */}
-      <Container maxWidth="lg" sx={{ py: 8 }}>
-        <Typography variant="h3" component="h2" textAlign="center" gutterBottom>
-          Why Choose Kansas City Doors?
-        </Typography>
-        
-        <Grid container spacing={4} sx={{ mt: 2 }}>
-          <Grid item xs={12} md={4}>
-            <Box sx={{ textAlign: 'center' }}>
-              <CheckCircle sx={{ fontSize: 60, color: 'primary.main', mb: 2 }} />
-              <Typography variant="h5" gutterBottom>
-                Licensed & Insured
-              </Typography>
-              <Typography variant="body1" color="text.secondary">
-                Fully licensed and insured for your protection and peace of mind.
-              </Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Box sx={{ textAlign: 'center' }}>
-              <CheckCircle sx={{ fontSize: 60, color: 'primary.main', mb: 2 }} />
-              <Typography variant="h5" gutterBottom>
-                15+ Years Experience
-              </Typography>
-              <Typography variant="body1" color="text.secondary">
-                Over 15 years of professional garage door service in the Kansas City area.
-              </Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Box sx={{ textAlign: 'center' }}>
-              <CheckCircle sx={{ fontSize: 60, color: 'primary.main', mb: 2 }} />
-              <Typography variant="h5" gutterBottom>
-                24/7 Emergency Service
-              </Typography>
-              <Typography variant="body1" color="text.secondary">
-                Available around the clock for emergency garage door repairs.
-              </Typography>
-            </Box>
-          </Grid>
-        </Grid>
-      </Container>
-    </Box>
+          <Reveal className="border border-line bg-ink-2 p-7">
+            <p className="eyebrow mb-4">Based in</p>
+            <address className="text-sm not-italic leading-relaxed text-ivory/85">
+              {site.name}
+              <br />
+              {site.address.city}, {site.address.state} {site.address.zip}
+            </address>
+            <p className="mt-3 text-sm leading-relaxed text-muted">
+              Serving the Kansas City metro and a 100-mile radius, both sides of
+              the state line.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+    </>
   );
 }

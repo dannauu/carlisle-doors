@@ -1,252 +1,249 @@
-'use client';
+import Link from "next/link";
+import type { Metadata } from "next";
+import GarageRevealHero from "@/components/GarageRevealHero";
+import Reveal from "@/components/Reveal";
+import ServiceIcon from "@/components/ServiceIcon";
+import { services } from "@/data/services";
+import { locations, locationsByRing, ringLabels, type Ring } from "@/data/locations";
+import { site } from "@/data/site";
 
-import {
-  Box,
-  Container,
-  Typography,
-  Button,
-  Grid,
-  Card,
-  CardContent,
-} from '@mui/material';
-import {
-  Build,
-  Emergency,
-  Schedule,
-  Star,
-  Phone,
-  ArrowForward,
-} from '@mui/icons-material';
-import Link from 'next/link';
-import Image from 'next/image';
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
-const services = [
+const marqueeItems = [
+  "Garage Door Repair",
+  "Same-Day Service",
+  "Spring Replacement",
+  "New Installations",
+  "Opener Repair",
+  "24/7 Emergency",
+  "Commercial Doors",
+  "Free Estimates",
+];
+
+const stats = [
+  { value: "24/7", label: "Emergency response, nights & weekends" },
+  { value: "100mi", label: "Service radius from Oak Grove, MO" },
+  { value: "90%+", label: "Repairs completed in a single visit" },
+  { value: `${locations.length}`, label: "Cities served across MO & KS" },
+];
+
+const testimonials = [
   {
-    title: 'Installation',
-    description: 'Professional garage door installation with quality materials and expert craftsmanship.',
-    icon: <Build fontSize="large" />,
-    color: 'primary',
+    quote:
+      "Spring snapped at 7 AM with my truck trapped inside. They had a tech out before 9 and I still made my shift. Fair price, zero drama.",
+    name: "Mike R.",
+    city: "Blue Springs, MO",
   },
   {
-    title: 'Emergency Repair',
-    description: '24/7 emergency repair services for urgent garage door issues.',
-    icon: <Emergency fontSize="large" />,
-    color: 'error',
+    quote:
+      "Three quotes for a new insulated double door. Carlisle was the only one who actually measured, explained R-values, and didn't push the priciest option.",
+    name: "Sarah K.",
+    city: "Overland Park, KS",
   },
   {
-    title: 'Maintenance',
-    description: 'Regular maintenance services to keep your garage door running smoothly.',
-    icon: <Schedule fontSize="large" />,
-    color: 'success',
+    quote:
+      "They maintain all eleven dock doors at our warehouse. Since we started the quarterly program we haven't lost a single day to a down door.",
+    name: "D. Foster",
+    city: "North Kansas City, MO",
   },
 ];
 
+const rings: Ring[] = ["core-mo", "core-ks", "extended", "outer"];
+
 export default function Home() {
   return (
-    <Box>
-      {/* Hero Section */}
-      <Box
-        sx={{
-          background: 'linear-gradient(135deg, #1976d2 0%, #1565c0 100%)',
-          color: 'white',
-          py: 8,
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-      >
-        <Container maxWidth="lg">
-          <Grid container spacing={4} alignItems="center">
-            <Grid item xs={12} md={6}>
-              <Typography variant="h1" component="h1" gutterBottom sx={{ fontSize: { xs: '2.5rem', md: '3.5rem' } }}>
-                Professional Garage Door Services
-              </Typography>
-              <Typography variant="h5" component="p" paragraph sx={{ opacity: 0.9, mb: 4 }}>
-                Expert installation, repair, and emergency services in and around Kansas City, Missouri.
-                Quality craftsmanship you can trust.
-              </Typography>
-              <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
-                <Button
-                  variant="contained"
-                  size="large"
-                  sx={{
-                    backgroundColor: 'white',
-                    color: 'primary.main',
-                    '&:hover': { backgroundColor: 'grey.100' }
-                  }}
-                  startIcon={<Phone />}
-                  href="tel:18162883574"
-                >
-                  Call Now: (816) 288-3574
-                </Button>
-                <Link href="/contact" style={{ textDecoration: 'none' }}>
-                  <Button
-                    variant="outlined"
-                    size="large"
-                    sx={{
-                      borderColor: 'white',
-                      color: 'white',
-                      '&:hover': { borderColor: 'grey.100', backgroundColor: 'rgba(255,255,255,0.1)' }
-                    }}
-                    endIcon={<ArrowForward />}
-                  >
-                    Get Free Quote
-                  </Button>
-                </Link>
-              </Box>
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <Box sx={{ textAlign: 'center' }}>
-                <Image
-                  src="/api/placeholder/600/400"
-                  alt="Professional garage door installation"
-                  width={600}
-                  height={400}
-                  style={{
-                    maxWidth: '100%',
-                    height: 'auto',
-                    borderRadius: '12px',
-                    boxShadow: '0 8px 32px rgba(0,0,0,0.3)'
-                  }}
-                  unoptimized
-                />
-              </Box>
-            </Grid>
-          </Grid>
-        </Container>
-      </Box>
+    <>
+      <GarageRevealHero />
 
-      {/* Services Section */}
-      <Container maxWidth="lg" sx={{ py: 8 }}>
-        <Typography variant="h2" component="h2" textAlign="center" gutterBottom>
-          Our Services
-        </Typography>
-        <Typography variant="h6" textAlign="center" color="text.secondary" paragraph sx={{ mb: 6 }}>
-          Comprehensive garage door solutions for residential and commercial properties
-        </Typography>
-
-        <Grid container spacing={4}>
-          {services.map((service, index) => (
-            <Grid item xs={12} md={4} key={index}>
-              <Card
-                sx={{
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  transition: 'transform 0.2s',
-                  '&:hover': { transform: 'translateY(-4px)' }
-                }}
-              >
-                <CardContent sx={{ textAlign: 'center', flexGrow: 1 }}>
-                  <Box sx={{ color: `${service.color}.main`, mb: 2 }}>
-                    {service.icon}
-                  </Box>
-                  <Typography variant="h5" component="h3" gutterBottom>
-                    {service.title}
-                  </Typography>
-                  <Typography variant="body1" color="text.secondary">
-                    {service.description}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
+      {/* Marquee */}
+      <div className="overflow-hidden border-y border-line bg-ink-2 py-4">
+        <div className="marquee-track">
+          {[0, 1].map((copy) => (
+            <div key={copy} className="flex shrink-0 items-center" aria-hidden={copy === 1}>
+              {marqueeItems.map((item) => (
+                <span key={item} className="flex items-center">
+                  <span className="display px-6 text-xl text-ivory/80">{item}</span>
+                  <span className="text-amber">✦</span>
+                </span>
+              ))}
+            </div>
           ))}
-        </Grid>
+        </div>
+      </div>
 
-        <Box sx={{ textAlign: 'center', mt: 6 }}>
-          <Link href="/services" style={{ textDecoration: 'none' }}>
-            <Button variant="contained" size="large" endIcon={<ArrowForward />}>
-              View All Services
-            </Button>
-          </Link>
-        </Box>
-      </Container>
+      {/* Services */}
+      <section className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-36">
+        <Reveal>
+          <p className="eyebrow mb-4">What we do</p>
+          <h2 className="display max-w-3xl text-5xl md:text-7xl">
+            Every door.
+            <br />
+            <span className="text-amber">Every problem.</span>
+          </h2>
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-muted">
+            From a snapped torsion spring in Lee&apos;s Summit to a full dock-door
+            install in the West Bottoms, one local crew handles it all,
+            with trucks stocked to finish the job in a single visit.
+          </p>
+        </Reveal>
 
-      {/* Why Choose Us Section */}
-      <Box sx={{ backgroundColor: 'grey.50', py: 8 }}>
-        <Container maxWidth="lg">
-          <Typography variant="h2" component="h2" textAlign="center" gutterBottom>
-            Why Choose Carlisle Overhead Doors & Services?
-          </Typography>
+        <Reveal stagger="[data-card]" className="mt-14 grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+          {services.map((s, i) => (
+            <Link
+              key={s.slug}
+              data-card
+              href={`/services/${s.slug}`}
+              className="card-lift group flex min-h-64 flex-col justify-between border border-transparent bg-ink p-7"
+            >
+              <div className="flex items-start justify-between">
+                <span className="text-amber transition-transform duration-500 group-hover:scale-110">
+                  <ServiceIcon icon={s.icon} />
+                </span>
+                <span className="font-mono text-xs text-muted">0{i + 1}</span>
+              </div>
+              <div>
+                <h3 className="display mb-2 text-2xl group-hover:text-amber">{s.name}</h3>
+                <p className="text-sm leading-relaxed text-muted line-clamp-2">
+                  {s.metaDescription.split(".")[0]}.
+                </p>
+                <span className="mt-4 inline-block font-mono text-[0.65rem] tracking-[0.2em] text-amber opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  VIEW SERVICE →
+                </span>
+              </div>
+            </Link>
+          ))}
+        </Reveal>
+      </section>
 
-          <Grid container spacing={4} sx={{ mt: 4 }}>
-            <Grid item xs={12} md={4}>
-              <Box sx={{ textAlign: 'center' }}>
-                <Star sx={{ fontSize: 60, color: 'gold', mb: 2 }} />
-                <Typography variant="h4" component="h3" gutterBottom>
-                  15+ Years Experience
-                </Typography>
-                <Typography variant="h6" color="text.secondary">
-                  Over 15 years of professional garage door service in the Kansas City area.
-                </Typography>
-              </Box>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Box sx={{ textAlign: 'center' }}>
-                <Emergency sx={{ fontSize: 60, color: 'red', mb: 2 }} />
-                <Typography variant="h4" component="h3" gutterBottom>
-                  24/7 Emergency Service
-                </Typography>
-                <Typography variant="h6" color="text.secondary">
-                  Available around the clock for emergency garage door repairs.
-                </Typography>
-              </Box>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Box sx={{ textAlign: 'center' }}>
-                <Build sx={{ fontSize: 60, color: 'black', mb: 2 }} />
-                <Typography variant="h4" component="h3" gutterBottom>
-                  Licensed & Insured
-                </Typography>
-                <Typography variant="h6" color="text.secondary">
-                  Fully licensed and insured for your protection and peace of mind.
-                </Typography>
-              </Box>
-            </Grid>
-          </Grid>
-        </Container>
-      </Box>
+      {/* Why Carlisle */}
+      <section className="relative overflow-hidden border-y border-line bg-ink-2">
+        <div className="ghost-text display pointer-events-none absolute -top-6 left-0 whitespace-nowrap text-[11rem] leading-none opacity-60 select-none md:text-[16rem]" aria-hidden>
+          CARLISLE
+        </div>
+        <div className="relative mx-auto grid max-w-[1400px] gap-14 px-5 py-24 md:grid-cols-2 md:px-10 md:py-36">
+          <Reveal>
+            <p className="eyebrow mb-4">Why Carlisle</p>
+            <h2 className="display text-5xl md:text-6xl">
+              Local. Honest.
+              <br />
+              <span className="text-amber">Actually shows up.</span>
+            </h2>
+            <p className="mt-6 max-w-lg text-base leading-relaxed text-muted">
+              We&apos;re not a national call center reselling your repair to the
+              lowest bidder. Carlisle Overhead Doors is a family-run company out
+              of Oak Grove, Missouri. The person who answers the phone knows the
+              person who shows up at your house, and both of them know garage
+              doors.
+            </p>
+            <p className="mt-4 max-w-lg text-base leading-relaxed text-muted">
+              Upfront flat-rate pricing. High-cycle parts as standard. A clean
+              driveway when we leave. That&apos;s the whole pitch.
+            </p>
+            <Link
+              href="/about"
+              className="link-sweep mt-8 inline-block font-mono text-xs tracking-[0.25em] text-amber"
+            >
+              MORE ABOUT US →
+            </Link>
+          </Reveal>
+          <Reveal stagger="[data-stat]" className="grid grid-cols-2 content-center gap-px border border-line bg-line">
+            {stats.map((s) => (
+              <div key={s.label} data-stat className="bg-ink-2 p-8">
+                <span className="display block text-5xl text-amber md:text-6xl">{s.value}</span>
+                <span className="mt-3 block text-sm leading-snug text-muted">{s.label}</span>
+              </div>
+            ))}
+          </Reveal>
+        </div>
+      </section>
 
-      {/* CTA Section */}
-      <Box sx={{ backgroundColor: 'primary.main', color: 'white', py: 8 }}>
-        <Container maxWidth="lg">
-          <Box sx={{ textAlign: 'center' }}>
-            <Typography variant="h3" component="h2" gutterBottom>
-              Ready to Get Started?
-            </Typography>
-            <Typography variant="h6" paragraph sx={{ opacity: 0.9, mb: 4 }}>
-              Contact us today for a free estimate on your garage door project
-            </Typography>
-            <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Button
-                variant="contained"
-                size="large"
-                sx={{
-                  backgroundColor: 'white',
-                  color: 'primary.main',
-                  '&:hover': { backgroundColor: 'grey.100' }
-                }}
-                startIcon={<Phone />}
-                href="tel:18162883574"
-              >
-                Call (816) 288-3574
-              </Button>
-              <Link href="/contact" style={{ textDecoration: 'none' }}>
-                <Button
-                  variant="outlined"
-                  size="large"
-                  sx={{
-                    borderColor: 'white',
-                    color: 'white',
-                    '&:hover': { borderColor: 'grey.100', backgroundColor: 'rgba(255,255,255,0.1)' }
-                  }}
-                >
-                  Contact Us Online
-                </Button>
-              </Link>
-            </Box>
-          </Box>
-        </Container>
-      </Box>
-    </Box>
+      {/* Service areas */}
+      <section className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-36">
+        <Reveal>
+          <p className="eyebrow mb-4">Where we work</p>
+          <h2 className="display max-w-3xl text-5xl md:text-7xl">
+            Both sides of
+            <br />
+            the <span className="text-amber">state line.</span>
+          </h2>
+        </Reveal>
+        <div className="mt-14 flex flex-col gap-10">
+          {rings.map((ring) => {
+            const cities = locationsByRing(ring);
+            return (
+              <Reveal key={ring}>
+                <p className="mb-4 font-mono text-xs tracking-[0.25em] text-muted">
+                  {ringLabels[ring].toUpperCase()}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {cities.map((c) => (
+                    <Link
+                      key={c.slug}
+                      href={`/service-areas/${c.slug}`}
+                      className="border border-line px-4 py-2 text-sm text-ivory/75 transition-colors duration-300 hover:border-amber hover:text-amber"
+                    >
+                      {c.name}, {c.state}
+                    </Link>
+                  ))}
+                </div>
+              </Reveal>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="border-t border-line bg-ink-2">
+        <div className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-36">
+          <Reveal>
+            <p className="eyebrow mb-4">Word gets around</p>
+            <h2 className="display text-5xl md:text-7xl">
+              KC talks. <span className="text-amber">We listen.</span>
+            </h2>
+          </Reveal>
+          <Reveal stagger="[data-quote]" className="mt-14 grid gap-px border border-line bg-line md:grid-cols-3">
+            {testimonials.map((t) => (
+              <figure key={t.name} data-quote className="flex flex-col justify-between bg-ink-2 p-8">
+                <blockquote className="text-base leading-relaxed text-ivory/85">
+                  &ldquo;{t.quote}&rdquo;
+                </blockquote>
+                <figcaption className="mt-8">
+                  <span className="display block text-lg text-amber">{t.name}</span>
+                  <span className="font-mono text-[0.65rem] tracking-[0.2em] text-muted">
+                    {t.city.toUpperCase()}
+                  </span>
+                </figcaption>
+              </figure>
+            ))}
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Emergency strip */}
+      <section className="relative overflow-hidden">
+        <div className="mx-auto flex max-w-[1400px] flex-col items-start gap-8 px-5 py-24 md:flex-row md:items-center md:justify-between md:px-10">
+          <Reveal>
+            <p className="eyebrow mb-4">Door stuck right now?</p>
+            <h2 className="display text-5xl md:text-7xl">
+              We answer at <span className="text-amber">2 AM.</span>
+            </h2>
+            <p className="mt-4 max-w-lg text-base text-muted">
+              Stuck open, off the tracks, car trapped inside? Emergency calls
+              ring straight to a technician, not an answering service.
+            </p>
+          </Reveal>
+          <Reveal delay={0.15} className="shrink-0">
+            <a
+              href={site.phoneHref}
+              className="display inline-block border-2 border-amber bg-amber px-10 py-6 text-3xl text-ink transition-colors hover:bg-transparent hover:text-amber"
+            >
+              {site.phone}
+            </a>
+          </Reveal>
+        </div>
+      </section>
+    </>
   );
 }
