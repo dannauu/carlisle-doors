@@ -60,13 +60,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const l = getLocation(slug);
   if (!l) return {};
   return {
-    title: `Garage Door Repair ${l.name}, ${l.state} | Installation & Springs`,
+    title: `Garage Door Repair in ${l.name}, ${l.state}`,
     description: `Garage door repair, installation, spring & opener service in ${l.name}, ${l.state}. ${
       ringResponse[l.ring].time === "same-day" ? "Same-day service" : "Fast local service"
     } from Carlisle Overhead Doors. Call ${site.phone}.`,
     alternates: { canonical: `/service-areas/${l.slug}` },
     openGraph: {
-      title: `Garage Door Repair ${l.name}, ${l.state} | ${site.shortName}`,
+      title: `Garage Door Repair in ${l.name}, ${l.state} | ${site.shortName}`,
       description: `Garage door repair & installation in ${l.name}, ${l.state}. Call ${site.phone}.`,
       url: `${site.url}/service-areas/${l.slug}`,
     },
@@ -108,10 +108,8 @@ export default async function LocationPage({ params }: Props) {
               <span className="text-amber">{l.name}, {l.state}.</span>
             </h1>
             <p className="mt-8 max-w-2xl text-base leading-relaxed text-ivory/80 md:text-lg">
-              Broken spring, dead opener, door off its track, or time for a new
-              door entirely? Carlisle Overhead Doors serves {l.name} from our
-              shop in Oak Grove, MO with {r.time} service, upfront flat-rate
-              pricing, and trucks stocked to finish most jobs in one visit.
+              {l.blurb ??
+                `Broken spring, dead opener, door off its track, or time for a new door entirely? Carlisle Overhead Doors serves ${l.name} from our shop in Oak Grove, MO with ${r.time} service, upfront flat-rate pricing, and trucks stocked to finish most jobs in one visit.`}
             </p>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted">{r.note}</p>
             <div className="mt-10 flex flex-wrap gap-4">
@@ -132,7 +130,7 @@ export default async function LocationPage({ params }: Props) {
         </div>
       </section>
 
-      {/* City deep-dive (high-search-volume cities only) */}
+      {/* Unique city-specific content, every city has at least one section */}
       {l.deepDive && (
         <section className="border-b border-line bg-ink-2">
           <div className="mx-auto flex max-w-[1400px] flex-col gap-14 px-5 py-20 md:px-10 md:py-28">

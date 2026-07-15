@@ -15,7 +15,9 @@ export const site = {
     lat: 39.0075,
     lng: -94.1291,
   },
-  url: "https://www.carlisleoverheaddoors.com",
+  // Apex domain is canonical: GSC shows it winning impressions over www,
+  // and Netlify's primary domain should be set to match (www redirects here).
+  url: "https://carlisleoverheaddoors.com",
   hours: [
     { days: "Monday – Friday", hours: "8:00 AM – 6:00 PM" },
     { days: "Saturday", hours: "9:00 AM – 4:00 PM" },

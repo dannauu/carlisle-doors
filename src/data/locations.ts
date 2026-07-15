@@ -1,3 +1,5 @@
+import { cityCopy } from "./city-copy";
+
 export type Ring = "core-mo" | "core-ks" | "extended" | "outer";
 
 export type Location = {
@@ -7,7 +9,9 @@ export type Location = {
   ring: Ring;
   /** Approximate drive context used in copy */
   county?: string;
-  /** Extra city-specific sections rendered on high-search-volume city pages */
+  /** Unique hero paragraph for this city */
+  blurb?: string;
+  /** City-specific content sections, unique per city */
   deepDive?: { title: string; body: string }[];
 };
 
@@ -23,44 +27,8 @@ const slugify = (name: string, state: string) =>
 
 const loc = (name: string, state: "MO" | "KS" | "NE", ring: Ring, county?: string): Location => {
   const slug = slugify(name, state);
-  return { slug, name, state, ring, county, deepDive: deepDives[slug] };
-};
-
-/**
- * City-specific content for the highest-search-volume pages.
- * Keyed by slug and merged into the matching Location below.
- */
-const deepDives: Record<string, { title: string; body: string }[]> = {
-  "overland-park-ks": [
-    {
-      title: "Overland Park's doors are aging out together.",
-      body: "Huge swaths of Overland Park went up in the same building booms, which means whole neighborhoods hit the end of their builder-grade garage doors at the same time. If your neighbors have been replacing doors, yours is likely on the same clock: springs rated for 10,000 cycles, thin single-layer steel, and openers without modern safety or battery backup. We replace a lot of doors south of College Boulevard, and we stock parts for every brand the original builders used.",
-    },
-    {
-      title: "Upgrades that fit the neighborhood (and the HOA).",
-      body: "Many Overland Park subdivisions have HOA guidelines on door style and color, and most homeowners want a door that lifts the whole facade without clashing with the street. We bring sample books to your driveway, help you match panel style and color to the neighborhood, and handle insulated doors that make attached-garage homes noticeably quieter and cheaper to heat and cool through Kansas winters and July heat.",
-    },
-  ],
-  "lenexa-ks": [
-    {
-      title: "From Old Town to City Center, Lenexa doors run the full range.",
-      body: "Lenexa is two cities in one: established neighborhoods with doors and openers from the 80s and 90s, and newer construction around City Center with modern doors that still need tuned tracks, balanced springs, and warranty-safe service. We work both ends weekly, whether that's replacing a worn-out chain-drive opener in an older ranch or dialing in a brand-new insulated door a builder installed in a hurry.",
-    },
-    {
-      title: "Same-day service on the I-35 corridor.",
-      body: "Lenexa sits right on our daily Johnson County route, so repair calls placed before noon are usually handled the same day. Broken spring, door off track, opener that hums but will not lift: our trucks carry the springs, cables, rollers, and opener parts to finish most Lenexa repairs in a single visit, with the price quoted before we touch a tool.",
-    },
-  ],
-  "olathe-ks": [
-    {
-      title: "Olathe grew fast. Its garage doors are catching up.",
-      body: "Olathe has been one of the fastest-growing cities in Kansas for two decades, and the math is simple: subdivisions built in the 2000s and 2010s are now 10 to 20 years old, which is exactly when builder-grade springs, rollers, and openers start failing. We handle a steady stream of first-time spring replacements across Olathe, and we install 20,000-cycle springs as standard so you are not doing this again in seven years.",
-    },
-    {
-      title: "New doors for new-build families.",
-      body: "A lot of Olathe homeowners are upgrading the plain white builder door to something with real curb appeal: carriage house styles, wood-look steel, insulated doors with windows that brighten the garage gym or workshop. Estimates are free, we bring samples to your driveway, and installation typically happens within one to two weeks of ordering, old door haul-away included.",
-    },
-  ],
+  const copy = cityCopy[slug];
+  return { slug, name, state, ring, county, blurb: copy?.blurb, deepDive: copy?.sections };
 };
 
 export const locations: Location[] = [

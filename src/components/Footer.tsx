@@ -123,8 +123,13 @@ export default function Footer() {
             ))}
           </ul>
           <p className="mt-5 border border-line px-4 py-3 text-xs leading-relaxed text-muted">
-            <span className="text-amber">24/7 emergency service</span> for doors
-            stuck open, off track, or blocking a vehicle.
+            <Link
+              href="/services/emergency-garage-door-repair"
+              className="text-amber hover:text-amber-hot"
+            >
+              24/7 emergency garage door repair
+            </Link>{" "}
+            for doors stuck open, off track, or blocking a vehicle.
           </p>
         </div>
       </div>

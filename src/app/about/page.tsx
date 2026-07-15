@@ -5,7 +5,7 @@ import { BreadcrumbJsonLd } from "@/components/JsonLd";
 import { site } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "About Us | Family-Owned Garage Door Company in Oak Grove, MO",
+  title: "Family-Owned Garage Door Company in Kansas City",
   description: `Carlisle Overhead Doors and Services is a family-owned garage door company in Oak Grove, MO serving the Kansas City metro. Meet the crew behind the trucks. Call ${site.phone}.`,
   alternates: { canonical: "/about" },
 };
