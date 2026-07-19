@@ -329,23 +329,24 @@ export const services: Service[] = [
   {
     slug: "commercial-overhead-doors",
     name: "Commercial Overhead Doors",
-    seoTitle: "Commercial Overhead Door Repair & Installation Kansas City",
-    primaryKeyword: "commercial overhead doors Kansas City",
+    seoTitle: "Commercial Overhead Door Repair Kansas City | Roll-Up & Dock Doors",
+    primaryKeyword: "commercial garage door repair Kansas City",
     supportingKeywords: [
-      "commercial garage door repair",
+      "roll up door repair",
+      "dock door repair companies",
+      "commercial garage door repair near me",
       "rolling steel doors Kansas City",
-      "dock door repair",
       "sectional door installation commercial",
     ],
     metaDescription:
-      "Commercial overhead door installation & repair for Kansas City businesses. Rolling steel, sectional, dock doors & fire doors. Planned maintenance programs. (816) 288-3574.",
+      "Commercial garage door and roll-up door repair for Kansas City businesses. Dock doors, rolling steel, sectional & fire doors. Planned maintenance programs. (816) 288-3574.",
     headline: "When the door stops, the business stops.",
     intro:
-      "A failed overhead door at a loading dock, fire station, or shop bay costs money by the hour. Carlisle Overhead Doors installs and services commercial overhead doors across the Kansas City metro (rolling steel, insulated sectional, high-lift, dock doors, and fire-rated doors) with priority response for businesses and planned-maintenance programs that keep failures from happening at all.",
+      "A failed overhead door at a loading dock, fire station, or shop bay costs money by the hour. Carlisle Overhead Doors repairs and installs every kind of commercial garage door across the Kansas City metro: roll-up doors, rolling steel, insulated sectional, high-lift, dock doors, and fire-rated doors, with priority response for businesses and planned-maintenance programs that keep failures from happening at all.",
     sections: [
       {
         title: "Every commercial door type in the metro.",
-        body: "Rolling steel service doors and counter shutters. Insulated sectional doors for warehouses and fleet garages. High-lift and full-vertical track for wash bays and lifts. Dock doors, seals, and levelers. Fire-rated rolling doors with required annual drop testing. If it rolls, lifts, or coils, we install and service it.",
+        body: "Roll-up and rolling steel service doors and counter shutters. Insulated sectional doors for warehouses and fleet garages. High-lift and full-vertical track for wash bays and lifts. Dock doors, seals, and levelers. Fire-rated rolling doors with required annual drop testing. If it rolls, lifts, or coils, we repair it and install it.",
       },
       {
         title: "Planned maintenance beats emergency repair.",
@@ -357,7 +358,8 @@ export const services: Service[] = [
       },
     ],
     bullets: [
-      "Rolling steel & sectional doors",
+      "Roll-up & rolling steel doors",
+      "Sectional & high-lift doors",
       "Dock doors, seals & shelters",
       "Fire door installation & drop testing",
       "Commercial operators & controls",
@@ -367,6 +369,10 @@ export const services: Service[] = [
       "Serving KC metro & 100-mile radius",
     ],
     faqs: [
+      {
+        q: "Do you repair roll-up doors?",
+        a: "Yes, roll-up door repair is core work for us: slat and curtain damage, broken springs inside the barrel, bent guides, and worn bottom bars on rolling steel doors of every size. We service roll-up doors on warehouses, storage facilities, and shop buildings across the Kansas City metro, with priority dispatch when a stuck door is blocking your operation.",
+      },
       {
         q: "Do you offer commercial maintenance contracts?",
         a: "Yes: quarterly and semi-annual programs that include full inspection, lubrication, spring and cable assessment, operator safety testing, and documentation for your records. Program customers get priority dispatch and preferred repair rates.",
