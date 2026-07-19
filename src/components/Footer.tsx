@@ -68,6 +68,17 @@ export default function Footer() {
               {site.phone}
             </a>
           </address>
+          <a
+            href={site.social.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Carlisle Overhead Doors on Facebook"
+            className="mt-5 inline-flex h-10 w-10 items-center justify-center border border-line text-ivory/70 transition-colors hover:border-amber hover:text-amber"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5" aria-hidden>
+              <path d="M13.5 21v-7.5h2.5l.5-3h-3V8.6c0-.87.24-1.6 1.6-1.6H16.6V4.3c-.3-.04-1.3-.13-2.46-.13-2.43 0-4.14 1.48-4.14 4.2v2.13H7.5v3h2.5V21h3.5Z" />
+            </svg>
+          </a>
         </div>
 
         <div>

@@ -28,7 +28,7 @@ export const site = {
     "Sa 09:00-16:00",
   ],
   social: {
-    facebook: "https://www.facebook.com/carlisleoverheaddoors",
+    facebook: "https://www.facebook.com/Carlisleoverheaddoors",
     google: "https://g.page/carlisleoverheaddoors",
   },
   serviceRadiusMiles: 100,
