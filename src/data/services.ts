@@ -29,16 +29,19 @@ export const services: Service[] = [
   {
     slug: "garage-door-repair",
     name: "Garage Door Repair",
-    seoTitle: "Garage Door Repair Kansas City | Same-Day Service",
+    seoTitle: "Garage Door Repair Near Me | Kansas City Same-Day Service",
     primaryKeyword: "garage door repair Kansas City",
     supportingKeywords: [
       "garage door repair near me",
-      "overhead door repair Kansas City",
+      "garage door company near me",
+      "overhead door repair near me",
+      "fix garage door near me",
+      "garage door service near me",
       "broken garage door repair",
-      "garage door service KC metro",
+      "same day garage door repair",
     ],
     metaDescription:
-      "Same-day garage door repair in Kansas City & the surrounding metro. Broken springs, snapped cables, doors off track, opener failures. Fixed right the first time. Call (816) 288-3574.",
+      "Garage door repair near me across Kansas City, same-day. Broken springs, snapped cables, doors off track, opener failures, all major brands. A local company that fixes it right the first time. Call (816) 288-3574.",
     headline: "Garage door repair, done right the first time.",
     intro:
       "A broken garage door isn't just inconvenient. It's your home's largest moving system failing at the worst possible moment. Carlisle Overhead Doors provides same-day garage door repair across the Kansas City metro, from Oak Grove to Overland Park. Our trucks arrive stocked with springs, cables, rollers, and openers for every major brand, so most repairs are finished in a single visit.",
@@ -89,16 +92,20 @@ export const services: Service[] = [
   {
     slug: "garage-door-installation",
     name: "Garage Door Installation",
-    seoTitle: "Garage Door Installation & Replacement Kansas City",
+    seoTitle: "Garage Door Installation Near Me | Kansas City Replacement",
     primaryKeyword: "garage door installation Kansas City",
     supportingKeywords: [
-      "new garage door Kansas City",
+      "garage door installation near me",
+      "garage door company near me",
+      "new garage doors near me",
+      "garage door replacement near me",
       "garage door replacement cost",
       "garage door installers near me",
-      "insulated garage doors KC",
+      "insulated garage doors near me",
+      "custom garage doors near me",
     ],
     metaDescription:
-      "New garage door installation and replacement in Kansas City. Steel, carriage house, modern glass & insulated doors from Clopay, Amarr & C.H.I. Free in-home estimates. (816) 288-3574.",
+      "Looking for garage door installation near me? Carlisle installs new steel, carriage house, glass & insulated garage doors across Kansas City. A local company, free in-home estimates, old-door haul-away included. Call (816) 288-3574.",
     headline: "A new door changes the whole face of your home.",
     intro:
       "Your garage door is up to 40% of your home's street-facing façade, and one of the few upgrades that consistently returns over 100% of its cost at resale, per Remodeling Magazine's Cost vs. Value report. Carlisle Overhead Doors installs steel, carriage house, modern aluminum-and-glass, and high-R-value insulated doors across the Kansas City metro, with free in-home estimates and honest guidance on what fits your home and budget.",
@@ -128,6 +135,10 @@ export const services: Service[] = [
     ],
     faqs: [
       {
+        q: "Is there a garage door installation company near me?",
+        a: "If you're in the Kansas City metro or within 100 miles of Oak Grove, MO, yes: Carlisle is a local, family-run garage door company, not a franchise. We bring door samples to your driveway, quote the job for free, and handle the full install plus haul-away of your old door. Call (816) 288-3574 to set a visit.",
+      },
+      {
         q: "How much does a new garage door cost in Kansas City?",
         a: "Installed prices in the KC metro typically range from $1,200 for a quality single-car steel door to $4,500+ for premium insulated carriage house or full-view glass doors. Double-car doors most commonly land between $1,800 and $3,200 installed. Every estimate is free and itemized.",
       },
@@ -149,16 +160,19 @@ export const services: Service[] = [
   {
     slug: "garage-door-spring-repair",
     name: "Spring Repair",
-    seoTitle: "Garage Door Spring Repair & Replacement Kansas City",
+    seoTitle: "Garage Door Spring Repair Near Me | Kansas City Torsion Springs",
     primaryKeyword: "garage door spring repair Kansas City",
     supportingKeywords: [
+      "garage door spring repair near me",
+      "garage door spring replacement near me",
+      "broken garage door spring repair near me",
+      "torsion spring replacement near me",
       "garage door spring replacement cost",
-      "broken garage door spring",
-      "torsion spring replacement Kansas City",
       "garage door springs near me",
+      "same day garage door spring replacement",
     ],
     metaDescription:
-      "Broken garage door spring? Same-day torsion & extension spring replacement across Kansas City. High-cycle springs, upfront pricing, all brands. Call (816) 288-3574 now.",
+      "Broken garage door spring? Same-day torsion & extension spring repair near you across Kansas City. High-cycle 20,000-cycle springs, springs replaced in pairs, upfront pricing, all brands. Call (816) 288-3574.",
     headline: "The loud bang from your garage? We fix that today.",
     intro:
       "If you heard a gunshot-like bang from the garage and now the door won't lift, you have a broken torsion spring, the single most common garage door failure in Kansas City. Springs are also the most dangerous component on the door, holding hundreds of pounds of tension. Carlisle Overhead Doors replaces torsion and extension springs same-day across the KC metro, using high-cycle springs sized precisely to your door's weight.",
@@ -209,16 +223,19 @@ export const services: Service[] = [
   {
     slug: "garage-door-opener-repair",
     name: "Opener Repair & Installation",
-    seoTitle: "Garage Door Opener Repair & Installation Kansas City",
+    seoTitle: "Garage Door Opener Repair Near Me | Kansas City Openers",
     primaryKeyword: "garage door opener repair Kansas City",
     supportingKeywords: [
+      "garage door opener repair near me",
       "garage door opener installation",
+      "garage door opener replacement",
+      "repair garage door openers",
       "LiftMaster dealer Kansas City",
       "garage door opener not working",
       "smart garage door opener",
     ],
     metaDescription:
-      "Garage door opener repair & installation in Kansas City. LiftMaster, Chamberlain & Genie service. Smart openers, battery backup, quiet belt drives. Call (816) 288-3574.",
+      "Garage door opener repair near me in Kansas City. We fix and install LiftMaster, Chamberlain, Genie & Craftsman openers: smart Wi-Fi units, battery backup, quiet belt drives. Same-day service. Call (816) 288-3574.",
     headline: "Quiet, smart, and it opens every single time.",
     intro:
       "When the opener hums but nothing moves, the remote works only from two feet away, or the door reverses for no reason? That's our department. Carlisle Overhead Doors repairs and installs garage door openers throughout the Kansas City metro, servicing LiftMaster, Chamberlain, Genie, Craftsman, and every other major brand, and installing modern smart openers with battery backup and phone control.",
@@ -269,19 +286,25 @@ export const services: Service[] = [
   {
     slug: "emergency-garage-door-repair",
     name: "24/7 Emergency Repair",
-    seoTitle: "24 Hour Emergency Garage Door Repair Kansas City",
+    seoTitle: "Emergency Garage Door Repair Kansas City | 24 Hour, Open Now",
     primaryKeyword: "emergency garage door repair Kansas City",
     supportingKeywords: [
+      "emergency garage door repair near me",
       "24 hour garage door repair",
+      "24 hour garage door repair near me",
+      "24/7 garage door repair",
+      "after hours garage door repair",
+      "same day garage door repair",
+      "garage door repair open now",
       "garage door won't close",
       "garage door stuck open",
-      "after hours garage door service",
+      "overhead door emergency repair",
     ],
     metaDescription:
-      "Garage door stuck open at 10 PM? 24/7 emergency garage door repair across the Kansas City metro. Fast response, real technicians, honest after-hours pricing. (816) 288-3574.",
+      "Emergency garage door repair near me, 24/7 across the Kansas City metro. Door stuck open, off track, or car trapped inside? Real technicians, fast response, honest after-hours pricing. Call (816) 288-3574.",
     headline: "Stuck open at midnight? We answer the phone.",
     intro:
-      "A garage door that won't close is a security problem, not a tomorrow problem. Whether your door is stuck open, jumped its tracks, was backed into, or snapped a spring with your car trapped inside, Carlisle Overhead Doors runs true 24/7 emergency service across the Kansas City metro. A real technician answers, gives you an honest ETA, and secures your home tonight.",
+      "A garage door that won't close is a security problem, not a tomorrow problem. If you're searching \"emergency garage door repair near me\" at 10 PM because your door is stuck open, jumped its tracks, got backed into, or snapped a spring with your car trapped inside, Carlisle Overhead Doors runs true 24 hour, 24/7 emergency service across the Kansas City metro. A real technician answers, gives you an honest ETA, and secures your home tonight. Same-day is the norm; middle-of-the-night is no problem.",
     sections: [
       {
         title: "What counts as a garage door emergency.",
@@ -308,6 +331,14 @@ export const services: Service[] = [
     ],
     faqs: [
       {
+        q: "Is there emergency garage door repair near me right now?",
+        a: "If you're anywhere in the Kansas City metro or our 100-mile radius, yes. We're a local Oak Grove, MO company running 24/7 emergency service, so \"near me\" means a real technician who knows the area, not a call center routing your job out. Call (816) 288-3574 and we'll give you an arrival window on the spot.",
+      },
+      {
+        q: "Do you offer 24 hour garage door repair?",
+        a: "Yes, genuine 24 hour service, seven days a week including holidays. Nights, weekends, 2 AM, doesn't matter. For urgent problems (door stuck open, off track, car trapped) we dispatch same-day and usually reach the core metro within 60 to 90 minutes.",
+      },
+      {
         q: "Do you really answer at 2 AM?",
         a: "Yes. Emergency calls ring straight to an on-call technician, not a national answering service. You'll get a real ETA from the person actually driving to your house.",
       },
@@ -329,17 +360,19 @@ export const services: Service[] = [
   {
     slug: "commercial-overhead-doors",
     name: "Commercial Overhead Doors",
-    seoTitle: "Commercial Overhead Door Repair Kansas City | Roll-Up & Dock Doors",
+    seoTitle: "Commercial Garage Door Repair Near Me | KC Roll-Up & Dock Doors",
     primaryKeyword: "commercial garage door repair Kansas City",
     supportingKeywords: [
-      "roll up door repair",
-      "dock door repair companies",
       "commercial garage door repair near me",
+      "roll up door repair near me",
+      "overhead door repair near me",
+      "dock door repair companies near me",
+      "commercial overhead door repair",
       "rolling steel doors Kansas City",
-      "sectional door installation commercial",
+      "commercial overhead door company",
     ],
     metaDescription:
-      "Commercial garage door and roll-up door repair for Kansas City businesses. Dock doors, rolling steel, sectional & fire doors. Planned maintenance programs. (816) 288-3574.",
+      "Commercial garage door and overhead door repair near you for Kansas City businesses: roll-up doors, dock doors, rolling steel, sectional & fire doors. Priority response, planned maintenance. Call (816) 288-3574.",
     headline: "When the door stops, the business stops.",
     intro:
       "A failed overhead door at a loading dock, fire station, or shop bay costs money by the hour. Carlisle Overhead Doors repairs and installs every kind of commercial garage door across the Kansas City metro: roll-up doors, rolling steel, insulated sectional, high-lift, dock doors, and fire-rated doors, with priority response for businesses and planned-maintenance programs that keep failures from happening at all.",
@@ -455,16 +488,19 @@ export const services: Service[] = [
   {
     slug: "garage-door-maintenance",
     name: "Tune-Up & Maintenance",
-    seoTitle: "Garage Door Tune-Up & Maintenance Kansas City",
+    seoTitle: "Garage Door Tune-Up Near Me | Kansas City Maintenance Service",
     primaryKeyword: "garage door maintenance Kansas City",
     supportingKeywords: [
+      "garage door tune up near me",
       "garage door tune up",
+      "garage door tune-up specials near me",
+      "annual garage door tune up",
       "garage door lubrication service",
-      "noisy garage door fix",
+      "noisy garage door repair",
       "garage door inspection",
     ],
     metaDescription:
-      "Annual garage door tune-ups in Kansas City: 25-point inspection, lubrication, spring & cable check, opener safety test. Quiet the noise, prevent the breakdown. (816) 288-3574.",
+      "Garage door tune-up near me in Kansas City: 25-point inspection, lubrication, spring & cable check, opener safety test. Quiet a noisy door, prevent the breakdown. Call (816) 288-3574 for current specials.",
     headline: "The $99 visit that prevents the $400 emergency.",
     intro:
       "Garage doors fail on schedule: springs fatigue, rollers wear flat, cables fray, and openers drift out of adjustment. A yearly tune-up from Carlisle Overhead Doors catches all of it early. Our 25-point service quiets rattling doors, extends spring life, and keeps you off the emergency-call list when the first ice storm of a Kansas City winter hits.",

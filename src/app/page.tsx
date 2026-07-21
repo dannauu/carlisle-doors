@@ -8,6 +8,7 @@ import { locations, locationsByRing, ringLabels, type Ring } from "@/data/locati
 import { site } from "@/data/site";
 
 export const metadata: Metadata = {
+  description: `Looking for a garage door company near you? Carlisle Overhead Doors is a local, family-run garage door company serving Kansas City, MO & KS: repair, installation, springs, openers & commercial overhead doors. Same-day service, free estimates. Call ${site.phone}.`,
   alternates: { canonical: "/" },
 };
 
@@ -15,10 +16,10 @@ const marqueeItems = [
   "Garage Door Repair",
   "Same-Day Service",
   "Spring Replacement",
-  "New Installations",
+  "Garage Door Installation",
   "Opener Repair",
   "24/7 Emergency",
-  "Commercial Doors",
+  "Commercial Overhead Doors",
   "Free Estimates",
 ];
 
@@ -131,11 +132,12 @@ export default function Home() {
               <span className="text-amber">Actually shows up.</span>
             </h2>
             <p className="mt-6 max-w-lg text-base leading-relaxed text-muted">
-              We&apos;re not a national call center reselling your repair to the
-              lowest bidder. Carlisle Overhead Doors is a family-run company out
-              of Oak Grove, Missouri. The person who answers the phone knows the
-              person who shows up at your house, and both of them know garage
-              doors.
+              When you search for a garage door company near you, you get a
+              national call center reselling your repair to the lowest bidder.
+              We&apos;re the opposite: Carlisle Overhead Doors is a family-run,
+              local garage door company out of Oak Grove, Missouri. The person
+              who answers the phone knows the person who shows up at your house,
+              and both of them know garage doors.
             </p>
             <p className="mt-4 max-w-lg text-base leading-relaxed text-muted">
               Upfront flat-rate pricing. High-cycle parts as standard. A clean

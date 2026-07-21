@@ -11,8 +11,14 @@ export type Location = {
   county?: string;
   /** Unique hero paragraph for this city */
   blurb?: string;
+  /** City-specific coverage / arrival line, unique per city */
+  response?: string;
+  /** City-specific meta-description override */
+  metaDescription?: string;
   /** City-specific content sections, unique per city */
   deepDive?: { title: string; body: string }[];
+  /** City-specific FAQs, unique per city */
+  faqs?: { q: string; a: string }[];
 };
 
 export const ringLabels: Record<Ring, string> = {
@@ -28,7 +34,18 @@ const slugify = (name: string, state: string) =>
 const loc = (name: string, state: "MO" | "KS" | "NE", ring: Ring, county?: string): Location => {
   const slug = slugify(name, state);
   const copy = cityCopy[slug];
-  return { slug, name, state, ring, county, blurb: copy?.blurb, deepDive: copy?.sections };
+  return {
+    slug,
+    name,
+    state,
+    ring,
+    county,
+    blurb: copy?.blurb,
+    response: copy?.response,
+    metaDescription: copy?.metaDescription,
+    deepDive: copy?.sections,
+    faqs: copy?.faqs,
+  };
 };
 
 export const locations: Location[] = [

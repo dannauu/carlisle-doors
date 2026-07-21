@@ -59,11 +59,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const l = getLocation(slug);
   if (!l) return {};
+  const description =
+    l.metaDescription ??
+    `Garage door & overhead door repair, installation, spring & opener service in ${l.name}, ${l.state}. ${
+      ringResponse[l.ring].time === "same-day" ? "Same-day service" : "Fast local service"
+    } from Carlisle Overhead Doors. Call ${site.phone}.`;
   return {
     title: `Garage Door Repair in ${l.name}, ${l.state}`,
-    description: `Garage door repair, installation, spring & opener service in ${l.name}, ${l.state}. ${
-      ringResponse[l.ring].time === "same-day" ? "Same-day service" : "Fast local service"
-    } from Carlisle Overhead Doors. Call ${site.phone}.`,
+    description,
     alternates: { canonical: `/service-areas/${l.slug}` },
     openGraph: {
       title: `Garage Door Repair in ${l.name}, ${l.state} | ${site.shortName}`,
@@ -79,7 +82,8 @@ export default async function LocationPage({ params }: Props) {
   if (!l) notFound();
 
   const r = ringResponse[l.ring];
-  const faqs = cityFaqs(l);
+  const faqs = l.faqs ?? cityFaqs(l);
+  const responseLine = l.response ?? r.note;
   const nearby = locations.filter((n) => n.ring === l.ring && n.slug !== l.slug).slice(0, 10);
 
   return (
@@ -111,7 +115,7 @@ export default async function LocationPage({ params }: Props) {
               {l.blurb ??
                 `Broken spring, dead opener, door off its track, or time for a new door entirely? Carlisle Overhead Doors serves ${l.name} from our shop in Oak Grove, MO with ${r.time} service, upfront flat-rate pricing, and trucks stocked to finish most jobs in one visit.`}
             </p>
-            <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted">{r.note}</p>
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted">{responseLine}</p>
             <div className="mt-10 flex flex-wrap gap-4">
               <a
                 href={site.phoneHref}
@@ -152,7 +156,7 @@ export default async function LocationPage({ params }: Props) {
         <Reveal>
           <p className="eyebrow mb-4">Available in {l.name}</p>
           <h2 className="display text-4xl md:text-6xl">
-            Every service. <span className="text-amber">Full stop.</span>
+            Every door service, <span className="text-amber">{l.name} to the county line.</span>
           </h2>
         </Reveal>
         <Reveal stagger="[data-card]" className="mt-12 grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">

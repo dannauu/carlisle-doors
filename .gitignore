@@ -24,6 +24,9 @@
 .DS_Store
 *.pem
 
+# SEO keyword research data (local analysis only, not for deploy)
+/Keyword-Data
+
 # debug
 npm-debug.log*
 yarn-debug.log*

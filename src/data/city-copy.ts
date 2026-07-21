@@ -8,726 +8,1036 @@
 export type CityCopy = {
   /** Unique hero paragraph shown under the H1 */
   blurb: string;
-  /** City-specific content sections */
+  /**
+   * City-specific coverage / arrival line shown under the hero blurb.
+   * Replaces the shared per-ring note so no two cities render an identical
+   * paragraph. Grounded in that city's real geography and drive context.
+   */
+  response?: string;
+  /**
+   * Optional meta-description override. Used to weave in the exact search
+   * terms GSC shows for this city (e.g. "overhead door", "[city] garage
+   * doors") instead of the generic template description.
+   */
+  metaDescription?: string;
+  /** City-specific content sections (every city has at least two) */
   sections: { title: string; body: string }[];
+  /**
+   * City-specific FAQs, written around the real Google queries for this
+   * city. Every city gets its own set: no two pages share a question block.
+   */
+  faqs?: { q: string; a: string }[];
 };
 
 export const cityCopy: Record<string, CityCopy> = {
-  /* ================= Core Metro, Missouri ================= */
-
   "kansas-city-mo": {
-    blurb:
-      "From pre-war Brookside colonials with original hardware to new townhomes in the Northland, Kansas City proper has the widest mix of garage doors in the metro, and we work on all of it.",
+    blurb: "From pre-war Brookside colonials with original hardware to new townhomes in the Northland, Kansas City proper has the widest mix of garage doors in the metro, and we work on all of it.",
+    response: "Our crews are on I-70 into Kansas City every day, roughly a half-hour run from our Oak Grove shop, so a broken spring in Waldo or a down door in the Northland usually gets a same-day slot on both sides of the Missouri River.",
+    metaDescription: "Overhead door repair, commercial garage doors, and emergency service across Kansas City, MO. Same-day repairs, flat-rate pricing, 24/7 techs. Call (816) 288-3574.",
     sections: [
-      {
-        title: "A century of housing means a century of doors.",
-        body: "Kansas City's housing stock spans a hundred years, and the garage doors show it. Waldo and Brookside still have narrow single-car openings sized for 1940s automobiles, midtown has detached garages that have settled out of square, and the Northland is full of 90s and 2000s builder doors reaching the end of their spring life. We carry parts for all of it, from low-headroom track for older garages to modern insulated doors sized for openings that were never quite standard. If your garage is older than your opener, we can make them work together safely.",
-      },
-      {
-        title: "Same-day across the city, both sides of the river.",
-        body: "Our crews cross the metro daily on I-70, I-435, and I-35, so a repair call from the Plaza is as routine as one from Platte Woods. Most Kansas City repairs are quoted on the phone, confirmed in the driveway, and finished the same visit from truck stock.",
-      },
+      { title: "A century of housing means a century of doors.", body: "Kansas City's housing stock spans a hundred years, and the garage doors show it. Waldo and Brookside still have narrow single-car openings sized for 1940s automobiles, midtown has detached garages that have settled out of square, and the Northland is full of 90s and 2000s builder doors reaching the end of their spring life. We carry parts for all of it, from low-headroom track for older garages to modern insulated doors sized for openings that were never quite standard. If your garage is older than your opener, we can make them work together safely." },
+      { title: "Same-day across the city, both sides of the river.", body: "Our crews cross the metro daily on I-70, I-435, and I-35, so a repair call from the Plaza is as routine as one from Platte Woods. Most Kansas City repairs are quoted on the phone, confirmed in the driveway, and finished the same visit from truck stock." },
+    ],
+    faqs: [
+      { q: "Do you repair commercial overhead doors in Kansas City, not just residential?", a: "Yes. A large share of our Kansas City work is commercial: sectional overhead doors, rolling steel, and dock doors along the I-70 and Northland corridors. We stock heavier-gauge springs and commercial track, prioritize down-door calls that stop a business, and offer scheduled maintenance so a bay never strands you mid-shift." },
+      { q: "What do garage door prices and replacement cost run in Kansas City?", a: "Most repairs land between $150 and $450, with spring jobs $200 to $400. A full replacement depends on size, insulation, and material, from economical single-layer steel to insulated Clopay and C.H.I. doors. We quote flat rates with no distance surcharge, bring samples to your driveway, and haul the old door away." },
+      { q: "Is round-the-clock overhead door service really available across Kansas City?", a: "It is. Call any hour and a technician answers, not an answering service. For a door stuck open in Brookside or a warehouse bay down in the East Bottoms, we dispatch 24/7 and carry enough truck stock to finish most emergency repairs on the first visit rather than scheduling a return trip." },
+      { q: "Can you sort out a garage door opener or remote that quit in Kansas City?", a: "Absolutely. We troubleshoot dead openers, worn gears, failed logic boards, and remotes or keypads that lost their sync, then repair or replace as needed. If your unit predates photo-eye safety sensors, we can bring it up to current code with auto-reverse and battery backup on the same visit." },
     ],
   },
   "independence-mo": {
-    blurb:
-      "Truman's hometown runs from historic homes near the Square to 60s and 70s ranches out toward Highway 291, and its garage doors are some of the hardest-working in Jackson County.",
+    blurb: "Truman's hometown runs from historic homes near the Square to 60s and 70s ranches out toward Highway 291, and its garage doors are some of the hardest-working in Jackson County.",
+    response: "Independence sits a straight fifteen-minute run west of our Oak Grove shop on I-70, which makes it one of the quickest Jackson County stops we make, and a morning spring break here is routinely closed out by afternoon.",
+    metaDescription: "Garage door repair, installation, and overhead door service in Independence, MO. Same-day fixes near the Square and off MO-291. Flat rates. Call (816) 288-3574.",
     sections: [
-      {
-        title: "Older garages, modern doors, no drama.",
-        body: "A lot of Independence garages were built decades before modern sectional doors were standard, which means low headroom, out-of-square jambs, and framing that has moved with time. We measure carefully, stock low-headroom track, and rebuild openings when the wood behind the door has rotted out. For the newer subdivisions east of MO-291, it's a different story: builder-grade doors from the 90s and 2000s that are hitting their first spring failures, which we handle same-day with high-cycle replacements.",
-      },
+      { title: "Older garages, modern doors, no drama.", body: "A lot of Independence garages were built decades before modern sectional doors were standard, which means low headroom, out-of-square jambs, and framing that has moved with time. We measure carefully, stock low-headroom track, and rebuild openings when the wood behind the door has rotted out. For the newer subdivisions east of MO-291, it's a different story: builder-grade doors from the 90s and 2000s that are hitting their first spring failures, which we handle same-day with high-cycle replacements." },
+      { title: "Overhead doors along Noland Road and beyond.", body: "Independence is not only ranches and historic homes. The Noland Road and 24 Highway corridors are lined with shops, auto bays, and small warehouses whose overhead doors open and close all day. We service those too: rolling steel, commercial sectional, and dock doors, with maintenance plans that catch a tiring spring before it drops a door across a work bay. For homeowners near the Truman Library and the Square, the older detached garages off Maple and Pleasant get the same care, with right-sized doors fitted to openings that were framed long before standard sizing existed." },
+    ],
+    faqs: [
+      { q: "Where do I turn for garage door repair in Independence, MO?", a: "Right here. We run Jackson County daily and reach Independence fast from Oak Grove. Broken springs, cables off the drum, dented panels, and openers that hum without lifting are everyday work for us, quoted before we start and finished in one visit from a stocked truck whenever the parts are common, which they usually are." },
+      { q: "I want a new door on an older home near the Square: can you make it fit?", a: "Yes, and fit is the whole job on Independence's older houses. Many openings predate today's standard dimensions, so we measure carefully, use low-headroom track where framing is tight, and set doors that seal against out-of-square jambs. You get carriage-house or clean traditional styling out front and modern, quiet hardware behind it." },
+      { q: "Can you service an overhead door for a business in Independence?", a: "We can. Commercial overhead, rolling steel, and dock doors along Noland Road and 24 Highway are a regular part of our schedule. We prioritize a door that is stuck and stopping work, keep commercial springs and track on the truck, and offer planned maintenance so the next failure does not happen during your busiest shift." },
+      { q: "How fast can a technician reach Independence for a broken spring?", a: "Usually same day. Independence is fifteen minutes from our shop, so a morning call generally gets an afternoon visit. If a snapped spring has trapped a car inside and you need it now, our 24/7 line reaches a real technician who can give you an honest arrival window before rolling." },
     ],
   },
   "lees-summit-mo": {
-    blurb:
-      "One of Missouri's fastest-growing cities for two decades running, Lee's Summit is full of 2000s-era subdivisions whose builder-grade doors and openers are all aging out on the same schedule.",
+    blurb: "One of Missouri's fastest-growing cities for two decades running, Lee's Summit is full of 2000s-era subdivisions whose builder-grade doors and openers are all aging out on the same schedule.",
+    response: "From Oak Grove we drop south on MO-291 or US-50 to reach Lee's Summit, a twenty-mile run that keeps this fast-growing suburb inside our same-day zone, from Longview Lake up to the downtown depot district.",
+    metaDescription: "Emergency garage door repair, installation, and overhead door service in Lee's Summit, MO. Same-day residential and commercial techs, flat rates. Call (816) 288-3574.",
     sections: [
-      {
-        title: "The 20-year wave has arrived.",
-        body: "Drive through Winterset, Raintree, or the neighborhoods off Ward Road and you'll see the pattern: homes built in a five-year window, which means springs, rollers, and openers failing in the same five-year window. We run Lee's Summit constantly, install 20,000-cycle springs as standard so the next failure is decades away, and quote door replacements with samples brought to your driveway. Downtown Lee's Summit's older homes get the same care with low-headroom and custom-fit solutions.",
-      },
+      { title: "The 20-year wave has arrived.", body: "Drive through Winterset, Raintree, or the neighborhoods off Ward Road and you'll see the pattern: homes built in a five-year window, which means springs, rollers, and openers failing in the same five-year window. We run Lee's Summit constantly, install 20,000-cycle springs as standard so the next failure is decades away, and quote door replacements with samples brought to your driveway. Downtown Lee's Summit's older homes get the same care with low-headroom and custom-fit solutions." },
+      { title: "Emergency calls and commercial bays, covered.", body: "When a spring lets go at 6 a.m. before the school run, Lee's Summit families need someone who actually answers. Our after-hours line reaches a technician, not a recording, and we dispatch across the city day or night. The commercial side keeps us just as busy: the retail and light-industrial strips around Summit Fair, Chapel Ridge, and the I-470 frontage run overhead and rolling steel doors that cannot sit broken. We service those on priority, stock commercial track and springs, and set up maintenance visits that keep a loading bay off the emergency list." },
+    ],
+    faqs: [
+      { q: "My garage door spring snapped overnight in Lee's Summit, who can come out?", a: "We can, around the clock. A broken torsion spring leaves the door too heavy to lift safely, so do not force it. Call our 24/7 line, a technician answers, and we bring 20,000-cycle replacement springs on the truck. Most Lee's Summit spring jobs finish in one visit, with the door rebalanced and tested before we leave." },
+      { q: "Do you carry overhead doors for both homes and businesses in Lee's Summit?", a: "Yes. Residential sectional doors are the bulk of our Lee's Summit work, but we also handle commercial overhead and rolling steel along the I-470 and Summit Fair corridors. Whether it is an insulated Amarr door on a Winterset home or a warehouse bay off Ward Road, we stock parts for both and quote flat rates up front." },
+      { q: "What is involved in a new garage door installation in Lee's Summit?", a: "We start with a free in-home measure, bring style and color samples to your driveway, and match the look to your neighborhood, HOA rules included. Once the door arrives, install usually takes a few hours: old door and hardware hauled away, new torsion springs balanced, opener re-set, and everything tested. Most orders install within one to two weeks." },
     ],
   },
   "blue-springs-mo": {
-    blurb:
-      "Between the lake traffic, commuter miles on I-70, and three decades of steady homebuilding, Blue Springs garage doors cycle hard. Ours is one of the most frequent service routes we run.",
+    blurb: "Between the lake traffic, commuter miles on I-70, and three decades of steady homebuilding, Blue Springs garage doors cycle hard. Ours is one of the most frequent service routes we run.",
+    response: "Blue Springs is our nearest metro neighbor, barely ten miles down I-70 from Oak Grove, so it is often the first stop of the day, and a snapped spring called in at breakfast is usually handled well before dinner.",
+    metaDescription: "Garage door repair and overhead door service in Blue Springs, MO, from the metro's closest crew. Same-day springs, openers, and installs. Call (816) 288-3574.",
     sections: [
-      {
-        title: "Minutes from our shop, first on the route.",
-        body: "Blue Springs is one town over from our Oak Grove home base, which makes it one of the fastest places in the metro to get a Carlisle truck. Morning spring failures are usually fixed by lunch. The city's housing runs from 70s ranches near downtown to newer construction south toward Lake Tapawingo and Adams Dairy Parkway, and we stock springs and panels for the builder doors common to every era of it.",
-      },
+      { title: "Minutes from our shop, first on the route.", body: "Blue Springs is one town over from our Oak Grove home base, which makes it one of the fastest places in the metro to get a Carlisle truck. Morning spring failures are usually fixed by lunch. The city's housing runs from 70s ranches near downtown to newer construction south toward Lake Tapawingo and Adams Dairy Parkway, and we stock springs and panels for the builder doors common to every era of it." },
+      { title: "Overhead doors for Adams Dairy and downtown.", body: "Blue Springs has grown a real commercial spine along Adams Dairy Parkway, and the shops, service bays, and small warehouses there run overhead and rolling steel doors that see heavy daily cycling. We keep them moving with priority repair and scheduled tune-ups. Closer to old downtown and Main Street, the mid-century homes bring the opposite job: aging extension springs, worn openers, and single-car doors ready for insulated replacements. One crew covers both ends of town in a day, and because we are next door, a return trip for a stray part is never a week-long wait." },
+    ],
+    faqs: [
+      { q: "Who does garage door repair in Blue Springs, MO?", a: "We do, and we are closer than most: Oak Grove is the next town east. Broken springs, frayed cables, off-track doors, and tired openers are daily jobs. Because we are minutes away, we run back for an odd part fast instead of rebooking you days out. Every repair is quoted flat-rate before we touch a tool." },
+      { q: "Do you service overhead doors for shops along Adams Dairy Parkway?", a: "Yes. The commercial strip off Adams Dairy Parkway and Highway 7 is on our regular route. We repair commercial sectional, rolling steel, and dock doors, stock heavier springs and track, and offer maintenance visits that catch fatigue early. A down bay gets priority dispatch, because we know a stuck door there means lost hours." },
+      { q: "Do you replace old garage door springs in Blue Springs?", a: "Constantly. The builder-grade springs on Blue Springs homes are often rated for only 10,000 cycles and give out around year seven or eight. We replace them with 20,000-cycle springs as standard, so the next failure is decades off. Spring jobs typically run $200 to $400, balanced and tested before we pack up." },
     ],
   },
   "raytown-mo": {
-    blurb:
-      "Raytown's mid-century ranches were built when garage doors were an afterthought. Sixty years later, we spend a lot of time here replacing original hardware that has more than earned its retirement.",
+    blurb: "Raytown's mid-century ranches were built when garage doors were an afterthought. Sixty years later, we spend a lot of time here replacing original hardware that has more than earned its retirement.",
+    response: "We reach Raytown by dropping off I-70 onto 350 Highway, about a twenty-five-minute run from Oak Grove, close enough that this pocket of south Jackson County stays firmly in our same-day rotation.",
+    metaDescription: "Garage door repair in Raytown, MO: broken springs, openers, and safe torsion conversions on mid-century homes. Same-day, flat-rate service. Call (816) 288-3574.",
     sections: [
-      {
-        title: "Mid-century homes deserve better than 1960s hardware.",
-        body: "A surprising number of Raytown garages still run on original or decades-old doors: heavy wooden slabs, extension springs without safety cables, and openers older than the homeowners. These are the doors that fail dangerously. We convert old extension-spring setups to modern torsion systems, replace wood slabs with insulated steel that keeps the garage usable year-round, and bring openers up to current safety code with photo eyes and auto-reverse. The house keeps its character; the door stops being a hazard.",
-      },
+      { title: "Mid-century homes deserve better than 1960s hardware.", body: "A surprising number of Raytown garages still run on original or decades-old doors: heavy wooden slabs, extension springs without safety cables, and openers older than the homeowners. These are the doors that fail dangerously. We convert old extension-spring setups to modern torsion systems, replace wood slabs with insulated steel that keeps the garage usable year-round, and bring openers up to current safety code with photo eyes and auto-reverse. The house keeps its character; the door stops being a hazard." },
+      { title: "Tight lots, detached garages, honest quotes.", body: "Raytown grew up on compact lots, and a lot of its garages are detached, alley-fed, or squeezed against a property line. That means doors without a nearby outlet, older single-car openings, and framing that has shifted over sixty years. We handle the electric-free setups with battery openers and solid manual hardware, and we right-size doors to openings that never matched a catalog. Money matters here, so we tell you plainly when a repair beats replacement, and we stock economical insulated steel that stands up to Missouri weather without a premium-brand price tag. Same flat rate whether you are off 350 Highway or up near Blue Ridge." },
+    ],
+    faqs: [
+      { q: "Can you fix a garage door in Raytown, MO the same week I call?", a: "Usually the same day. Raytown is a short hop off 350 Highway for us, so we slot most repairs in quickly. Snapped springs, cables jumped off the drum, doors off track, and openers that quit are all common, one-visit fixes. We quote a flat price on the phone or in the driveway before any work starts." },
+      { q: "My old Raytown garage door still uses extension springs, is that a problem?", a: "It can be. Extension springs without safety cables can whip loose when they break, which is a real hazard on the heavy wood doors common here. We convert those setups to enclosed torsion systems that are safer and last longer, and we add photo-eye sensors and auto-reverse so the whole door meets current safety code." },
+      { q: "Do you work on detached garages in Raytown that have no power run to them?", a: "Yes. Plenty of Raytown garages are detached and alley-accessed with no outlet nearby. We fit battery-backup openers, dependable keyed locks, and smooth manual lift hardware so the door works reliably without a wired opener. If you would rather run power later, we set things up so an opener drops in easily down the road." },
     ],
   },
   "grandview-mo": {
-    blurb:
-      "Home of the Truman farm and a straight shot down I-49 for our trucks, Grandview mixes post-war ranches with newer builds, and both generations of garage doors keep us busy.",
+    blurb: "Home of the Truman farm and a straight shot down I-49 for our trucks, Grandview mixes post-war ranches with newer builds, and both generations of garage doors keep us busy.",
+    response: "Grandview sits south of the city off I-49, roughly a half-hour from our Oak Grove base, and it lands on our daily south-metro loop, so same-day service is the norm from the Truman Corners area out to View High Drive.",
+    metaDescription: "Emergency garage door repair and new garage doors in Grandview, MO. Same-day springs, openers, and installs at flat rates, no surcharge. Call (816) 288-3574.",
     sections: [
-      {
-        title: "Honest work for working homes.",
-        body: "Grandview homeowners tend to want the door fixed right, not upsold. That's our lane. We repair what's repairable, tell you plainly when replacement is the cheaper path over five years, and stock economical insulated steel doors that handle Missouri summers and ice storms without the premium-brand markup. Same flat rates as everywhere else in the metro, no distance surcharge.",
-      },
+      { title: "Honest work for working homes.", body: "Grandview homeowners tend to want the door fixed right, not upsold. That's our lane. We repair what's repairable, tell you plainly when replacement is the cheaper path over five years, and stock economical insulated steel doors that handle Missouri summers and ice storms without the premium-brand markup. Same flat rates as everywhere else in the metro, no distance surcharge." },
+      { title: "From the logistics parks to the farmhouse.", body: "Grandview has become a distribution hub, with the warehouses and truck terminals around the old Richards-Gebaur field and the M-150 corridor running overhead and dock doors on tight schedules. We service that commercial side on priority, because a stuck bay there is money leaking by the hour. At the same time, the city's post-war neighborhoods off Main Street and 71 Highway are full of original single-car doors reaching the end of their spring life. We answer emergencies around the clock, a real technician on the line, and finish most calls, home or warehouse, on the first visit." },
+    ],
+    faqs: [
+      { q: "It is after hours and my garage door will not close in Grandview, can someone come now?", a: "Yes. A door stuck open is a security problem, so we run emergency calls in Grandview 24/7, and a technician answers the phone directly. We will diagnose whether it is a broken cable, a stripped opener gear, or a blocked sensor, and carry the common parts to get the door closed and working that same night whenever possible." },
+      { q: "What kind of new garage doors can I get for a Grandview home?", a: "Everything from economical single-layer steel to insulated, wind-rated doors in carriage and traditional styles from Clopay, Amarr, and C.H.I. We bring samples to your driveway, help you weigh insulation for an attached garage, and quote flat-rate with old-door haul-away included. Grandview's mix of ranches and newer builds means we fit both older and standard openings." },
+      { q: "Is there an extra charge for coming out to Grandview?", a: "None. We hold the same flat rates across the whole service area, so being south of the city off I-49 does not add a dime to your bill. You pay for the parts and the work, quoted before we begin, and nothing for the drive. Free in-home estimates on new doors, too." },
     ],
   },
   "gladstone-mo": {
-    blurb:
-      "Gladstone's post-war Northland neighborhoods are full of solid brick ranches with garages that were sized for 1960s cars, and doors that are ready for their second or third replacement.",
+    blurb: "Gladstone's post-war Northland neighborhoods are full of solid brick ranches with garages that were sized for 1960s cars, and doors that are ready for their second or third replacement.",
+    response: "Gladstone sits up in the Northland, a cross-river run for us on I-435, and it rides our daily north-of-the-river loop, so even at that distance a broken door here typically gets a same-day visit.",
+    metaDescription: "Garage door repair and installation in Gladstone, MO. Broken springs, opener fixes, and new doors for Northland ranches. Same-day service. Call (816) 288-3574.",
     sections: [
-      {
-        title: "Right-sizing doors for Northland ranches.",
-        body: "The classic Gladstone garage is a single-car opening, sometimes widened over the years, often with settled framing and headroom that modern kits don't expect. We measure every opening rather than assuming standard sizes, carry low-headroom track on the truck, and can widen or rebuild openings where homeowners want to fit today's larger vehicles. For the many detached garages in the area, we also handle the electrical-free options: keyed locks, battery openers, and manual lift setups done right.",
-      },
+      { title: "Right-sizing doors for Northland ranches.", body: "The classic Gladstone garage is a single-car opening, sometimes widened over the years, often with settled framing and headroom that modern kits don't expect. We measure every opening rather than assuming standard sizes, carry low-headroom track on the truck, and can widen or rebuild openings where homeowners want to fit today's larger vehicles. For the many detached garages in the area, we also handle the electrical-free options: keyed locks, battery openers, and manual lift setups done right." },
+      { title: "North Oak businesses and Northland winters.", body: "The North Oak Trafficway and Antioch corridors give Gladstone a steady commercial base, from service garages to small storefronts, and their overhead doors cycle hard enough to need regular attention. We keep those running alongside the residential work. On the home side, Northland winters are the recurring theme: homeowners here are finishing garages into gyms and workshops and finally want a door that seals. We fit insulated steel with fresh weather seal that holds heat through a January cold snap and keeps July out, then tune the opener so a well-used Gladstone garage runs quiet." },
+    ],
+    faqs: [
+      { q: "Do you replace garage door springs in Gladstone, MO?", a: "Yes, spring replacement is one of our most common Northland calls. The classic Gladstone single-car door is often on tired original springs that finally snap. We install 20,000-cycle torsion springs sized to the door's real weight, then rebalance and test it. Most spring jobs run $200 to $400 and finish in one visit." },
+      { q: "Can you widen or refit an older Gladstone garage opening for a bigger vehicle?", a: "Often, yes. Many Gladstone ranches were framed for 1960s cars, and today's trucks and SUVs need more room. We measure the opening, advise on widening or rebuilding the header where it is practical, and set a correctly sized door with the right track. Where headroom is tight, we use low-headroom hardware so the door still clears." },
+      { q: "Which garage door brands do you install around the Northland?", a: "We install Clopay, Amarr, and C.H.I., which covers everything from budget-friendly steel to insulated carriage-house styles. For Gladstone's brick ranches we help match a look that suits the street, and we bring samples to your driveway so you can see color and panel choices against the house before deciding. Free estimates, old door hauled away." },
+      { q: "Do you fix garage door openers, or only the doors themselves?", a: "Both. Opener trouble is half the calls we get in Gladstone: dead motors, stripped gears, worn belts, and remotes that lost their signal. We repair what is fixable and replace what is spent, and if your opener predates safety sensors, we add photo eyes and auto-reverse to meet current code. A belt-drive upgrade cures the 6 a.m. rattle in an attached garage." },
     ],
   },
   "liberty-mo": {
-    blurb:
-      "From the historic square and William Jewell College to the new rooftops spreading north and east, Liberty spans 150 years of construction, and we fit doors to every era of it.",
+    blurb: "From the historic square and William Jewell College to the new rooftops spreading north and east, Liberty spans 150 years of construction, and we fit doors to every era of it.",
+    response: "Liberty is our Clay County anchor to the north, reached on I-35 from Oak Grove, and it sits on a route we drive most days, which keeps overhead door repair and spring calls here inside our same-day window.",
+    metaDescription: "Overhead garage door repair, spring replacement, and roll-up doors in Liberty, MO. Same-day service, repair, and installation, flat rates. Call (816) 288-3574.",
     sections: [
-      {
-        title: "Historic character in front, modern function behind.",
-        body: "Liberty homeowners near the square often want carriage-house styling that suits older architecture, and the newer subdivisions want quiet openers and insulated doors for finished garages. We do both weekly: wood-look steel carriage doors that pass the curb test on a historic street, and belt-drive smart openers with battery backup for the new builds. Clay County is a daily route for us, so same-day repair is the norm, not the exception.",
-      },
+      { title: "Historic character in front, modern function behind.", body: "Liberty homeowners near the square often want carriage-house styling that suits older architecture, and the newer subdivisions want quiet openers and insulated doors for finished garages. We do both weekly: wood-look steel carriage doors that pass the curb test on a historic street, and belt-drive smart openers with battery backup for the new builds. Clay County is a daily route for us, so same-day repair is the norm, not the exception." },
+      { title: "Roll-up, high-speed, and storage doors, not just garages.", body: "Liberty's search traffic tells a story beyond home garages: businesses here need overhead roll-up doors, high-speed doors, and storage-unit doors, and we handle all of it. Along the I-35 and 152 Highway commercial strips we service rolling steel and sectional doors for shops and warehouses, install and repair high-speed doors where a fast cycle matters, and keep the roll-up doors at Liberty's self-storage facilities opening smoothly. Need springs, rollers, or a specific part run out to a stuck door? Our trucks are stocked to finish most Liberty repairs in one visit rather than sending you hunting for a parts store." },
+    ],
+    faqs: [
+      { q: "Where is the closest garage door parts store for Liberty, MO?", a: "Instead of tracking down a parts counter, let us bring the parts to you. Our trucks carry springs, cables, rollers, hinges, and opener components sized for the doors common around Liberty, so most repairs finish on the spot. If yours needs a special-order part, we source it and schedule the return quickly. You skip the store trip and the guesswork on which part fits." },
+      { q: "Do you do overhead garage door repair and spring replacement in Liberty?", a: "Yes, both are everyday work here. We repair overhead sectional and rolling doors, replace broken torsion and extension springs with 20,000-cycle springs sized to your door, and re-tension and balance everything before we leave. Liberty is on our daily Clay County route, so most overhead door and spring calls are handled the same day at a flat, quoted rate." },
+      { q: "Can you install or service high-speed roll-up and storage-unit doors in Liberty?", a: "We can. For Liberty businesses we install and repair high-speed roll-up doors where fast, frequent cycling matters, and we service the rolling steel doors on self-storage units across town. That covers spring and cable replacement, track alignment, bottom-bar repair, and full replacements. Commercial down-door calls get priority so a stuck bay or storage row is not stalled for long." },
+      { q: "What is involved in a new garage door installation in Liberty, MO?", a: "We measure free in your driveway, bring Clopay, Amarr, and C.H.I. samples, and near the historic square help pick carriage styling that suits older architecture. Install runs a few hours: old door hauled away, new torsion springs balanced, opener re-set and tested. For newer subdivisions we fit quiet belt-drive openers with battery backup. Most orders install within one to two weeks." },
     ],
   },
   "north-kansas-city-mo": {
-    blurb:
-      "NKC is equal parts industrial district, brewery row, and compact residential blocks, and its overhead doors work harder than almost anywhere else in the metro.",
+    blurb: "NKC is equal parts industrial district, brewery row, and compact residential blocks, and its overhead doors work harder than almost anywhere else in the metro.",
+    response: "North Kansas City is a quick cross-river run on I-35 for us, and its dense grid of shops and warehouses keeps it on our regular route, so a down commercial door here gets same-day priority.",
+    metaDescription: "Commercial overhead, rolling steel, and dock door repair in North Kansas City, MO, plus residential service. Same-day, 24/7 emergency techs. Call (816) 288-3574.",
     sections: [
-      {
-        title: "Commercial doors are half our work here.",
-        body: "North Kansas City's warehouses, shops, and dock doors cycle dozens of times a day, and a stuck door stops revenue. We service rolling steel, sectional, and dock doors across the industrial district, offer planned maintenance that catches spring fatigue before it strands a bay, and prioritize down-door commercial calls. For the neighborhood's bungalows, we handle compact garages and alley-access doors that bigger outfits don't want to bother with.",
-      },
+      { title: "Commercial doors are half our work here.", body: "North Kansas City's warehouses, shops, and dock doors cycle dozens of times a day, and a stuck door stops revenue. We service rolling steel, sectional, and dock doors across the industrial district, offer planned maintenance that catches spring fatigue before it strands a bay, and prioritize down-door commercial calls. For the neighborhood's bungalows, we handle compact garages and alley-access doors that bigger outfits don't want to bother with." },
+      { title: "Uptime is the product on Armour Road.", body: "Between the breweries, the auto shops, and the light manufacturing off Armour Road and the Iron District, a lot of North Kansas City runs on doors that cannot be down during business hours. That is why our NKC work leans hard on planned maintenance: scheduled spring, cable, and track checks that catch fatigue before a bay quits at the worst possible moment. When something does fail, our 24/7 line reaches a technician, not a machine, and we prioritize commercial down-door calls. The compact residential blocks nearby get the same fast turnaround on their smaller alley and single-car garages." },
+    ],
+    faqs: [
+      { q: "Do you repair commercial dock and rolling steel doors in North Kansas City?", a: "Yes, that is a big share of our NKC schedule. We service rolling steel, sectional overhead, and dock doors across the industrial district, replacing barrel springs, cables, bottom bars, and worn track. A stuck bay stops your revenue, so we dispatch commercial calls on priority and carry heavy-duty parts to get the door cycling again on the first visit whenever possible." },
+      { q: "Can you set up scheduled maintenance for our warehouse doors in NKC?", a: "We can. Planned maintenance is the cheapest door program there is: we inspect springs, lubricate and align track, tighten hardware, and test safety reversing on a set schedule. Catching a fatigued spring early beats an emergency call that halts a shift. We tailor visit frequency to how hard your doors cycle and keep records for your facilities file." },
+      { q: "Is 24/7 emergency door service available for North Kansas City businesses?", a: "It is. Call any hour and an actual technician picks up, ready to roll to a door that is stuck open, jammed shut, or off its track. For businesses, a door down after hours is a security and operations problem, so NKC emergency calls get quick dispatch, an honest arrival window, and enough truck stock to finish most repairs on the spot." },
+      { q: "Do you also work on houses in North Kansas City, or only commercial buildings?", a: "Both. Alongside the industrial work, we service the neighborhood's compact bungalows and alley-access garages that larger outfits often skip. Whether it is a single-car door off track, a broken spring, or an opener upgrade, residential NKC calls get the same stocked-truck, one-visit service and the same flat-rate pricing as everywhere else in the metro." },
     ],
   },
   "riverside-mo": {
-    blurb:
-      "Tucked along the Missouri River bluffs off Highway 9, Riverside is small, but its mix of riverside industry and hillside homes gives us plenty of interesting door work.",
+    blurb: "Tucked along the Missouri River bluffs off Highway 9, Riverside is small, but its mix of riverside industry and hillside homes gives us plenty of interesting door work.",
+    response: "Tucked into the river bottoms below the Line Creek bluffs, Riverside is a small but regular stop on our Platte County runs, close enough to the Northland corridor that same-day service stays routine even from our side of the metro.",
+    metaDescription: "Garage door repair and installation in Riverside, MO. Springs, openers, and wind-rated doors for the river valley. Same-day Platte County service. Call (816) 288-3574.",
     sections: [
-      {
-        title: "Small city, quick service.",
-        body: "Riverside sits minutes from downtown via I-635 and Highway 9, right on our daily Platte County loop. Homeowners here get the same stocked-truck, one-visit service we run across the metro, and the light-industrial businesses in the Horizons area get commercial door repair without big-outfit scheduling delays. Wind exposure along the river valley makes proper wind-load rating worth discussing on any new door here.",
-      },
+      { title: "Small city, quick service.", body: "Riverside sits minutes from downtown via I-635 and Highway 9, right on our daily Platte County loop. Homeowners here get the same stocked-truck, one-visit service we run across the metro, and the light-industrial businesses in the Horizons area get commercial door repair without big-outfit scheduling delays. Wind exposure along the river valley makes proper wind-load rating worth discussing on any new door here." },
+      { title: "Bluff-top homes and river-valley damp.", body: "Riverside climbs from the river bottoms up onto the bluffs, and the homes on the hillsides above Highway 9 bring their own puzzles: tuck-under garages, steep short driveways, and openings cut into the slope. Those need careful measurement and sometimes creative track work, which is the sort of job we enjoy. Down in the valley, the river-valley damp is hard on steel, so we lean on corrosion-resistant springs and galvanized track that hold up better near the water. Small city or not, Riverside gets the same stocked-truck, one-visit service and flat-rate pricing we run across the metro." },
+    ],
+    faqs: [
+      { q: "Do you cover garage door repair in Riverside, MO?", a: "We do. Riverside is a standing stop on our Platte County route, so getting a truck there is quick despite the small size of the town. Broken springs, doors off track, worn cables, and failing openers are routine, one-visit repairs, and we quote a flat rate before starting, with no surcharge for the drive across the river." },
+      { q: "What holds up best on a garage door near the river?", a: "Near the Missouri River, moisture is the enemy of bare steel. We favor corrosion-resistant springs, galvanized track, and hardware that resists rust in the humid bottoms, plus insulated door panels that fight condensation. On new doors facing the open valley, we will also talk through proper wind-load rating so the door stands up to gusts coming off the water." },
+      { q: "Can you handle a tuck-under or hillside garage in Riverside?", a: "Yes, and Riverside has plenty of them. Homes built into the bluffs often have tuck-under garages, low headroom, or odd angles that off-the-shelf kits do not suit. We measure the actual opening, use low-headroom or high-lift track as the space demands, and fit a door that runs smoothly on a slope instead of fighting it. Free in-home estimate first." },
     ],
   },
   "parkville-mo": {
-    blurb:
-      "Between the river bottoms of English Landing and the wooded hills around Park University, Parkville homes rarely have a flat, standard garage situation, and that's exactly the work we like.",
+    blurb: "Between the river bottoms of English Landing and the wooded hills around Park University, Parkville homes rarely have a flat, standard garage situation, and that's exactly the work we like.",
+    response: "Parkville sits across the river on our Platte County loop, an easy run up I-435 and Highway 9. We reach most driveways here the same day the call comes in, from the English Landing bottoms to the ridge streets above Park University.",
+    metaDescription: "Garage door repair and new overhead doors in Parkville, MO. Hillside and tuck-under garage specialists, free estimates, one-visit fixes. Call Carlisle at (816) 288-3574.",
     sections: [
-      {
-        title: "Hillside garages and custom fits.",
-        body: "Parkville builds on terrain. Tuck-under garages, steep driveways, and custom home designs mean doors that need real measurement and sometimes creative track work. We handle high-lift conversions for tall ceilings, custom-width doors for older openings near downtown, and premium styles for the newer estates off Highway 45 where the door is a major piece of the home's face. Free estimates, samples in the driveway, and honest advice about what the architecture calls for.",
-      },
+      { title: "Hillside garages and custom fits.", body: "Parkville builds on terrain. Tuck-under garages, steep driveways, and custom home designs mean doors that need real measurement and sometimes creative track work. We handle high-lift conversions for tall ceilings, custom-width doors for older openings near downtown, and premium styles for the newer estates off Highway 45 where the door is a major piece of the home's face. Free estimates, samples in the driveway, and honest advice about what the architecture calls for." },
+      { title: "Sealing out the river-valley damp.", body: "Parkville's low streets near English Landing and the Missouri River sit in a damp pocket, and doors here pay for it: rusting bottom sections, corroded springs, and weather seal that quits early. When we replace a door in the flats, we spec galvanized or coated hardware, a fresh bottom astragal, and thresholds that keep spring runoff out of the garage. Up on the wooded lots near Highway 45, the issue flips to leaf debris and grit chewing through rollers and tracks. Either way, our trucks carry the rollers, seals, and springs to close the visit, and we will tell you honestly whether a clean-and-tune buys you years or a new door is the smarter spend." },
+    ],
+    faqs: [
+      { q: "Can you service the older garages in downtown Parkville?", a: "Absolutely. The blocks around Main Street have single-car openings and settled framing that predate standard door sizes, so we measure each one rather than assuming a fit. We stock low-headroom track for tight ceilings and can rebuild a rotted jamb before hanging the new door. Older garage, modern door, same day when the parts are on the truck." },
+      { q: "How fast can you reach Parkville from your Oak Grove shop?", a: "Parkville is across the metro from us, but it rides a Platte County route we run regularly, so same-day service is normal for calls placed in the morning. A broken spring or a door stuck down gets priority, and after hours our line reaches a real technician, not a recording." },
+      { q: "Will I pay extra because Parkville is across the river?", a: "No. We charge the same flat rates here as we do a block from our shop, with no distance or bridge surcharge. Most common repairs land between 150 and 450 dollars, springs run 200 to 400, and you get the number before we start. In-home estimates on new doors are free, old-door haul-away included." },
     ],
   },
   "belton-mo": {
-    blurb:
-      "Belton's straight shot down I-49 keeps it firmly in our same-day zone, and its mix of established neighborhoods and new construction south of 155th keeps the full range of door work coming.",
+    blurb: "Belton's straight shot down I-49 keeps it firmly in our same-day zone, and its mix of established neighborhoods and new construction south of 155th keeps the full range of door work coming.",
+    response: "Belton is a straight shot down I-49 through Cass County, close enough that morning calls here are usually same-day. Our trucks run this corridor constantly, so a Belton driveway is rarely more than a short detour off the route.",
+    metaDescription: "Belton's local garage door company: repair, spring replacement, and new door installation in Belton, MO. Broken spring? One-visit fixes at flat rates. Call (816) 288-3574.",
     sections: [
-      {
-        title: "Cass County's workhorse doors.",
-        body: "Belton garages do real work: trucks, trailers, shop projects, and daily cycles that add up fast. We install heavier-gauge steel doors that shrug off dings, put high-cycle springs on everything, and service the older extension-spring doors still common in the established neighborhoods off North Scott. When a builder-grade door from the 2000s gives out, we'll quote both a repair and a replacement so you can pick with real numbers.",
-      },
+      { title: "Cass County's workhorse doors.", body: "Belton garages do real work: trucks, trailers, shop projects, and daily cycles that add up fast. We install heavier-gauge steel doors that shrug off dings, put high-cycle springs on everything, and service the older extension-spring doors still common in the established neighborhoods off North Scott. When a builder-grade door from the 2000s gives out, we'll quote both a repair and a replacement so you can pick with real numbers." },
+      { title: "New rooftops south of town.", body: "The growth south of 155th Street and out toward Y Highway has filled Belton with builder-grade doors that all went in around the same time, which means the same springs and openers are now failing on the same schedule. We replace a lot of them, swapping thin single-layer doors for insulated steel that keeps an attached garage livable through a Cass County July, and trading noisy chain drives for belt openers with battery backup so you are not stranded when the power blinks. Belton also runs a real commercial base along Markey Road and the 71 corridor, and we service those roll-up and dock doors the same day a bay goes down." },
+    ],
+    faqs: [
+      { q: "What garage door company serves Belton, MO?", a: "Carlisle Overhead Doors is a family-run shop based up the road in Oak Grove, and Belton is one of our regular Cass County stops. We handle residential and commercial work here: spring and cable repairs, opener installs, and full door replacements, all at flat rates with no trip charge for the drive down I-49." },
+      { q: "My garage door spring broke in Belton. Can you replace it today?", a: "Usually, yes. A snapped spring is our most common Belton call, and our trucks carry high-cycle 20,000-cycle springs sized for most doors, so we replace it in one visit. We always swap springs in matched pairs so the second one does not fail a month later. Most spring jobs run 200 to 400 dollars, quoted before we begin." },
+      { q: "I want to replace my garage door in Belton. Where do I start?", a: "Start with a free in-home estimate. We bring door samples to your driveway, measure the opening, and show you insulated steel, carriage-house, and windowed options with real prices. Once you choose, install is typically within one to two weeks, and we haul the old door away at no charge." },
+      { q: "What happens if my door quits at night in Belton?", a: "Call our 24/7 line and a technician answers, not a machine. If the door is stuck open leaving your home exposed, or jammed shut trapping a car you need, we dispatch that night. If it can safely wait until morning, we will say so and save you the after-hours premium." },
     ],
   },
   "raymore-mo": {
-    blurb:
-      "One of the fastest-growing cities in Missouri, Raymore is wall-to-wall 2000s and 2010s subdivisions, which means a coming wave of first spring failures, and we're already catching it.",
+    blurb: "One of the fastest-growing cities in Missouri, Raymore is wall-to-wall 2000s and 2010s subdivisions, which means a coming wave of first spring failures, and we're already catching it.",
+    response: "We reach Raymore off I-49 at the Foxwood Springs and 58 Highway exits, right in the middle of Cass County's fastest-growing stretch of subdivisions. Calls placed by midday here are almost always handled the same afternoon.",
+    metaDescription: "Need to fix a garage door in Raymore, MO? Repair, broken spring replacement, and new installs, plus free estimates and one-visit service. Call Carlisle: (816) 288-3574.",
     sections: [
-      {
-        title: "Built in a boom, failing on schedule.",
-        body: "Raymore's growth came fast, and builder-grade hardware has a clock on it: about 10,000 cycles, or 7 to 10 years for a busy family. We're now replacing first-generation springs and openers across the city's newer neighborhoods, and we do it with 20,000-cycle springs and belt-drive openers so the second decade is quieter than the first. HOA-conscious door upgrades are routine here, and we help match styles and colors that keep the street consistent.",
-      },
+      { title: "Built in a boom, failing on schedule.", body: "Raymore's growth came fast, and builder-grade hardware has a clock on it: about 10,000 cycles, or 7 to 10 years for a busy family. We're now replacing first-generation springs and openers across the city's newer neighborhoods, and we do it with 20,000-cycle springs and belt-drive openers so the second decade is quieter than the first. HOA-conscious door upgrades are routine here, and we help match styles and colors that keep the street consistent." },
+      { title: "When a repair stops making sense.", body: "In neighborhoods like Creekmoor and Eagle Glen, plenty of Raymore doors are now old enough that the repair-or-replace question is real. Our rule is simple: if the door is structurally sound and only the hardware has worn, we fix it and you save money. If the panels are dented, the sections are separating, or you are back for a second failure inside a year, replacement is the cheaper path over five years and we say so. Every new-door visit starts with a free estimate and samples in your driveway, so you can weigh an insulated upgrade against another patch job with real numbers in front of you, not a guess over the phone." },
+    ],
+    faqs: [
+      { q: "Who offers the best garage door service in Raymore?", a: "We will let the work argue that. Carlisle is family-run out of Oak Grove, we quote flat rates before touching a tool, and we stock trucks to finish most Raymore repairs in a single trip. No commissioned salespeople, no distance surcharge, and a real technician on the phone around the clock. That mix is why Raymore keeps calling us back." },
+      { q: "Can you fix a garage door that won't open in Raymore?", a: "That is our bread and butter here. A door that will not open is usually a broken spring, a snapped cable, or an opener that lost its gears, and our trucks carry all three. We diagnose on-site, quote the fix on the spot, and most Raymore repairs close the same visit. Common repairs run 150 to 450 dollars." },
+      { q: "Do you charge for an estimate in Raymore?", a: "New-door and replacement estimates are free and done in your driveway, with samples so you can see the panel style and color against your house. There is a standard diagnostic fee for repairs, which we roll into the job if you have us do the work. You will always know the number before we begin." },
+      { q: "How long do the springs you install in Raymore last?", a: "We fit high-cycle springs rated for about 20,000 open-and-close cycles, roughly double the builder-grade springs that came with most Raymore homes. For a busy family cycling the door six to ten times a day, that is a decade or more of service instead of the seven years the originals gave you. We install them in matched pairs, standard." },
     ],
   },
   "grain-valley-mo": {
-    blurb:
-      "Our next-door neighbor on I-70, Grain Valley is often the first stop a Carlisle truck makes in the morning. New rooftops keep going up, and we keep their doors running.",
+    blurb: "Our next-door neighbor on I-70, Grain Valley is often the first stop a Carlisle truck makes in the morning. New rooftops keep going up, and we keep their doors running.",
+    response: "Grain Valley is our next-door neighbor on I-70, often the first stop a Carlisle truck makes in the morning. Response here is about as fast as it gets anywhere in the metro, frequently within the hour.",
+    metaDescription: "Garage door repair in Grain Valley, MO, minutes from our Oak Grove shop. Broken springs, openers, and new doors, often same-hour service. Call Carlisle at (816) 288-3574.",
     sections: [
-      {
-        title: "Neighbors, literally.",
-        body: "Grain Valley is minutes from our Oak Grove shop, which means repair response here is about as fast as it gets anywhere in the metro. The city's newer subdivisions carry the usual builder-grade door hardware, and we're steadily upgrading it street by street as it wears: high-cycle springs, nylon rollers that end the 6 AM rattle, and insulated doors for the many homeowners finishing garage gyms and workshops.",
-      },
+      { title: "Neighbors, literally.", body: "Grain Valley is minutes from our Oak Grove shop, which means repair response here is about as fast as it gets anywhere in the metro. The city's newer subdivisions carry the usual builder-grade door hardware, and we're steadily upgrading it street by street as it wears: high-cycle springs, nylon rollers that end the 6 AM rattle, and insulated doors for the many homeowners finishing garage gyms and workshops." },
+      { title: "Close enough for a tune-up, not just a breakdown.", body: "Because Grain Valley is minutes from the shop, it is one of the few places where a preventive tune-up actually pencils out for homeowners. A snapped spring on a January morning is far more expensive and inconvenient than a fall check-up that catches the fatigue first. We balance the door, lubricate and inspect the springs and cables, tighten the hardware, and reset the opener's force and safety reverse, usually in under an hour. For the older homes near downtown and the original blocks off Main, that same visit often turns up extension springs missing their safety cables, which we bring up to current code on the spot." },
+    ],
+    faqs: [
+      { q: "How quickly can you get to Grain Valley for a garage door repair?", a: "Faster than almost anywhere. Grain Valley borders our Oak Grove base, so a morning call is often handled within the hour, and a broken spring rarely waits past the same day. Our trucks carry springs, cables, rollers, and opener parts, so the vast majority of Grain Valley repairs finish in that first visit." },
+      { q: "What are the most common garage door problems you see in Grain Valley?", a: "In the newer subdivisions it is builder-grade springs snapping around the 7-to-10-year mark and rollers gone loud and gritty. Near the older town core it is aging openers and extension-spring doors without safety cables. All of it is stock work for us, and all of it usually closes in one trip." },
+      { q: "Is it worth replacing my Grain Valley door, or can you just repair it?", a: "Both are on the table. If the door is sound we repair it and save you money. If it is dented, drafty, or failing repeatedly, we quote a replacement with free samples brought to your driveway. Being this close means quick measure visits and fast install scheduling, with the old door hauled off included." },
     ],
   },
   "kearney-mo": {
-    blurb:
-      "Jesse James country is now commuter country. Kearney's acreages and new subdivisions both lean on their garages hard, and outbuildings here are as common as garages.",
+    blurb: "Jesse James country is now commuter country. Kearney's acreages and new subdivisions both lean on their garages hard, and outbuildings here are as common as garages.",
+    response: "Kearney sits up I-35 in Clay County, north of the river and about an hour from our Oak Grove shop. We fold it into our regular Northland route, so scheduled work lands quickly and true emergencies still get same-day dispatch.",
+    metaDescription: "Garage door repair, spring service, and new door installation in Kearney, MO. Homes, acreages, and shop buildings across Clay County. Call Carlisle at (816) 288-3574.",
     sections: [
-      {
-        title: "House doors and barn doors alike.",
-        body: "Kearney splits between newer in-town subdivisions and rural properties with shops and pole barns, and we outfit both. In town, it's spring replacements and insulated door upgrades. On the acreage, it's 10 and 12-foot-tall doors for equipment bays, commercial-grade track and openers for shop buildings, and doors that seal well enough to keep a heated shop affordable through a Clay County winter. One crew, both jobs, same trip.",
-      },
+      { title: "House doors and barn doors alike.", body: "Kearney splits between newer in-town subdivisions and rural properties with shops and pole barns, and we outfit both. In town, it's spring replacements and insulated door upgrades. On the acreage, it's 10 and 12-foot-tall doors for equipment bays, commercial-grade track and openers for shop buildings, and doors that seal well enough to keep a heated shop affordable through a Clay County winter. One crew, both jobs, same trip." },
+      { title: "New subdivisions on the open prairie.", body: "Kearney's newer neighborhoods off Highway 92 and Jefferson Street sit on open, exposed ground, and north-county wind is hard on a garage door. We rate new doors for the wind load that stretch actually sees, seal them against blowing snow and grit, and reinforce panels on the wide two- and three-car openings that catch the most gust. For the long rural driveways common around Kearney, we set up openers with keypad entry and smartphone control so you are not climbing out in a storm to check whether the door closed. Whether it is an in-town family door or a shop out on the acreage, one crew handles both on the same trip." },
+    ],
+    faqs: [
+      { q: "Do you service both homes and outbuildings in Kearney?", a: "Constantly, and often on the same visit. Plenty of Kearney properties pair an attached house garage with a shop or pole barn, so we come stocked for both: standard residential springs and openers for the house, plus taller commercial-grade doors, heavier track, and equipment-height bays for the outbuilding. One trip, one flat-rate quote." },
+      { q: "How far out is Kearney from your service area?", a: "Well within it. Kearney is about an hour up I-35 in Clay County, and it sits on a Northland route we run regularly. Scheduled installs and non-urgent repairs slot in quickly, and if your only door is stuck or a spring lets go, our 24/7 line gets a technician headed your way the same day." },
+      { q: "Can you make a heated shop in Kearney hold its warmth?", a: "That is a common ask out here. We install insulated doors with proper perimeter and bottom seals so a wood stove or shop heater is not fighting the gaps all winter. On acreage buildings we spec the door thickness to the space you are actually heating, which keeps a Clay County shop usable from November through March without a punishing propane bill." },
     ],
   },
   "smithville-mo": {
-    blurb:
-      "Lake life means boats, and boats mean tall garages. Between lakeside properties and Smithville's growing subdivisions, oversized doors are practically the local specialty.",
+    blurb: "Lake life means boats, and boats mean tall garages. Between lakeside properties and Smithville's growing subdivisions, oversized doors are practically the local specialty.",
+    response: "Smithville is a run up Highway 169 into northern Clay County, out by the lake. We work it on our regular Northland loop, so lakeside and in-town calls alike are usually scheduled within a day or two, faster when a door is down.",
+    metaDescription: "Overhead door service and repair in Smithville, MO. Tall doors for boats and RVs, spring and opener fixes, new installs across Clay County. Call Carlisle: (816) 288-3574.",
     sections: [
-      {
-        title: "Doors sized for lake toys.",
-        body: "A standard 7-foot door doesn't clear a wakeboard tower. Smithville homeowners regularly ask us for 8 and 9-foot-tall doors, RV bays, and third-stall additions, and we quote them with the framing work included. For everything else, the city's newer construction carries typical builder hardware that we service same-day from our daily Clay County route, with high-cycle springs standard on every replacement.",
-      },
+      { title: "Doors sized for lake toys.", body: "A standard 7-foot door doesn't clear a wakeboard tower. Smithville homeowners regularly ask us for 8 and 9-foot-tall doors, RV bays, and third-stall additions, and we quote them with the framing work included. For everything else, the city's newer construction carries typical builder hardware that we service same-day from our daily Clay County route, with high-cycle springs standard on every replacement." },
+      { title: "Lake air is hard on hardware.", body: "Garages that store boats and lake gear live in a damp, humid environment, and it shows up as rust on springs, corroded rollers, and cables that fray early. When we service an overhead door near Smithville Lake, we lean toward galvanized and coated hardware, seal the bottom against standing water, and put these doors on a maintenance rhythm so a corroded cable does not snap with the boat halfway out. In town, Smithville's growing business strip runs commercial overhead and roll-up doors too, and we service those on the same Clay County route, keeping a shop bay from sitting stuck during business hours." },
+    ],
+    faqs: [
+      { q: "Are overhead doors something you install and service in Smithville, MO?", a: "They are a big part of what we do here, residential and commercial. That covers new installs, spring and cable replacement, opener repair, and full tune-ups. Smithville sits on our regular northern Clay County route, so scheduled service is quick and a stuck door gets priority. Flat rates, no lake-country surcharge." },
+      { q: "Can you fit a garage door tall enough for a boat with a tower?", a: "Regularly. A standard 7-foot door will not clear a wakeboard tower, so Smithville owners often move up to 8- or 9-foot-tall doors, and we quote the framing changes right along with the door. If you are adding an RV bay or a third stall for the lake toys, we handle that build too, with the header and track work in one estimate." },
+      { q: "What is the fastest way to get overhead door repair near Smithville Lake?", a: "Call our line directly at (816) 288-3574, and if it is after hours a technician still answers. We run northern Clay County often enough that most repairs are same or next day, and our trucks carry the springs, cables, and rollers these lake-area doors go through, so we rarely need a second trip." },
     ],
   },
   "platte-city-mo": {
-    blurb:
-      "The Platte County seat sits minutes from KCI, and its mix of historic homes near Main Street and new construction along Highway 92 gives us both ends of the door spectrum.",
+    blurb: "The Platte County seat sits minutes from KCI, and its mix of historic homes near Main Street and new construction along Highway 92 gives us both ends of the door spectrum.",
+    response: "Platte City is up I-29 near KCI, the Platte County seat about an hour from our Oak Grove base. It shares a route with our airport-area calls, so scheduled work is quick and down doors get same-day dispatch.",
+    metaDescription: "Garage door repair and door installation in Platte City, MO. Spring, opener, and full-door service near KCI in Platte County. One-visit fixes. Call (816) 288-3574.",
     sections: [
-      {
-        title: "From courthouse square to new construction.",
-        body: "Platte City's older homes need doors fitted to openings that predate standard sizing, and its newer neighborhoods need the usual: spring service, opener upgrades, and builder-door replacements with something quieter and better insulated. Airport-area wind exposure is real here, so we talk wind-load ratings on every new door quote. Platte County is on our regular route, and emergencies get the same 24/7 response as the rest of the metro.",
-      },
+      { title: "From courthouse square to new construction.", body: "Platte City's older homes need doors fitted to openings that predate standard sizing, and its newer neighborhoods need the usual: spring service, opener upgrades, and builder-door replacements with something quieter and better insulated. Airport-area wind exposure is real here, so we talk wind-load ratings on every new door quote. Platte County is on our regular route, and emergencies get the same 24/7 response as the rest of the metro." },
+      { title: "Airport-corridor growth, on both ends.", body: "The build-out around KCI has pushed new rooftops and new warehouses toward Platte City, and both need door work. In the residential subdivisions off Running Horse and Highway 92, we are already handling first-round spring failures and swapping loud builder openers for quiet belt drives with battery backup. On the commercial side, the logistics and light-industrial buildings filling in near the interstate run roll-up and dock doors on tight schedules, and a stuck bay costs money by the hour, so those calls get priority. Whether it is a family door or a loading dock, Platte City rides our regular airport-area route and gets the same flat rates as the core metro." },
+    ],
+    faqs: [
+      { q: "My garage door broke in Platte City. How soon can you come?", a: "For an in-service door that is down, we push to reach Platte City the same day. It sits on our regular Platte County and airport route, so we are up that way often. A morning call for a broken spring or a door off track is usually closed by evening, with the parts already on the truck." },
+      { q: "I need a new garage door put in near the Platte City square. Can you do custom sizes?", a: "Yes. The older homes near Main Street and the courthouse often have openings that predate standard sizing, so we measure and fit rather than force a stock door. Newer subdivision homes get straightforward installs. Either way the estimate is free, samples come to your driveway, and we haul the old door off." },
+      { q: "Should I worry about wind ratings on a new door in Platte City?", a: "It is worth a conversation. Platte City sits in exposed, airport-adjacent country where straight-line wind and storms are real, and a wide two-car door is a big sail. We can spec wind-load-rated doors and reinforcement for the openings that face it, which also helps the door survive the next Missouri thunderstorm season intact." },
     ],
   },
   "pleasant-hill-mo": {
-    blurb:
-      "With its preserved downtown and rail heritage, Pleasant Hill mixes century homes, post-war blocks, and country properties, and no two garage door calls here look the same.",
+    blurb: "With its preserved downtown and rail heritage, Pleasant Hill mixes century homes, post-war blocks, and country properties, and no two garage door calls here look the same.",
+    response: "Pleasant Hill sits south of us on Route 7 and US-50, an easy Cass County run from Oak Grove. It falls inside our same-day zone, so a morning breakdown here is usually handled before the day is out.",
+    metaDescription: "Garage door repair in Pleasant Hill, MO: broken springs, openers, off-track doors, and new installs across Cass County. Same-day service. Call Carlisle: (816) 288-3574.",
     sections: [
-      {
-        title: "Variety is the routine here.",
-        body: "One Pleasant Hill morning can include a carriage-style door for a Victorian near downtown, a torsion conversion on a 60s ranch, and a 12-foot shop door on an acreage off Highway 7. We carry the range: low-headroom hardware, wood-look steel for historic streets, and commercial-grade doors for outbuildings. Cass County sits inside our same-day zone, and our flat rates don't change with your zip code.",
-      },
+      { title: "Variety is the routine here.", body: "One Pleasant Hill morning can include a carriage-style door for a Victorian near downtown, a torsion conversion on a 60s ranch, and a 12-foot shop door on an acreage off Highway 7. We carry the range: low-headroom hardware, wood-look steel for historic streets, and commercial-grade doors for outbuildings. Cass County sits inside our same-day zone, and our flat rates don't change with your zip code." },
+      { title: "Old doors, modern safety.", body: "A lot of Pleasant Hill's character comes from its older homes, and their garages often still run hardware from another era: extension springs with no safety cable, openers built before auto-reverse was required, and heavy wood slabs that turn dangerous the moment something lets go. We bring these up to current safety code without stripping the home's look, converting extension setups to enclosed torsion springs, adding photo-eye sensors and auto-reverse, and hanging wood-look steel that suits a historic street while sealing and insulating far better than the original. The house keeps its front-porch character, and the garage stops being the most hazardous thing on the property." },
+    ],
+    faqs: [
+      { q: "Can you repair a garage door in Pleasant Hill the same day?", a: "Most days, yes. Pleasant Hill is a short run south on Route 7 and sits inside our same-day zone, so a morning call for a broken spring or a door that will not budge is usually closed the same afternoon. Our trucks carry the common springs, cables, rollers, and opener parts, so one visit does it." },
+      { q: "My 1960s ranch still has the original extension springs. Is that a problem?", a: "It can be. Old extension springs without a safety cable can whip loose when they break, and openers from that era often lack the auto-reverse that keeps a closing door from crushing what is under it. We convert those to enclosed torsion springs and add modern sensors, a common upgrade on Pleasant Hill's older streets and a real safety gain." },
+      { q: "Do you handle shop and outbuilding doors on Pleasant Hill acreages?", a: "Regularly. Outside town the properties get bigger and so do the doors, from 10- and 12-foot equipment bays to insulated shop doors for winter projects. We spec the height to your machinery, put commercial-grade track and openers on anything cycling daily, and quote it flat-rate with no surcharge for the drive out." },
     ],
   },
-
-  /* ================= Core Metro, Kansas ================= */
-
   "overland-park-ks": {
-    blurb:
-      "Kansas's second-largest city and the metro's biggest suburban door market. Whole Overland Park neighborhoods hit the end of their builder-grade doors at the same time, and we're there when they do.",
+    blurb: "Kansas's second-largest city and the metro's biggest suburban door market. Whole Overland Park neighborhoods hit the end of their builder-grade doors at the same time, and we're there when they do.",
+    response: "Overland Park is a straight run down I-435 and I-35 into Johnson County, the metro's biggest suburban door market. We run it constantly, so same-day repair is the standard here, not a premium option.",
+    metaDescription: "Overhead door and garage door repair in Overland Park, KS: torsion spring repair, opener repair, and commercial roll-up doors. Same-day service. Call (816) 288-3574.",
     sections: [
-      {
-        title: "Overland Park's doors are aging out together.",
-        body: "Huge swaths of Overland Park went up in the same building booms, which means whole neighborhoods hit the end of their builder-grade garage doors at the same time. If your neighbors have been replacing doors, yours is likely on the same clock: springs rated for 10,000 cycles, thin single-layer steel, and openers without modern safety or battery backup. We replace a lot of doors south of College Boulevard, and we stock parts for every brand the original builders used.",
-      },
-      {
-        title: "Upgrades that fit the neighborhood (and the HOA).",
-        body: "Many Overland Park subdivisions have HOA guidelines on door style and color, and most homeowners want a door that lifts the whole facade without clashing with the street. We bring sample books to your driveway, help you match panel style and color to the neighborhood, and handle insulated doors that make attached-garage homes noticeably quieter and cheaper to heat and cool through Kansas winters and July heat.",
-      },
+      { title: "Overland Park's doors are aging out together.", body: "Huge swaths of Overland Park went up in the same building booms, which means whole neighborhoods hit the end of their builder-grade garage doors at the same time. If your neighbors have been replacing doors, yours is likely on the same clock: springs rated for 10,000 cycles, thin single-layer steel, and openers without modern safety or battery backup. We replace a lot of doors south of College Boulevard, and we stock parts for every brand the original builders used." },
+      { title: "Upgrades that fit the neighborhood (and the HOA).", body: "Many Overland Park subdivisions have HOA guidelines on door style and color, and most homeowners want a door that lifts the whole facade without clashing with the street. We bring sample books to your driveway, help you match panel style and color to the neighborhood, and handle insulated doors that make attached-garage homes noticeably quieter and cheaper to heat and cool through Kansas winters and July heat." },
+    ],
+    faqs: [
+      { q: "Do you do torsion spring repair in Overland Park?", a: "Torsion spring replacement is our single most common Overland Park call. The tightly wound spring above the door carries the whole weight, and when it snaps the door will not lift. We replace it same-day with high-cycle 20,000-cycle springs, always in matched pairs so the second does not follow the first. Most spring jobs run 200 to 400 dollars, quoted up front." },
+      { q: "Can you repair a garage door opener in Overland Park, or only replace it?", a: "Both, and we start with repair. Many opener problems are worn gears, a bad logic board, a slipped belt, or misaligned safety eyes, all fixable for far less than a new unit. If yours is beyond economical repair, we install quiet belt-drive openers with battery backup so an Overland Park power blip does not trap your car inside." },
+      { q: "Can you install commercial roll-up doors in Overland Park?", a: "We can. Overland Park's businesses along Metcalf and the commercial corridors run roll-up, sectional, and dock doors, and we install and service all of them. A stuck bay stops your operation, so commercial down-door calls get priority, and we offer planned maintenance that catches spring and cable fatigue before it strands a loading dock." },
+      { q: "What does 'overhead door' cover when I search it in Overland Park?", a: "Overhead door is just the trade term for the sectional door that rolls up overhead on tracks, residential or commercial. Whatever you call it, we service the whole thing: springs, cables, rollers, tracks, panels, and openers. If a single panel is dented we can often replace just that section rather than the entire door." },
     ],
   },
   "olathe-ks": {
-    blurb:
-      "The Johnson County seat has been one of the fastest-growing cities in Kansas for twenty years, and its 2000s-era subdivisions are hitting their first big wave of garage door failures right now.",
+    blurb: "The Johnson County seat has been one of the fastest-growing cities in Kansas for twenty years, and its 2000s-era subdivisions are hitting their first big wave of garage door failures right now.",
+    response: "Olathe is the Johnson County seat, reached down I-35 southwest of the metro. We run Johnson County daily, so an Olathe repair call placed in the morning is typically handled the same day.",
+    metaDescription: "Garage door repair in Olathe, KS: springs, openers, overhead doors, and new garage door installation across Johnson County. Same-day service. Call (816) 288-3574.",
     sections: [
-      {
-        title: "Olathe grew fast. Its garage doors are catching up.",
-        body: "Olathe has been one of the fastest-growing cities in Kansas for two decades, and the math is simple: subdivisions built in the 2000s and 2010s are now 10 to 20 years old, which is exactly when builder-grade springs, rollers, and openers start failing. We handle a steady stream of first-time spring replacements across Olathe, and we install 20,000-cycle springs as standard so you are not doing this again in seven years.",
-      },
-      {
-        title: "New doors for new-build families.",
-        body: "A lot of Olathe homeowners are upgrading the plain white builder door to something with real curb appeal: carriage house styles, wood-look steel, insulated doors with windows that brighten the garage gym or workshop. Estimates are free, we bring samples to your driveway, and installation typically happens within one to two weeks of ordering, old door haul-away included.",
-      },
+      { title: "Olathe grew fast. Its garage doors are catching up.", body: "Olathe has been one of the fastest-growing cities in Kansas for two decades, and the math is simple: subdivisions built in the 2000s and 2010s are now 10 to 20 years old, which is exactly when builder-grade springs, rollers, and openers start failing. We handle a steady stream of first-time spring replacements across Olathe, and we install 20,000-cycle springs as standard so you are not doing this again in seven years." },
+      { title: "New doors for new-build families.", body: "A lot of Olathe homeowners are upgrading the plain white builder door to something with real curb appeal: carriage house styles, wood-look steel, insulated doors with windows that brighten the garage gym or workshop. Estimates are free, we bring samples to your driveway, and installation typically happens within one to two weeks of ordering, old door haul-away included." },
+    ],
+    faqs: [
+      { q: "Who does garage door repair in Olathe, KS?", a: "Carlisle Overhead Doors covers Olathe as part of our daily Johnson County route. We are a family-run shop that fixes springs, cables, rollers, openers, and off-track doors, most of it in a single visit from a stocked truck. Flat-rate pricing, quoted before we start, with no distance charge for crossing the state line." },
+      { q: "What is the difference between an overhead door and a garage door in Olathe?", a: "None, really. Overhead door is the industry name for the sectional door that lifts up and back along overhead tracks, which is exactly what most Olathe homes and businesses have. We service and install both residential overhead doors and commercial ones, so search either term and you have reached the right crew." },
+      { q: "I want new garage doors for my Olathe home. How does that work?", a: "It starts with a free in-home estimate. We measure, then bring door samples to your driveway so you can see insulated steel, carriage-house, and windowed styles against the house. Once you pick, installation on a standard Olathe home usually happens within one to two weeks, old-door haul-away included." },
+      { q: "Are your springs better than the ones the builder put on my Olathe house?", a: "Considerably. Most Olathe builder doors came with springs rated around 10,000 cycles, which is why so many are failing now at 10 to 20 years old. We install 20,000-cycle springs as standard, roughly double the life, in matched pairs. For a busy family that is the difference between another decade and another repair in seven years." },
     ],
   },
   "shawnee-ks": {
-    blurb:
-      "Shawnee stretches from 1950s neighborhoods near Old Shawnee Town out to new construction past K-7, and its garage doors span every decade in between.",
+    blurb: "Shawnee stretches from 1950s neighborhoods near Old Shawnee Town out to new construction past K-7, and its garage doors span every decade in between.",
+    response: "Shawnee sits on our daily Johnson County route off I-435, about 35 minutes from the Oak Grove shop, so most repairs booked before early afternoon get a same-day arrival. Flat rate whether you are near Old Shawnee Town or out past K-7.",
+    metaDescription: "Garage door repair in Shawnee, KS: panel replacement, opener parts, spring fixes and new doors. Same-day service across Johnson County. Call (816) 288-3574.",
     sections: [
-      {
-        title: "Seventy years of Shawnee garages.",
-        body: "Eastern Shawnee's post-war homes carry older doors, some still on extension springs that deserve a modern torsion conversion. Western Shawnee past K-7 is newer construction with builder-grade hardware wearing out on schedule. We work the whole corridor weekly, stock parts for both generations, and handle the growing number of homeowners adding side-mount openers and tall doors to accommodate lifted trucks and car lifts in newer builds.",
-      },
+      { title: "Seventy years of Shawnee garages.", body: "Eastern Shawnee's post-war homes carry older doors, some still on extension springs that deserve a modern torsion conversion. Western Shawnee past K-7 is newer construction with builder-grade hardware wearing out on schedule. We work the whole corridor weekly, stock parts for both generations, and handle the growing number of homeowners adding side-mount openers and tall doors to accommodate lifted trucks and car lifts in newer builds." },
+      { title: "Cracked panel or bad opener board, not always a whole new door.", body: "A lot of Shawnee calls start with one dented or split panel after a bumper tap, and homeowners assume the entire door has to go. Often it does not. If the door line is still made, we match a single Clopay, Amarr, or C.H.I. panel and swap it, which is far cheaper than a full replacement. Same with openers: we carry drive gears, rollers, logic boards, and remotes on the truck, so a Shawnee opener that quit rarely means a parts-store scavenger hunt or a second appointment. When a door is too far gone to patch, we say so plainly and quote a straight replacement instead." },
+    ],
+    faqs: [
+      { q: "Can you replace just one garage door panel in Shawnee?", a: "Often, yes. If your door line is still in production, we match a single Clopay, Amarr, or C.H.I. panel and swap the damaged one instead of selling you a full door. When the model is discontinued or the frame is bent from the impact, we tell you plainly and quote a replacement instead." },
+      { q: "Do you stock garage door opener parts for Shawnee homes?", a: "We carry them on the truck: drive gears, trolleys, logic boards, safety sensors, and remotes for the common opener brands. That means a dead Shawnee opener usually gets fixed on the first visit, with no running to a parts counter and no second trip. If a unit is genuinely past saving, we install a new one the same day." },
+      { q: "What tends to fail first on older Shawnee garage doors?", a: "In the post-war neighborhoods east of Nieman it is usually the springs and worn extension hardware; in the newer builds past K-7 it is builder-grade rollers and openers hitting their cycle limit. We stock 20,000-cycle springs as the standard replacement, so the next failure is a decade or more out." },
+      { q: "How fast can someone get to a broken Shawnee garage door?", a: "Shawnee is on our daily Johnson County loop, so calls placed in the morning are usually handled the same afternoon. A real technician answers the 24/7 line for doors stuck open or off the track, and there is no distance surcharge added to a Shawnee address." },
     ],
   },
   "lenexa-ks": {
-    blurb:
-      "Lenexa is two cities in one: established neighborhoods from the 80s and 90s, and the fast-growing City Center corridor. Both ends of town keep our Johnson County trucks busy.",
+    blurb: "Lenexa is two cities in one: established neighborhoods from the 80s and 90s, and the fast-growing City Center corridor. Both ends of town keep our Johnson County trucks busy.",
+    response: "Lenexa rides our daily I-35 Johnson County route, roughly 40 minutes from Oak Grove, so morning repair calls are typically same-day whether you are in Old Town or out by City Center. Flat rate, no mileage add-on.",
+    metaDescription: "Garage door repair in Lenexa, KS: broken springs, openers, new door installation and 24/7 emergency service. Same-day on the I-35 corridor. Call (816) 288-3574.",
     sections: [
-      {
-        title: "From Old Town to City Center, Lenexa doors run the full range.",
-        body: "Lenexa is two cities in one: established neighborhoods with doors and openers from the 80s and 90s, and newer construction around City Center with modern doors that still need tuned tracks, balanced springs, and warranty-safe service. We work both ends weekly, whether that's replacing a worn-out chain-drive opener in an older ranch or dialing in a brand-new insulated door a builder installed in a hurry.",
-      },
-      {
-        title: "Same-day service on the I-35 corridor.",
-        body: "Lenexa sits right on our daily Johnson County route, so repair calls placed before noon are usually handled the same day. Broken spring, door off track, opener that hums but will not lift: our trucks carry the springs, cables, rollers, and opener parts to finish most Lenexa repairs in a single visit, with the price quoted before we touch a tool.",
-      },
+      { title: "From Old Town to City Center, Lenexa doors run the full range.", body: "Lenexa is two cities in one: established neighborhoods with doors and openers from the 80s and 90s, and newer construction around City Center with modern doors that still need tuned tracks, balanced springs, and warranty-safe service. We work both ends weekly, whether that's replacing a worn-out chain-drive opener in an older ranch or dialing in a brand-new insulated door a builder installed in a hurry." },
+      { title: "Same-day service on the I-35 corridor.", body: "Lenexa sits right on our daily Johnson County route, so repair calls placed before noon are usually handled the same day. Broken spring, door off track, opener that hums but will not lift: our trucks carry the springs, cables, rollers, and opener parts to finish most Lenexa repairs in a single visit, with the price quoted before we touch a tool." },
+    ],
+    faqs: [
+      { q: "Who answers if my Lenexa garage door jams after hours?", a: "A real Carlisle technician, not an answering service. The 24/7 line rings a person who can walk you through securing the door and dispatch help for one stuck open, off track, or blocking a car. Emergency coverage includes all of Lenexa at the same flat rates we charge during business hours." },
+      { q: "How long does new garage door installation take in Lenexa?", a: "Once you pick a Clopay, Amarr, or C.H.I. door and we confirm the measurements, most Lenexa installs happen within one to two weeks and wrap up in a single visit. That includes hauling the old door away and setting the opener. Estimates are free, with samples brought to your driveway first." },
+      { q: "What is the most common garage door repair in Lenexa?", a: "Broken torsion springs top the list, especially in the 80s and 90s neighborhoods where original hardware is aging out. Our trucks carry 20,000-cycle springs, cables, rollers, and opener parts, so a typical Lenexa repair runs $150 to $450 and finishes on the first visit, priced before we start." },
     ],
   },
   "leawood-ks": {
-    blurb:
-      "Leawood homes make a statement from the street, and the garage door is a third of that statement. Premium doors, precise installs, and quiet openers are the standing order here.",
+    blurb: "Leawood homes make a statement from the street, and the garage door is a third of that statement. Premium doors, precise installs, and quiet openers are the standing order here.",
+    response: "Leawood is a standing stop on our Johnson County route, about 35 minutes down I-435 from Oak Grove, so repair calls generally earn a same-day slot from south of I-435 to the older streets near Mission Road. Flat rate, no distance charge to a Leawood address.",
+    metaDescription: "Garage door repair in Leawood, KS from a family-run door company: spring fixes, quiet openers, premium installs. Same-day Johnson County service. (816) 288-3574.",
     sections: [
-      {
-        title: "Doors that match the neighborhood's standards.",
-        body: "In Leawood, a dented builder door drags the whole facade down. We install the upper end of the catalog here: custom carriage house designs, full-view glass and aluminum, wood-look steel with real presence, and side-mount openers that keep ceilings clean for storage racks. Installs are measured twice, sealed properly, and finished with the hardware details that premium doors deserve. Repairs get the same treatment, with technicians who show up when they say they will.",
-      },
+      { title: "Doors that match the neighborhood's standards.", body: "In Leawood, a dented builder door drags the whole facade down. We install the upper end of the catalog here: custom carriage house designs, full-view glass and aluminum, wood-look steel with real presence, and side-mount openers that keep ceilings clean for storage racks. Installs are measured twice, sealed properly, and finished with the hardware details that premium doors deserve. Repairs get the same treatment, with technicians who show up when they say they will." },
+      { title: "The door company Leawood keeps on speed dial.", body: "A high-end door still breaks a spring, still throws a cable, still develops an opener that groans at 6 a.m. When that happens, Leawood homeowners want a door company that treats a repair with the same care as an install and shows up when promised. That is our lane here. We service full-view glass, wood-look steel, and custom carriage doors without scratching the finish, rebalance heavy premium doors correctly, and swap noisy chain drives for quiet belt or side-mount openers so a bedroom over the garage stays peaceful. Family-run, one crew, and a real person on the phone." },
+    ],
+    faqs: [
+      { q: "What makes a good garage door company for Leawood homes?", a: "Around here it is finish care and follow-through. A Leawood door is part of the facade, so repairs and installs need to protect the paint, glass, and hardware, and the crew has to arrive on schedule. We are family-run, quote flat rates up front, and send a technician who handles premium Clopay, Amarr, and C.H.I. doors daily." },
+      { q: "Can you fix a broken spring on a Leawood garage door same day?", a: "Usually yes. Leawood sits on our daily Johnson County loop, and the trucks carry 20,000-cycle torsion springs sized for heavier premium doors. Most spring jobs finish in one visit for $200 to $400, with the door rebalanced so it runs smoothly and the opener is not straining against it." },
+      { q: "Do you service full-view glass and custom carriage doors in Leawood?", a: "Yes. Those are common here, and they need careful handling. We align and rebalance heavy glass-and-aluminum doors, replace rollers and hinges without marring the finish, and tune the opener to the door's real weight. If a panel is damaged beyond repair, we source a match from the original manufacturer." },
     ],
   },
   "prairie-village-ks": {
-    blurb:
-      "Prairie Village's post-war homes were built as a planned community, and keeping a consistent, classic street face matters here. We fit doors that respect that, then hide modern convenience behind them.",
+    blurb: "Prairie Village's post-war homes were built as a planned community, and keeping a consistent, classic street face matters here. We fit doors that respect that, then hide modern convenience behind them.",
+    response: "Prairie Village is one of the nearer Johnson County stops on our route, roughly half an hour from the shop by way of I-435, so daytime repair calls almost always land the same day. Nights and weekends, the emergency line reaches a real Carlisle technician.",
+    metaDescription: "Emergency garage door repair in Prairie Village, KS: broken springs, cables and openers fixed fast. 24/7 real-tech line, same-day service. Call (816) 288-3574.",
     sections: [
-      {
-        title: "Classic outside, modern inside.",
-        body: "Many Prairie Village garages are single-car, attached, and original to homes from the 40s and 50s, with openings that don't match today's standard sizes. We fabricate the fit rather than forcing it: correctly sized doors in clean traditional styles, low-headroom track where post-war framing demands it, and whisper-quiet belt openers, because in a house this size, everyone hears a chain drive. Spring and cable service on older hardware is a daily call for us here.",
-      },
+      { title: "Classic outside, modern inside.", body: "Many Prairie Village garages are single-car, attached, and original to homes from the 40s and 50s, with openings that don't match today's standard sizes. We fabricate the fit rather than forcing it: correctly sized doors in clean traditional styles, low-headroom track where post-war framing demands it, and whisper-quiet belt openers, because in a house this size, everyone hears a chain drive. Spring and cable service on older hardware is a daily call for us here." },
+      { title: "When a 1950s door lets go, we answer.", body: "Prairie Village runs on original post-war hardware more than almost any city we serve, and old extension springs fail without warning: a bang in the garage, a door that will not lift, sometimes a cable whipping loose. That is exactly the kind of call our 24/7 line is for, and a real technician answers it, not a machine. We talk you through keeping the door secured, then get out to swap the spring, rehang the cables, and convert dangerous old extension setups to a safer torsion system. Same flat rates day or night, and no charge for the Johnson County drive." },
+    ],
+    faqs: [
+      { q: "Who picks up for emergency garage door repair in Prairie Village after hours?", a: "A real Carlisle Overhead Doors technician, any hour. The 24/7 line does not route to a call center. Whether a spring snapped at midnight or the door is stuck open and exposing your garage, you reach someone who can advise you on the spot and schedule a fast fix. Emergency coverage includes all of Prairie Village." },
+      { q: "My older Prairie Village door has springs on the sides. Is that a problem?", a: "It can be. Those are extension springs, and older ones without safety cables can fail violently. On the 40s and 50s homes here we regularly convert them to a modern torsion system, which is safer, lasts longer, and runs quieter next to the bedrooms in a compact house." },
+      { q: "Can you match a door to a Prairie Village home's original look?", a: "Yes. The planned-community streets look best with consistent, traditional door faces, so we fit clean panel styles and correct sizes for the older single-car openings, often with low-headroom track the post-war framing needs. Behind that classic look go quiet belt openers and current safety hardware." },
     ],
   },
   "merriam-ks": {
-    blurb:
-      "Compact, convenient, and right on I-35, Merriam's mid-century homes are some of the quickest service stops on our Johnson County route.",
+    blurb: "Compact, convenient, and right on I-35, Merriam's mid-century homes are some of the quickest service stops on our Johnson County route.",
+    response: "Merriam is minutes off I-35 and among the closer Johnson County stops from Oak Grove, so repair calls booked in the morning are typically same-day. Flat rate to any Merriam address, no mileage tacked on.",
+    metaDescription: "Garage door repair in Merriam, KS: broken springs, openers, off-track doors and new insulated doors. Same-day Johnson County service. Call (816) 288-3574.",
     sections: [
-      {
-        title: "Small garages, quick fixes, fair prices.",
-        body: "Merriam's housing stock leans mid-century: single-car garages, older hardware, and openers that have outlived their design life. Most calls here are classic repair work, and our trucks carry what these doors need: springs sized for lighter older doors, low-headroom track, safety-cable retrofits for old extension setups, and compact openers that fit tight ceilings. In and out in one visit is the norm.",
-      },
+      { title: "Small garages, quick fixes, fair prices.", body: "Merriam's housing stock leans mid-century: single-car garages, older hardware, and openers that have outlived their design life. Most calls here are classic repair work, and our trucks carry what these doors need: springs sized for lighter older doors, low-headroom track, safety-cable retrofits for old extension setups, and compact openers that fit tight ceilings. In and out in one visit is the norm." },
+      { title: "First on the I-35 route, in and gone by lunch.", body: "Merriam sits right where I-35 threads through the first ring, which makes it one of the quicker stops on our Johnson County day. That matters for the bread-and-butter work here: a snapped spring, a door off its track, an opener that finally quit. We quote it on the phone, confirm in the driveway, and finish from truck stock, usually in a single morning visit. When an old door has cost you three repairs in two years, we lay out the honest math on replacing it with an insulated steel door that keeps a small attached garage warmer and quieter, no pressure either way." },
+    ],
+    faqs: [
+      { q: "What are the most common garage door problems on Merriam's older homes?", a: "Broken springs, frayed cables, and worn rollers, mostly. Merriam's mid-century single-car garages ran the same hardware for decades, and it wears out on a schedule. Our trucks carry springs sized for lighter older doors, low-headroom track, and compact openers, so most of these repairs wrap up in one visit for $150 to $450." },
+      { q: "Is it worth insulating a garage door on a small Merriam house?", a: "In many cases, yes, especially on an attached garage sharing a wall with living space. An insulated steel door cuts drafts, muffles street noise, and helps keep the room above the garage comfortable. When you are already replacing a tired door, the insulated upgrade usually costs little more and pays back in comfort." },
+      { q: "Can you fix a Merriam garage door the same day I call?", a: "Usually. Merriam is close to the shop and sits on our daily Johnson County route, so morning calls generally get an afternoon arrival. A real technician answers the 24/7 line for after-hours emergencies too, and the flat rate does not change for a Merriam address." },
     ],
   },
   "mission-ks": {
-    blurb:
-      "Mission's walkable blocks and mid-century homes come with garages from an era of smaller cars and simpler doors. We keep them working, quietly, without oversizing the fix.",
+    blurb: "Mission's walkable blocks and mid-century homes come with garages from an era of smaller cars and simpler doors. We keep them working, quietly, without oversizing the fix.",
+    response: "Mission is one of the nearer Johnson County stops on our route, around 30 minutes from Oak Grove via I-35 and Shawnee Mission Parkway, so most repair calls booked by early afternoon are handled same-day. No distance surcharge to a Mission or Mission Hills address.",
+    metaDescription: "Garage door repair in Mission and Mission Hills, KS: springs, openers, off-track doors and new installs. Same-day first-ring service. Call (816) 288-3574.",
     sections: [
-      {
-        title: "Right-sized service for first-ring homes.",
-        body: "The typical Mission garage doesn't need a premium 18-footer; it needs an honest single-car door that fits an older opening, runs quietly next to a bedroom, and doesn't cost more than the problem justifies. That's the work we do here weekly: spring replacements on aging hardware, torsion conversions, weather seal that finally stops the winter draft, and clean traditional door styles that suit the neighborhood's character.",
-      },
+      { title: "Right-sized service for first-ring homes.", body: "The typical Mission garage doesn't need a premium 18-footer; it needs an honest single-car door that fits an older opening, runs quietly next to a bedroom, and doesn't cost more than the problem justifies. That's the work we do here weekly: spring replacements on aging hardware, torsion conversions, weather seal that finally stops the winter draft, and clean traditional door styles that suit the neighborhood's character." },
+      { title: "From Mission proper to Mission Hills, one call covers it.", body: "The Mission area spans a lot in a short distance: modest first-ring bungalows along Johnson Drive, and the estate homes just south in Mission Hills where the garage door is part of a carefully kept facade. We work both without a different attitude for either. On the smaller homes it is honest spring and opener repair that does not oversell the fix; in Mission Hills it is precise installs, quiet belt and side-mount openers, and finish-careful service on premium doors. Either way you get a family-run crew, flat rates quoted up front, and a real person answering the phone." },
+    ],
+    faqs: [
+      { q: "Do you cover garage door repair in Mission Hills as well as Mission?", a: "Yes, both, along with the surrounding first-ring streets. Mission Hills homes tend to have premium doors that need finish-careful handling, and we service them without marring paint or glass. Mission proper is mostly straightforward spring and opener work. Same crew, same flat rates, no extra charge for either zip code." },
+      { q: "What door services do you actually offer around Mission?", a: "The full range: broken spring and cable replacement, doors put back on track, opener repair and replacement, weather sealing, and complete new door installation with old-door haul-away. We handle residential garages throughout the Mission area and carry parts for Clopay, Amarr, and C.H.I. doors on the truck." },
+      { q: "My Mission garage door is loud. Can that be fixed without a new door?", a: "Generally, yes. Noise on these older first-ring doors is often worn steel rollers, dry hinges, or a loose chain-drive opener. Swapping to nylon rollers, servicing the hardware, and tuning or replacing the opener with a belt drive quiets things down, no full replacement needed unless the door itself is failing." },
     ],
   },
   "roeland-park-ks": {
-    blurb:
-      "One of the first-ring's tidiest small cities, Roeland Park keeps its post-war homes in good order, and the garage doors here are overdue for the same attention.",
+    blurb: "One of the first-ring's tidiest small cities, Roeland Park keeps its post-war homes in good order, and the garage doors here are overdue for the same attention.",
+    response: "Roeland Park sits right on the state line off I-35, one of the closer Johnson County stops from Oak Grove, so daytime repair calls are almost always same-day. Flat rate to any Roeland Park address, and the 24/7 line reaches a real technician after hours.",
+    metaDescription: "Garage door repair in Roeland Park, KS: broken springs, openers, off-track doors and safety upgrades. Same-day first-ring service. Call (816) 288-3574.",
     sections: [
-      {
-        title: "Keeping older garages safe and current.",
-        body: "Roeland Park garages often still run on hardware from decades past: extension springs without safety cables, openers that predate mandatory auto-reverse, and doors heavy enough to be dangerous when something lets go. We bring these setups up to modern safety standards without overselling: torsion conversions, code-current openers with photo eyes, and solid insulated single-car doors that suit the housing stock and the budget.",
-      },
+      { title: "Keeping older garages safe and current.", body: "Roeland Park garages often still run on hardware from decades past: extension springs without safety cables, openers that predate mandatory auto-reverse, and doors heavy enough to be dangerous when something lets go. We bring these setups up to modern safety standards without overselling: torsion conversions, code-current openers with photo eyes, and solid insulated single-car doors that suit the housing stock and the budget." },
+      { title: "A quick, close stop on the first-ring route.", body: "Roeland Park is compact and close in, tucked against the state line just off I-35, which makes it one of the faster Johnson County addresses to reach from the shop. Most repair calls here are the classic list: a broken spring, a door that stalls halfway, an opener grinding on its last gear. We diagnose over the phone, confirm the price in your driveway, and finish from what is on the truck, typically the same day you call. On the tight post-war lots common here we work cleanly and get in and out without turning your one-car driveway into a job site." },
+    ],
+    faqs: [
+      { q: "How quickly can you get to a garage door repair in Roeland Park?", a: "Fast. Roeland Park is one of the nearer Johnson County stops on our daily route, so morning calls usually get an afternoon arrival. Broken springs, off-track doors, and dead openers are truck-stock repairs that finish in one visit, priced before we begin, with a real tech on the 24/7 line after hours." },
+      { q: "Is my old Roeland Park garage door safe to keep using?", a: "It depends on the hardware. Many homes here still run extension springs without safety cables and openers that predate auto-reverse, both of which can be dangerous when something fails. We bring these up to code with torsion conversions, photo-eye sensors, and current openers, without pushing a full door you do not need." },
+      { q: "What should I expect to pay for a Roeland Park spring or opener fix?", a: "Most repairs land between $150 and $450, with spring replacements running $200 to $400 depending on the door's size and weight. We quote the flat price up front, and there is no distance surcharge for a Roeland Park address, so the number you hear on the phone is the number you pay." },
     ],
   },
   "kansas-city-ks": {
-    blurb:
-      "From Strawberry Hill's century-old homes to the Legends' newer rooftops and the industrial corridors along I-70, KCK covers more door variety per mile than anywhere in the metro.",
+    blurb: "From Strawberry Hill's century-old homes to the Legends' newer rooftops and the industrial corridors along I-70, KCK covers more door variety per mile than anywhere in the metro.",
+    response: "Kansas City, Kansas is a straight run west on I-70 from our Oak Grove shop, about 30 minutes, and it is a daily route for our crews, so same-day is the norm from Strawberry Hill to the Legends and the Fairfax industrial district. Emergency and commercial down-door calls jump the line.",
+    metaDescription: "Overhead and garage door repair in Kansas City, KS: commercial roll-up, dock doors, springs and openers. 24-hour service across Wyandotte County. (816) 288-3574.",
     sections: [
-      {
-        title: "Every kind of door Wyandotte County can throw at us.",
-        body: "KCK service calls range from a 1920s detached garage off Central Avenue to a dock door in the Fairfax industrial district to a builder-grade spring failure out west near the Legends. We run all of it: residential repairs and replacements, commercial and rolling steel service, and the odd-sized custom fits that older Wyandotte housing demands. Flat rates hold across the county line, and same-day is the standard response inside our core zone.",
-      },
+      { title: "Every kind of door Wyandotte County can throw at us.", body: "KCK service calls range from a 1920s detached garage off Central Avenue to a dock door in the Fairfax industrial district to a builder-grade spring failure out west near the Legends. We run all of it: residential repairs and replacements, commercial and rolling steel service, and the odd-sized custom fits that older Wyandotte housing demands. Flat rates hold across the county line, and same-day is the standard response inside our core zone." },
+      { title: "Commercial overhead doors that cannot afford downtime.", body: "A lot of what people search for in KCK is commercial: overhead doors, roll-up and rolling steel, dock doors in the Fairfax and Armourdale districts where a jammed bay stops trucks and stops revenue. That is core work for us. We repair and replace sectional overhead doors, service rolling steel and high-cycle openers, fix bent tracks and snapped springs on dock equipment, and run planned maintenance that catches fatigue before it strands a loading bay. When a door goes down off-hours, the 24-hour line reaches a real technician, not a message service. Flat rates hold across the Wyandotte County line, same as our residential work." },
+    ],
+    faqs: [
+      { q: "Do you do commercial overhead door repair in Kansas City, KS?", a: "Yes, it is a big part of our KCK work. We service sectional overhead doors, rolling steel, and dock doors across the Fairfax and Armourdale industrial areas, including springs, cables, tracks, and commercial openers. We also offer planned maintenance so a heavily cycled bay door does not fail at the worst possible moment." },
+      { q: "Is there 24 hour garage door service in Kansas City, KS?", a: "There is, and the after-hours line reaches an actual Carlisle technician rather than an answering service. For a business bay stuck down or a home door stuck open, we can advise immediately and dispatch. Round-the-clock coverage extends across Wyandotte County at the same flat rates as daytime calls." },
+      { q: "Who repairs overhead doors and dock equipment near the Fairfax district?", a: "We do. The Fairfax and Kaw Point areas run doors hard all day, so we keep rolling steel parts, heavy springs, and dock hardware on the truck. Most repairs finish in one visit, and for a building full of bays we can set up scheduled maintenance to keep the whole place off the emergency list." },
+      { q: "Can you replace steel garage doors on a KCK home?", a: "Absolutely. Insulated steel is the workhorse choice here, standing up to Kansas summers and ice storms without the premium markup. We install Clopay, Amarr, and C.H.I. steel doors with 20,000-cycle springs standard, haul the old door away, and quote it flat-rate with samples brought to your driveway." },
     ],
   },
   "bonner-springs-ks": {
-    blurb:
-      "Where the metro starts feeling like the country, Bonner Springs mixes in-town homes with acreage properties, and garage door calls here often come with a shop building attached.",
+    blurb: "Where the metro starts feeling like the country, Bonner Springs mixes in-town homes with acreage properties, and garage door calls here often come with a shop building attached.",
+    response: "Bonner Springs is a straight shot west on I-70 from Oak Grove, roughly 40 minutes, and it falls on our regular Wyandotte County route, so repair calls generally earn a same-day or next-morning slot. Flat rate whether it is the house garage or the shop out back.",
+    metaDescription: "Garage door repair in Bonner Springs, KS: broken springs, openers, off-track doors plus shop and outbuilding doors. Same-day service. Call (816) 288-3574.",
     sections: [
-      {
-        title: "Town doors and shop doors in one trip.",
-        body: "Plenty of Bonner Springs properties have both a house garage and an outbuilding, and we're set up to service both in a single visit: residential spring and opener work on the house, taller commercial-grade doors and heavier track on the shop. New pole barn going up? We'll spec doors that match the building's frame and your equipment height before the concrete cures.",
-      },
+      { title: "Town doors and shop doors in one trip.", body: "Plenty of Bonner Springs properties have both a house garage and an outbuilding, and we're set up to service both in a single visit: residential spring and opener work on the house, taller commercial-grade doors and heavier track on the shop. New pole barn going up? We'll spec doors that match the building's frame and your equipment height before the concrete cures." },
+      { title: "Straightforward repairs, one visit, honest price.", body: "Most Bonner Springs calls are simpler than the shop-building work the town is known for: a garage door that will not close, a spring that let go overnight, an opener that hums but will not lift. Bonner Springs is a clean run west on I-70 from our Oak Grove shop, so those repairs slot into the route without a distance penalty on the bill. We carry springs, cables, rollers, and opener parts on the truck, quote the flat price before we start, and finish the job in a single visit. High-cycle 20,000-cycle springs are the standard replacement, so you are not calling us back next winter." },
+    ],
+    faqs: [
+      { q: "Can you repair a garage door in Bonner Springs the day I call?", a: "Typically, yes. Bonner Springs is a straight run west on I-70 and sits on our regular Wyandotte County route, so morning calls usually get same-day or next-morning service. Broken springs, off-track doors, and failed openers are truck-stock repairs finished in one visit, with the flat price quoted before we start." },
+      { q: "Do you handle both the house and the shop door on one Bonner Springs visit?", a: "Yes, that is common out here. Plenty of Bonner Springs properties have a house garage plus a detached shop or pole barn. We service the residential door and the taller commercial-grade shop door on the same trip, carrying heavier track and high-cycle hardware for the outbuilding side." },
+      { q: "What size door do I need for a new shop in Bonner Springs?", a: "That depends on what you are parking. We spec doors to your actual equipment height, commonly 10 to 14 feet tall for shops and pole barns, with commercial track and openers rated for daily use. Call before the concrete cures and we will size the opening to save you money on the door." },
     ],
   },
   "edwardsville-ks": {
-    blurb:
-      "Small, quiet, and right off I-70 between KCK and Bonner Springs, Edwardsville gets the same stocked-truck service as the big suburbs, usually faster.",
+    blurb: "Small, quiet, and right off I-70 between KCK and Bonner Springs, Edwardsville gets the same stocked-truck service as the big suburbs, usually faster.",
+    response: "Edwardsville sits right on I-70 between KCK and Bonner Springs, a stretch our trucks run daily, so repairs here usually slot in same-day or the next morning despite the small-town size. Flat metro rates, no surcharge for the drive.",
+    metaDescription: "Garage door repair in Edwardsville, KS: broken springs, openers, off-track fixes and new door installs. Same-day I-70 corridor service. Call (816) 288-3574.",
     sections: [
-      {
-        title: "No town too small for a full-service call.",
-        body: "Edwardsville homeowners sometimes assume they'll wait longer because the town is small. It's the opposite: we pass through this stretch of I-70 daily, so repairs slot into our route quickly. Springs, cables, openers, panel damage, and full replacements all run at the same metro flat rates, and the growing warehouse corridor nearby means our commercial crew is often minutes away.",
-      },
+      { title: "No town too small for a full-service call.", body: "Edwardsville homeowners sometimes assume they'll wait longer because the town is small. It's the opposite: we pass through this stretch of I-70 daily, so repairs slot into our route quickly. Springs, cables, openers, panel damage, and full replacements all run at the same metro flat rates, and the growing warehouse corridor nearby means our commercial crew is often minutes away." },
+      { title: "Real service for the homes between the warehouses.", body: "Edwardsville is small and easy to overlook, wedged along I-70 between KCK and Bonner Springs, but the homes here get the same full treatment as any big suburb. Broken spring, frayed cable, door hanging off the track, opener that quit: we carry the parts on the truck and finish most of it in one visit. Because we pass through this stretch of I-70 daily, an Edwardsville repair rarely means a long wait, and the flat rate is identical to what a house in Shawnee or Lenexa pays. Free estimates on new doors, old-door haul-away included, and a real person on the phone." },
+    ],
+    faqs: [
+      { q: "Will I wait longer for garage door service because Edwardsville is small?", a: "No, usually the opposite. Our trucks run this stretch of I-70 daily, so an Edwardsville repair slots into the route quickly, often same-day or the next morning. You get the same stocked-truck, one-visit service and the same flat rates as the larger suburbs, with no distance surcharge." },
+      { q: "What does a garage door repair in Edwardsville usually involve?", a: "Most calls are broken springs, worn rollers or cables, doors off their track, or a failing opener. We carry those parts on the truck, so the fix happens on the first visit for $150 to $450, springs $200 to $400. The price is quoted flat before any work starts." },
+      { q: "Can you put in a new garage door at an Edwardsville home?", a: "Yes. We install Clopay, Amarr, and C.H.I. doors, insulated steel being the practical favorite here, with 20,000-cycle springs standard. Estimates are free and samples come to your driveway, installation typically lands within one to two weeks, and we haul the old door away at no extra charge." },
     ],
   },
   "gardner-ks": {
-    blurb:
-      "Where the Oregon and Santa Fe trails split, Gardner is now one of Johnson County's fastest-growing family towns, with the logistics corridor next door keeping commercial doors busy too.",
+    blurb: "Where the Oregon and Santa Fe trails split, Gardner is now one of Johnson County's fastest-growing family towns, with the logistics corridor next door keeping commercial doors busy too.",
+    response: "Gardner marks the southwest corner of Johnson County, roughly an hour from our Oak Grove shop by way of I-70 and I-35. Our Kansas crews pass through daily, so same-day repair is the standard here, not a premium.",
+    metaDescription: "Residential garage door repair in Gardner, KS done same-day: broken springs, openers, and off-track doors fixed at flat rates by a family crew. Call (816) 288-3574.",
     sections: [
-      {
-        title: "Growing families, hard-working doors.",
-        body: "Gardner's newer subdivisions are full of young families cycling their doors six to ten times a day, which burns through builder-grade springs years ahead of schedule. We install high-cycle springs as standard and quiet belt openers that don't wake the baby. Nearby, the intermodal and warehouse growth means dock and rolling steel doors on tight uptime requirements, and our commercial maintenance program keeps them off the emergency list.",
-      },
+      { title: "Growing families, hard-working doors.", body: "Gardner's newer subdivisions are full of young families cycling their doors six to ten times a day, which burns through builder-grade springs years ahead of schedule. We install high-cycle springs as standard and quiet belt openers that don't wake the baby. Nearby, the intermodal and warehouse growth means dock and rolling steel doors on tight uptime requirements, and our commercial maintenance program keeps them off the emergency list." },
+      { title: "Residential repair, start to finish, in one visit.", body: "When Gardner homeowners search for residential garage door repair, they are usually staring at one of three problems: a spring that let go with a bang, a door that stopped halfway and will not seat, or an opener grinding without lifting. Our trucks carry high-cycle springs, cables, rollers, and the common opener parts, so nearly all of it gets fixed on the first trip. We quote the flat price in your driveway before touching a tool, test the door's balance and safety reverse before we leave, and haul the old parts away. No parts-runs, no second appointment, and no distance fee for the drive out to the county's edge." },
+    ],
+    faqs: [
+      { q: "Do you do residential garage door repair in Gardner, KS?", a: "Yes, residential repair is the bulk of what we do in Gardner. Broken torsion springs, frayed cables, worn rollers, off-track doors, and dead openers all get handled from a stocked truck, usually in one visit. We quote the flat price in your driveway first, then test the door's balance and safety reverse before we leave." },
+      { q: "How quickly can a technician reach Gardner for a broken spring?", a: "Our Kansas crews run the I-35 corridor daily, so a broken spring reported in the morning is usually fixed that afternoon. Gardner's spot at the county's edge does not slow us down or add a fee. We carry 20,000-cycle springs on the truck, so the replacement is a permanent upgrade, not a like-for-like swap." },
+      { q: "What might a garage door repair in Gardner cost?", a: "Most repairs land between $150 and $450, with spring jobs typically $200 to $400 depending on size and whether one or both need replacing. We charge flat rates with no distance surcharge for the drive to Gardner, and you get the full number before any work starts. Estimates on new doors are free." },
     ],
   },
   "de-soto-ks": {
-    blurb:
-      "With the giant battery plant transforming the K-10 corridor, De Soto is growing faster than anyone expected, and both its new construction and its established acreages need door work.",
+    blurb: "With the giant battery plant transforming the K-10 corridor, De Soto is growing faster than anyone expected, and both its new construction and its established acreages need door work.",
+    response: "De Soto sits on the K-10 corridor at the western edge of Johnson County, an easy hop off our daily Kansas loop. Repairs are typically same-day, and new-door installs get scheduled within days, not weeks.",
+    metaDescription: "Garage door installation and repair in De Soto, KS: new doors, openers, and springs at flat rates, free estimates, and fast K-10 service. Call (816) 288-3574.",
     sections: [
-      {
-        title: "A small town in a big growth moment.",
-        body: "De Soto's new rooftops come with builder-grade doors that will need real service within the decade, and we're already fielding calls from the first wave. The town's older properties and acreages along the Kansas River valley bring the classic rural mix: shop buildings, oversized doors, and equipment bays. Whichever side of De Soto's growth story you're on, K-10 puts you minutes from our daily Johnson County route.",
-      },
+      { title: "A small town in a big growth moment.", body: "De Soto's new rooftops come with builder-grade doors that will need real service within the decade, and we're already fielding calls from the first wave. The town's older properties and acreages along the Kansas River valley bring the classic rural mix: shop buildings, oversized doors, and equipment bays. Whichever side of De Soto's growth story you're on, K-10 puts you minutes from our daily Johnson County route." },
+      { title: "Installing a new door, measured and hauled in one stop.", body: "De Soto's search history leans toward installs, and no wonder: between the new subdivisions off Lexington Avenue and older homes finally retiring a tired door, a lot of folks here are ready for a replacement. We bring the sample styles to your driveway, measure the opening on the spot, and give a flat, all-in quote with the old-door haul-away included. Clopay, Amarr, and C.H.I. steel doors, insulated if you want the garage or shop usable year-round, typically go in within a week or two of ordering. One crew handles the tear-out, the new door and opener, and the setup, so there is no juggling separate contractors." },
+    ],
+    faqs: [
+      { q: "How does garage door installation work in De Soto?", a: "We start with a free driveway visit: measure the opening, show you Clopay, Amarr, and C.H.I. samples, and give one flat, all-in price. Once you pick a style, installation usually happens within a week or two. Our crew handles tear-out, the new door and opener, and haul-away of the old one, all in a single appointment." },
+      { q: "Do you replace just the door, or the opener too?", a: "Either or both. Plenty of De Soto installs pair a new insulated steel door with a quiet belt-drive opener and battery backup, but we are glad to reuse a good opener and swap only the door, or the reverse. We will tell you honestly what is worth keeping so you are not paying for hardware you do not need." },
+      { q: "What garage door brands do you carry near De Soto?", a: "Our lineup is Clopay, Amarr, and C.H.I., which covers everything from budget-friendly single-layer steel to fully insulated carriage-house styles. For the acreages and shops around De Soto, we also spec taller, heavier commercial-grade doors. Whatever the opening, we bring samples to you so you can see the panel and color against your own house." },
+      { q: "Is De Soto too far out for same-day repair?", a: "Not at all. De Soto rides our regular K-10 route, so repairs are typically same-day and installs get scheduled within days. There is no distance surcharge on the drive from Oak Grove, and emergencies reach a real technician any hour, not an answering service." },
     ],
   },
   "spring-hill-ks": {
-    blurb:
-      "Straddling the Johnson-Miami county line, Spring Hill is new-build country: young subdivisions, first-time spring failures, and homeowners upgrading plain builder doors street by street.",
+    blurb: "Straddling the Johnson-Miami county line, Spring Hill is new-build country: young subdivisions, first-time spring failures, and homeowners upgrading plain builder doors street by street.",
+    response: "Spring Hill straddles the Johnson-Miami county line at the metro's southern edge, and our Kansas trucks run it regularly off US-169. Same-day repair is the norm here, and new-door estimates are free.",
+    metaDescription: "Trusted garage door company in Spring Hill, KS for repair, installation, and replacement. Same-day service, free estimates, and flat rates. Call (816) 288-3574.",
     sections: [
-      {
-        title: "First failures and first upgrades.",
-        body: "Spring Hill's housing boom is recent enough that many homeowners are hitting their first garage door problem right now, usually a snapped builder spring or an opener that gave up early. We fix it same-day with hardware rated for twice the cycles, and while we're there, plenty of owners ask about upgrading the plain white door to something with windows and insulation. Estimates are free and samples come to the driveway.",
-      },
+      { title: "First failures and first upgrades.", body: "Spring Hill's housing boom is recent enough that many homeowners are hitting their first garage door problem right now, usually a snapped builder spring or an opener that gave up early. We fix it same-day with hardware rated for twice the cycles, and while we're there, plenty of owners ask about upgrading the plain white door to something with windows and insulation. Estimates are free and samples come to the driveway." },
+      { title: "One local company for repair, replacement, and everything after.", body: "Homeowners here often search for a garage door company rather than a quick fix, and that is the right instinct: the outfit that replaces your door should also be the one you call when a roller wears or a sensor drifts three years later. We are a family-run company, not a rotating cast of subcontractors, so the same crew that installs your Clopay or Amarr door answers the phone when you need service on it. Repair, full replacement, opener upgrades, and routine tune-ups all come from one number, at flat rates that do not change whether you are on the Johnson or Miami County side of town." },
+    ],
+    faqs: [
+      { q: "Is there a garage door company that serves Spring Hill?", a: "We do, on both the Johnson and Miami county sides of town. As a family-run company rather than a lead-passing middleman, we handle repair, full replacement, opener work, and routine service from one number. Our Kansas trucks run the area regularly, so most repairs are same-day and new-door estimates are free." },
+      { q: "Can you replace a garage door in Spring Hill and haul the old one away?", a: "Absolutely. Replacement is a big part of our Spring Hill work: we bring style samples to your driveway, quote a flat all-in price, install the new door and opener, and take the old door and springs with us. Most replacements are scheduled within a week or two of the day you pick a style." },
+      { q: "What are the most common garage door repairs in Spring Hill?", a: "In these newer neighborhoods it is usually first-time failures: a builder-grade spring that snapped, an opener that died young, or a door off its track after a bump. We fix all three from truck stock in one visit and upgrade the springs to 20,000-cycle hardware so you are not repeating the repair in a few years." },
     ],
   },
   "basehor-ks": {
-    blurb:
-      "One of Leavenworth County's fastest-growing communities, Basehor pairs new subdivisions with rural properties, and its garage doors range from brand-new builder grade to well-used shop doors.",
+    blurb: "One of Leavenworth County's fastest-growing communities, Basehor pairs new subdivisions with rural properties, and its garage doors range from brand-new builder grade to well-used shop doors.",
+    response: "Basehor sits in Leavenworth County northwest of the metro, reached off 24-40 Highway and K-7 on our regular Kansas route. Same-day repairs are standard, and we cover the surrounding acreages at the same flat rate.",
+    metaDescription: "Garage door repair and installation in Basehor, KS: broken springs, openers, and new doors for homes and shops, same-day at flat rates. Call (816) 288-3574.",
     sections: [
-      {
-        title: "New neighborhoods, country property, one door crew.",
-        body: "Basehor calls split evenly: builder-door service in the newer subdivisions off 24-40 Highway, and heavier work on the acreages, where shop buildings and detached garages need commercial-grade doors and track. We handle both from the same truck, with high-cycle springs standard on replacements and honest quotes on whether an aging door is worth repairing or ready for retirement.",
-      },
+      { title: "New neighborhoods, country property, one door crew.", body: "Basehor calls split evenly: builder-door service in the newer subdivisions off 24-40 Highway, and heavier work on the acreages, where shop buildings and detached garages need commercial-grade doors and track. We handle both from the same truck, with high-cycle springs standard on replacements and honest quotes on whether an aging door is worth repairing or ready for retirement." },
+      { title: "Doors that hold up to a Leavenworth County winter.", body: "Out here the wind comes across open ground and the temperature swings hard, which is rough on an uninsulated door and the opener behind it. When Basehor homeowners replace a builder-grade panel, we usually steer them toward an insulated steel door with a solid bottom seal: quieter, sturdier against dings, and a real difference in an attached garage or a heated shop. Cold also stiffens grease and tires out weak springs, so a door that struggled in November often fails outright in January. If yours is groaning in the cold, a quick tune-up now beats an emergency call at ten below zero." },
+    ],
+    faqs: [
+      { q: "Do you service garage doors in Basehor and the surrounding acreages?", a: "Both the newer subdivisions and the outlying acreages are on our regular Kansas route off 24-40 Highway. House doors, detached garages, and shop buildings get serviced from the same truck at the same flat rate, with no extra charge for a rural address. Emergencies reach a real technician any hour." },
+      { q: "Should I repair or replace an older garage door in Basehor?", a: "It depends on the door and the failure. A single broken spring on a solid door is worth repairing every time. But if the panels are dented and rusting, the door is uninsulated, and the opener is aging too, replacement often costs less over five years. We give you both numbers and let you decide, no pressure." },
+      { q: "Is it worth insulating a new garage door out here?", a: "For an attached garage or a heated shop, usually yes. Basehor sits in open country where wind and cold cut right through a single-layer door, and insulation makes an attached garage noticeably quieter and easier to heat. It also stiffens the panel against dings. For a detached cold-storage garage, a basic steel door may be plenty." },
+      { q: "What if my door quits on a freezing night?", a: "Call the same number, any hour. Cold is exactly when weak springs and stiff openers give out, so we keep the emergency line staffed with a real technician, not an answering service. We will either roll out that night or walk you through securing the door safely until morning, whichever makes sense for your situation." },
     ],
   },
-
-  /* ================= Extended Ring, 25 to 50 miles ================= */
-
   "excelsior-springs-mo": {
-    blurb:
-      "The old spa town's historic homes and hillside streets give Excelsior Springs some of the most character-filled garages in the metro, and some of the trickiest fits.",
+    blurb: "The old spa town's historic homes and hillside streets give Excelsior Springs some of the most character-filled garages in the metro, and some of the trickiest fits.",
+    response: "Excelsior Springs sits northeast in Clay County, and we run the route daily from Oak Grove. Most repairs are handled same-day, and true emergencies get a real technician dispatched around the clock.",
+    metaDescription: "24 hour garage door repair in Excelsior Springs, MO: opener repair, broken spring replacement, and off-track fixes by a real technician. Call (816) 288-3574.",
     sections: [
-      {
-        title: "Historic homes need doors that fit, literally and visually.",
-        body: "Excelsior Springs garages were often added to homes decades after they were built, wedged into hillsides and alleys with openings that ignore every standard size chart. We measure, fabricate the fit, and match styles that suit a historic street: carriage-house steel, clean traditional panels, and colors that don't fight the house. Modern springs and openers go in behind the vintage look, so the door works like it's new, because it is.",
-      },
+      { title: "Historic homes need doors that fit, literally and visually.", body: "Excelsior Springs garages were often added to homes decades after they were built, wedged into hillsides and alleys with openings that ignore every standard size chart. We measure, fabricate the fit, and match styles that suit a historic street: carriage-house steel, clean traditional panels, and colors that don't fight the house. Modern springs and openers go in behind the vintage look, so the door works like it's new, because it is." },
+      { title: "Openers, springs, and the call that comes at 3 a.m.", body: "The searches out of Excelsior Springs are specific: opener repair, spring repair, and 24 hour service, and those are exactly the three we run here most. A worn opener that reverses for no reason usually needs new gears, a logic board, or realigned safety eyes, not a whole new unit. A broken spring, the loud bang that leaves the door dead weight, gets replaced with a 20,000-cycle set the same visit. And when a door quits at an hour that is not convenient, the emergency line reaches an actual technician who can talk you through securing it or roll out that night to fix it." },
+    ],
+    faqs: [
+      { q: "Can you fix a garage door opener in Excelsior Springs, MO?", a: "Opener repair is one of our most frequent Excelsior Springs calls. A unit that reverses for no reason, hums without lifting, or ignores the remote usually needs new gears, a logic board, or realigned safety eyes, not a whole new motor. We stock common opener parts and reset the force and travel settings before leaving." },
+      { q: "How much does garage spring repair run in Excelsior Springs?", a: "Spring replacement typically falls between $200 and $400, depending on the door's size and whether one or both springs need swapping. We install 20,000-cycle springs, roughly double the builder-grade lifespan, and quote the flat price before starting. It is a same-visit fix, with no surcharge for the drive out to Clay County." },
+      { q: "Do you really offer 24 hour garage door repair in Excelsior Springs?", a: "Around the clock, yes. The emergency line reaches an actual technician at any hour, not a call center. A door stuck open leaves your home exposed and a car trapped inside is its own emergency, so we prioritize those calls and either dispatch that night or help you secure the door until morning. No after-hours gimmick pricing." },
+      { q: "My garage spring broke with a loud bang. Is the door safe to use?", a: "No, stop using it. A snapped spring means the opener is now lifting the door's full dead weight, which can burn out the motor or send the door crashing if a cable lets go. Disconnect the opener, leave the door down, and call us. We replace the spring set the same visit and rebalance the door." },
     ],
   },
   "oak-grove-mo": {
-    blurb:
-      "This is home. Carlisle Overhead Doors is based in Oak Grove, and when a neighbor's door breaks, the truck is often there before the coffee's cold.",
+    blurb: "This is home. Carlisle Overhead Doors is based in Oak Grove, and when a neighbor's door breaks, the truck is often there before the coffee's cold.",
+    response: "This is our home town: the trucks park here, so there is no drive time to speak of. Call in the morning and we are often in your driveway before lunch, with emergencies answered by a real person any hour.",
+    metaDescription: "Garage door repair and installation in Oak Grove, MO from your hometown crew. Springs, openers, and new doors, same-day at flat rates. Call (816) 288-3574.",
     sections: [
-      {
-        title: "Our own backyard.",
-        body: "Oak Grove is where Tyler parks the trucks, so response here is as fast as it gets: no routing, no scheduling gymnastics, just a short drive across town. We service everything local: in-town homes, the acreages and shop buildings that surround the city, and the I-70 corridor businesses that keep this stretch of Jackson County moving. If you've seen our wooden sign around town, you know where to find us, and the phone number on it rings a real person.",
-      },
+      { title: "Our own backyard.", body: "Oak Grove is where Tyler parks the trucks, so response here is as fast as it gets: no routing, no scheduling gymnastics, just a short drive across town. We service everything local: in-town homes, the acreages and shop buildings that surround the city, and the I-70 corridor businesses that keep this stretch of Jackson County moving. If you've seen our wooden sign around town, you know where to find us, and the phone number on it rings a real person." },
+      { title: "The town where our name is on the sign, too.", body: "Being based in Oak Grove means our reputation lives where we do: the neighbors who see our trucks are the same people who send referrals, so we cannot afford a job done halfway. When someone in town wants a new door, we treat it like it is going on a house we will drive past every day, because it is. We install Clopay, Amarr, and C.H.I. doors in styles that suit everything from the older homes near Broadway to the newer builds off the highway, measure twice, and haul the old door away. Repairs, springs, and openers get the same one-visit treatment, minutes from the shop." },
+    ],
+    faqs: [
+      { q: "You're based in Oak Grove, so how fast can you actually get here?", a: "Usually within the hour. The trucks park in town, so there is no cross-metro drive: a morning repair call is often in your driveway before lunch. It is the fastest response we offer anywhere, and after-hours emergencies reach a real technician, since that is the local crew, not an answering service across the country." },
+      { q: "If I want a new door, can you install it here in Oak Grove?", a: "Regularly. We treat local installs like they are going on a house we will drive past daily, because we will. We bring Clopay, Amarr, and C.H.I. samples to your driveway, measure the opening, quote a flat price, and haul the old door off. Styles suit older homes near Broadway and newer builds by the highway alike." },
+      { q: "Is emergency service available in Oak Grove?", a: "Any hour, any day. Being the home base means the emergency line rings the same local crew that works the town in daylight, so there is no dispatch delay and no unfamiliar subcontractor. Broken spring at night, door stuck open, car trapped inside: call and we will either come out or talk you through making it safe." },
     ],
   },
   "odessa-mo": {
-    blurb:
-      "One exit east of our shop on I-70, Odessa is practically home turf. Farm properties, in-town homes, and shop buildings all get the neighbor treatment here.",
+    blurb: "One exit east of our shop on I-70, Odessa is practically home turf. Farm properties, in-town homes, and shop buildings all get the neighbor treatment here.",
+    response: "Odessa is a single exit east of our shop on I-70, about ten minutes door to door, which makes it some of the fastest service we run anywhere. Same-day is the default, and after-hours calls reach a technician, not a machine.",
+    metaDescription: "Garage door repair, service, and new installation in Odessa, MO, just off I-70. Same-day springs, openers, and doors at flat rates. Call (816) 288-3574.",
     sections: [
-      {
-        title: "Next-exit neighbors.",
-        body: "Odessa sits ten minutes down I-70 from our Oak Grove base, inside what we consider our home zone. In-town calls run the usual springs, openers, and replacements. Outside town, Lafayette County acreage means real outbuildings: 12-foot equipment doors, insulated shop doors that keep a wood stove's heat, and heavy-duty track that stands up to farm use. Same-day service is the default, not the upgrade.",
-      },
+      { title: "Next-exit neighbors.", body: "Odessa sits ten minutes down I-70 from our Oak Grove base, inside what we consider our home zone. In-town calls run the usual springs, openers, and replacements. Outside town, Lafayette County acreage means real outbuildings: 12-foot equipment doors, insulated shop doors that keep a wood stove's heat, and heavy-duty track that stands up to farm use. Same-day service is the default, not the upgrade." },
+      { title: "Close enough to make a new install effortless.", body: "A new door usually means two trips: one to measure and quote, one to install. From Odessa that is barely a detour for us, ten minutes each way, so scheduling a replacement here is genuinely easy. We bring samples out, measure your opening, and set an install date that is rarely more than a week or two off. Because we are this close, we also stand behind the work without making you wait: if a new opener needs a setting tweaked or a panel adjusted after install, we swing back through on the next I-70 run. Flat rates, free estimates, and no surcharge for the exit east." },
+    ],
+    faqs: [
+      { q: "How fast is garage door repair in Odessa, MO?", a: "About as fast as it gets outside our home town. Odessa is one exit east on I-70, roughly ten minutes from the shop, so a repair booked in the morning is almost always a same-day fix. We carry springs, cables, rollers, and opener parts on the truck, so most jobs wrap in a single visit." },
+      { q: "Can you install a new garage door in Odessa?", a: "We install throughout Odessa, and being this close makes it painless. We swing out to measure and show samples, then return to install, usually within a week or two, without the scheduling hassle of a long-haul job. If the new opener needs a tweak afterward, we catch it on the next I-70 run through town." },
+      { q: "Do you service garage doors on farms and acreages around Odessa?", a: "Yes, often on the same trip as the house. Lafayette County outside town means real outbuildings, so we handle 12-foot equipment-bay doors, insulated shop doors that hold a wood stove's heat, and heavy-duty track built for farm use. Flat rates apply out on the section roads just like they do in town." },
     ],
   },
   "harrisonville-mo": {
-    blurb:
-      "The Cass County seat anchors the southern end of our core routes, with courthouse-square homes, newer subdivisions, and working farms all within a few minutes of each other.",
+    blurb: "The Cass County seat anchors the southern end of our core routes, with courthouse-square homes, newer subdivisions, and working farms all within a few minutes of each other.",
+    response: "Harrisonville anchors Cass County to our south, reached down 7 Highway and 291, and it is a daily stop on our extended route. Most repairs finish the same day, with 24/7 emergency dispatch behind them.",
+    metaDescription: "Garage doors and garage door repair in Harrisonville, MO: same-day spring, opener, and service calls at flat rates for homes and farms. Call (816) 288-3574.",
     sections: [
-      {
-        title: "County-seat variety, one flat rate.",
-        body: "Harrisonville work runs the full spread: older homes near the square with odd-sized openings, 90s and 2000s subdivisions hitting spring-replacement age, and rural properties along 291 and 71 Highway with barns and shops that need serious doors. We run Cass County regularly, carry hardware for all three kinds of calls on the same truck, and quote everything flat-rate before work starts.",
-      },
+      { title: "County-seat variety, one flat rate.", body: "Harrisonville work runs the full spread: older homes near the square with odd-sized openings, 90s and 2000s subdivisions hitting spring-replacement age, and rural properties along 291 and 71 Highway with barns and shops that need serious doors. We run Cass County regularly, carry hardware for all three kinds of calls on the same truck, and quote everything flat-rate before work starts." },
+      { title: "Shopping for a new garage door in Harrisonville.", body: "A lot of Harrisonville searches are simply for garage doors, folks weighing a replacement rather than one more repair on a tired panel. We make that easy: samples brought to your driveway, honest math on whether repair or replacement wins over five years, and flat quotes with haul-away built in. Clopay, Amarr, and C.H.I. give us styles from clean traditional to carriage-house looks that suit the older homes near the square, plus heavier insulated doors for the shops and barns out along 291. Once you pick, most installs happen within a week or two, and the same crew services that door for years afterward." },
+    ],
+    faqs: [
+      { q: "Where can I buy new garage doors in Harrisonville, MO?", a: "We bring the showroom to you. Instead of driving to a store, you get Clopay, Amarr, and C.H.I. samples in your own driveway, held against your house so you can judge style and color in real light. We quote flat, all-in prices with haul-away included, and most new doors go in within a week or two." },
+      { q: "Do you offer garage door service and maintenance in Harrisonville?", a: "Beyond repairs, we tune doors that still work but have gotten noisy or sluggish: balancing springs, replacing worn rollers, lubricating tracks, and resetting opener force before a small issue becomes a breakdown. Cass County is a regular route for us, so a maintenance visit is easy to schedule at a flat rate." },
+      { q: "What should I expect to pay for garage door repair in Harrisonville?", a: "Expect $150 to $450 for most repairs, with broken-spring jobs generally $200 to $400 depending on door size and what failed. You will have a flat quote before we start, and there is no surcharge for the drive down 7 Highway. New-door estimates are always free." },
     ],
   },
   "peculiar-mo": {
-    blurb:
-      "Yes, we get asked about the name on every visit. Peculiar's mix of small-town blocks and new growth along the 71 Highway corridor keeps our Cass County route interesting.",
+    blurb: "Yes, we get asked about the name on every visit. Peculiar's mix of small-town blocks and new growth along the 71 Highway corridor keeps our Cass County route interesting.",
+    response: "Peculiar sits along the 71 Highway corridor in Cass County, on our daily southern route from Oak Grove. Repairs are usually same-day, and emergency calls are priority-dispatched at any hour.",
+    metaDescription: "Garage door repair and installation in Peculiar, MO: broken springs, openers, and new doors, same-day at flat rates with free estimates. Call (816) 288-3574.",
     sections: [
-      {
-        title: "Nothing peculiar about a door that just works.",
-        body: "Peculiar is growing along the Raymore-Belton corridor, and its newer homes carry the standard builder-grade hardware we replace all over the metro, while its older streets and surrounding acreages bring rural door work: shop buildings, detached garages, and doors that haul real weight. High-cycle springs, quiet openers, honest quotes, and a crew that's heard every possible joke about the town name and still laughs.",
-      },
+      { title: "Nothing peculiar about a door that just works.", body: "Peculiar is growing along the Raymore-Belton corridor, and its newer homes carry the standard builder-grade hardware we replace all over the metro, while its older streets and surrounding acreages bring rural door work: shop buildings, detached garages, and doors that haul real weight. High-cycle springs, quiet openers, honest quotes, and a crew that's heard every possible joke about the town name and still laughs." },
+      { title: "Why the springs go first in a commuter town.", body: "Peculiar has filled up with families commuting north to Belton, Raymore, and the metro, and in a busy household the garage door is the real front door: up and down eight or ten times a day. That pace burns through builder-grade springs rated for only 10,000 cycles, which is why a snapped spring is the most common call we get here. We replace them with 20,000-cycle sets that roughly double the lifespan, swap noisy steel rollers for quiet nylon while we are at it, and check the opener's force settings so the new springs are not fighting an out-of-tune motor. One visit, flat rate, done." },
+    ],
+    faqs: [
+      { q: "Do you cover Peculiar, MO for garage door repair?", a: "Yes, Peculiar is a daily stop on our southern Cass County route along 71 Highway. Springs, openers, cables, and off-track doors get fixed from a stocked truck, usually same-day, with no distance charge added for the drive. After-hours emergencies reach a real technician who can dispatch or talk you through it." },
+      { q: "Why does my garage door spring keep breaking?", a: "Usually because it is a builder-grade spring rated for only about 10,000 cycles, and a busy Peculiar household commuting to Belton and Raymore can hit that in six or seven years. Every open-and-close counts as a cycle. We replace them with 20,000-cycle springs that roughly double the lifespan, pushing the next failure years further out." },
+      { q: "Can you make my garage door quieter?", a: "Almost always. Most of the racket comes from worn steel rollers, loose hardware, and an under-lubricated track, not the door itself. We swap in nylon rollers, tighten and align everything, grease the right points, and check the opener drive. If it is an old chain-drive opener, a belt-drive replacement is the quietest fix of all." },
     ],
   },
   "cameron-mo": {
-    blurb:
-      "At the crossroads of I-35 and US-36, Cameron is the hub of a big rural area, and garage door calls here as often involve a machine shed as a house.",
+    blurb: "At the crossroads of I-35 and US-36, Cameron is the hub of a big rural area, and garage door calls here as often involve a machine shed as a house.",
+    response: "Cameron sits north at the I-35 and US-36 crossroads, the anchor of our northern route, which we run regularly from Oak Grove. Most repairs are handled same-day, and we will gladly combine house and outbuilding work into one trip.",
+    metaDescription: "Overhead door service and garage doors in Cameron, MO: repair, installation, and spring fixes for homes, shops, and farm buildings. Call (816) 288-3574.",
     sections: [
-      {
-        title: "Crossroads service for town and farm.",
-        body: "Cameron anchors our northern extended route. In-town homes get the standard full service: springs, openers, and replacement doors at metro flat rates. The surrounding Clinton and DeKalb county farmland brings the bigger work: tall equipment-shed doors, commercial track and openers for shop buildings, and repairs on doors that have taken a beating from actual use. We schedule the area efficiently, so ask about combining house and outbuilding work in one visit.",
-      },
+      { title: "Crossroads service for town and farm.", body: "Cameron anchors our northern extended route. In-town homes get the standard full service: springs, openers, and replacement doors at metro flat rates. The surrounding Clinton and DeKalb county farmland brings the bigger work: tall equipment-shed doors, commercial track and openers for shop buildings, and repairs on doors that have taken a beating from actual use. We schedule the area efficiently, so ask about combining house and outbuilding work in one visit." },
+      { title: "Overhead door service for Cameron's Main Street and beyond.", body: "Cameron sits where two highways cross, so it carries more commercial doors than a town its size usually would: storefronts, service bays, warehouses, and the roll-up and dock doors that keep them running. When a business searches for overhead door service here, downtime is the real problem, so we prioritize down-door commercial calls and offer scheduled maintenance that catches spring fatigue before a bay strands a crew. Sectional, rolling steel, and dock doors all get serviced from the same truck that handles the house down the street. Ask about a maintenance plan that keeps your doors off the emergency list entirely." },
+    ],
+    faqs: [
+      { q: "Do you provide overhead door service in Cameron, MO?", a: "Yes, overhead door service is one of the top reasons Cameron calls us. That covers residential garage doors plus the commercial roll-up, sectional, and dock doors common around the I-35 and US-36 crossroads. We repair, tune, and maintain all of them from the same truck, and prioritize down-door commercial calls where downtime costs money." },
+      { q: "Will you install a new garage door in Cameron?", a: "We handle installs across Cameron and the surrounding farm country. After a free measure-and-quote visit, we set an install date, usually a week or two out, and one crew does tear-out, the new door and opener, and haul-away. Styles range from clean residential steel to tall, insulated doors for shops and equipment sheds." },
+      { q: "Do you sell garage doors for shops and machine sheds near Cameron?", a: "Often, and they are built for real work. Clinton and DeKalb county properties need serious doors, so we spec 12 to 14-foot equipment-bay doors, commercial-grade track and openers, and insulation for shops used year-round. We measure to your equipment height and building frame, and if you are building new, call before the concrete cures." },
+      { q: "How far is Cameron from your shop, and does that add to the cost?", a: "Cameron is our northern anchor, about an hour up I-35, and no, the distance never touches your bill. We run the route regularly, so repairs are usually same-day, and our flat rates hold exactly the same as they do in the metro. To make the trip count, ask about combining house and outbuilding work in one visit." },
     ],
   },
   "richmond-mo": {
-    blurb:
-      "The Mushroom Capital and Ray County seat sits in solid farm country, where garage doors share driveways with machine sheds, and we service both.",
+    blurb: "The Mushroom Capital and Ray County seat sits in solid farm country, where garage doors share driveways with machine sheds, and we service both.",
+    response: "Richmond is the Ray County seat north of the river, and we reach it on a straight run up MO-13 from Oak Grove. Extended-ring routing still means most Richmond repairs land same-day, with true emergencies dispatched around the clock.",
+    metaDescription: "Richmond overhead door and garage door repair in Ray County, MO. Same-day service, broken springs, openers, and new installs. Family-run, flat rate. Call (816) 288-3574.",
     sections: [
-      {
-        title: "Farm-country doors done properly.",
-        body: "Richmond calls regularly include the outbuildings: equipment sheds needing 12 to 14-foot doors, shops that want insulation so winter projects stay comfortable, and older barns getting proper overhead doors for the first time. In town, the county-seat housing stock spans a century, so we carry low-headroom track and odd-size solutions alongside the standard springs and openers. Scheduled visits are efficient; true emergencies still get same-day dispatch.",
-      },
+      { title: "Farm-country doors done properly.", body: "Richmond calls regularly include the outbuildings: equipment sheds needing 12 to 14-foot doors, shops that want insulation so winter projects stay comfortable, and older barns getting proper overhead doors for the first time. In town, the county-seat housing stock spans a century, so we carry low-headroom track and odd-size solutions alongside the standard springs and openers. Scheduled visits are efficient; true emergencies still get same-day dispatch." },
+      { title: "Same-day overhead door repair, right in town", body: "Not every Richmond call is a machine shed. Plenty are a broken spring on a Wednesday morning off North Thornton, an opener that quit, or a door that jumped its track and won't seal against Ray County winter. Search same day garage door repair Richmond and you get us: a stocked truck up MO-13, the spring or opener part already aboard, and the repair finished in one visit. We quote the number before we start, hold the same flat rate we charge in the metro, and treat a door stuck open overnight as the priority it is. Richmond folks tend to know the company by the name on the truck, and the phone still rings a real person." },
+    ],
+    faqs: [
+      { q: "Who does overhead door repair in Richmond, MO?", a: "We do, out of Oak Grove up MO-13. Carlisle Overhead Doors handles residential and commercial overhead doors across Ray County: broken springs, snapped cables, bent panels, and openers that quit. Most repairs finish in a single visit from truck stock, and we quote the flat rate before any work starts." },
+      { q: "Can you fix a Richmond garage door the same day I call?", a: "Usually, yes. Morning calls into Richmond typically get a same-day slot on our route, and the truck carries springs, rollers, cables, and common opener parts so we rarely need a second trip. Emergencies, like a door stuck open, jump the line day or night." },
+      { q: "How fast can you get to Richmond from Oak Grove?", a: "Richmond sits a straight shot north on MO-13, well inside our daily range. Scheduled repairs generally land the same day or next, and around-the-clock emergency calls get priority dispatch. There's no distance surcharge: you pay the same flat rate as a customer in town." },
+      { q: "What does a broken garage door spring cost to replace in Richmond?", a: "Most spring replacements run $200 to $400 depending on the door's size and weight, and we install 20,000-cycle springs so the next failure is far off. Broader repairs land between $150 and $450. We confirm the price in your driveway before touching a tool." },
     ],
   },
   "lexington-mo": {
-    blurb:
-      "Antebellum architecture, a historic battlefield, and river-town streets make Lexington's garages some of the most character-rich we serve, and modern doors have to earn their place here.",
+    blurb: "Antebellum architecture, a historic battlefield, and river-town streets make Lexington's garages some of the most character-rich we serve, and modern doors have to earn their place here.",
+    response: "Lexington is the Lafayette County seat on the Missouri River bluffs, one of the shorter extended-ring runs we make from Oak Grove up US-24. Same-day repair is routine here, and emergency calls get priority dispatch overnight and on weekends.",
+    metaDescription: "Looking for a garage door company in Lexington, MO? Carlisle Overhead Doors does repairs, springs, openers, and installs across Lafayette County. Flat rate, same-day. Call (816) 288-3574.",
     sections: [
-      {
-        title: "Respecting a historic streetscape.",
-        body: "On a street of 150-year-old homes, a glaring white builder door is vandalism. Lexington homeowners tend to choose carriage-house styles, muted colors, and window designs that suit the architecture, and we stock exactly those catalogs. Behind the period look goes modern hardware: sealed insulated steel, quiet openers, and springs sized to the door's actual weight. For the surrounding Lafayette County farmland, we run the full rural door service too.",
-      },
+      { title: "Respecting a historic streetscape.", body: "On a street of 150-year-old homes, a glaring white builder door is vandalism. Lexington homeowners tend to choose carriage-house styles, muted colors, and window designs that suit the architecture, and we stock exactly those catalogs. Behind the period look goes modern hardware: sealed insulated steel, quiet openers, and springs sized to the door's actual weight. For the surrounding Lafayette County farmland, we run the full rural door service too." },
+      { title: "The garage door company Lexington actually calls back", body: "When people search for a garage door company in Lexington, they're usually done waiting on outfits that treat a river town as an afterthought. We're not that. Oak Grove is a short run up US-24, so a broken spring on Highland or South Street gets a same-day answer, not a next-week window. We're family-run, we quote flat rates with no distance surcharge, and one visit handles most repairs because the springs, cables, rollers, and opener parts ride on the truck. Residential, commercial, and the surrounding Lafayette County shop buildings all get the same crew and the same honest number up front." },
+    ],
+    faqs: [
+      { q: "Is there a local garage door company that serves Lexington, MO?", a: "Yes. Carlisle Overhead Doors runs Lexington from nearby Oak Grove, handling repairs, spring and opener replacement, and new door installs for homes and businesses across Lafayette County. We're family-run, quote flat rates, and finish most jobs in one visit. Free estimates on replacements, haul-away included." },
+      { q: "How soon can a technician reach Lexington?", a: "Lexington is one of our quicker extended-ring stops, a short run up US-24 from Oak Grove. Repair calls placed in the morning usually get a same-day slot, and genuine emergencies, like a door that won't close overnight, get dispatched right away, weekends included." },
+      { q: "Do you replace garage door springs on older Lexington homes?", a: "We do it constantly here. Many historic Lexington doors still run on tired or undersized springs, and we swap them for 20,000-cycle torsion springs sized to the door's real weight. That runs $200 to $400 installed, quoted before we start, and it's finished the same visit." },
+      { q: "Can you install a new garage door that suits a historic Lexington home?", a: "Yes. We stock carriage-house and traditional styles in insulated steel that suit a 150-year-old streetscape, with quiet modern hardware behind the period look. Estimates are free, samples come to your driveway, and we haul the old door away. Installs usually happen within a week or two of ordering." },
     ],
   },
   "higginsville-mo": {
-    blurb:
-      "A tidy Lafayette County farm town off I-70, Higginsville pairs in-town homes with serious agricultural buildings, and its doors work for a living.",
+    blurb: "A tidy Lafayette County farm town off I-70, Higginsville pairs in-town homes with serious agricultural buildings, and its doors work for a living.",
+    response: "Higginsville sits just off I-70 east of Oak Grove in Lafayette County, an easy run for our trucks. Most garage door service here is same-day, and a door stuck before harvest gets treated like the emergency it is, any hour.",
+    metaDescription: "Garage door service in Higginsville, MO: repairs, spring replacement, openers, and installs across Lafayette County. Same-day, flat rate, family-run. Call Carlisle at (816) 288-3574.",
     sections: [
-      {
-        title: "Working doors for a working town.",
-        body: "Higginsville garage doors don't get babied: farm trucks, equipment, grain-season traffic, and shop projects keep them cycling. We install hardware that keeps up, including heavier-gauge steel, commercial track on shop buildings, and high-cycle springs everywhere. I-70 puts Higginsville an easy run from our Oak Grove shop, so scheduled work lands quickly and a stuck door before harvest gets treated like the emergency it is.",
-      },
+      { title: "Working doors for a working town.", body: "Higginsville garage doors don't get babied: farm trucks, equipment, grain-season traffic, and shop projects keep them cycling. We install hardware that keeps up, including heavier-gauge steel, commercial track on shop buildings, and high-cycle springs everywhere. I-70 puts Higginsville an easy run from our Oak Grove shop, so scheduled work lands quickly and a stuck door before harvest gets treated like the emergency it is." },
+      { title: "Full residential service, not just the farm doors", body: "The in-town side of Higginsville keeps us just as busy as the shop buildings. A garage that won't lift on a school morning off Main, an opener grinding louder every week, a door that shudders and sticks in the cold: that's routine garage door service for us, and the fix rides on the truck. We replace broken springs with 20,000-cycle hardware, quiet the door with fresh nylon rollers, reseal against Lafayette County drafts, and tune openers back to smooth travel. I-70 puts Higginsville minutes off our regular route, so you're not paying for the drive and you're not waiting a week for a slot." },
+    ],
+    faqs: [
+      { q: "Where can I get garage door service in Higginsville, MO?", a: "Carlisle Overhead Doors covers Higginsville from Oak Grove, just up I-70. We handle spring and cable replacement, opener repair, off-track doors, panel damage, and full installs for homes, businesses, and farm buildings across Lafayette County. Most calls finish in one visit at a flat, quoted rate." },
+      { q: "Can you come out the same day in Higginsville?", a: "More often than not. Higginsville sits right on our I-70 corridor, so morning calls generally get a same-day slot and emergencies get priority dispatch around the clock. There's no distance surcharge: a Higginsville repair costs the same flat rate as one in Oak Grove." },
+      { q: "My garage door spring snapped. What now?", a: "Don't force the door: a door with a broken spring is heavy and unsafe to lift. Call us and we'll bring the right 20,000-cycle spring for your door's weight and replace it the same visit, usually $200 to $400. We test the balance and safety reverse before we leave." },
+      { q: "Do you work on garage doors for shops and outbuildings too?", a: "Yes, that's a big part of Higginsville work. We service and install commercial-grade doors for shops, machine sheds, and equipment bays, with heavier track and openers built for daily use. House and outbuilding can often be handled in the same trip, so mention both when you call." },
     ],
   },
   "leavenworth-ks": {
-    blurb:
-      "The first city of Kansas has garages spanning three centuries of construction, from Victorian carriage houses to Fort Leavenworth-driven new builds, and we've fitted doors to all of it.",
+    blurb: "The first city of Kansas has garages spanning three centuries of construction, from Victorian carriage houses to Fort Leavenworth-driven new builds, and we've fitted doors to all of it.",
+    response: "Leavenworth anchors the northwest edge of our Kansas range, reached up K-7 along the Missouri River. It's a longer extended-ring pull, so we route it deliberately, but same-day repair is common and emergency calls get around-the-clock priority.",
+    metaDescription: "Garage door repair in Leavenworth, KS: broken springs, openers, off-track doors, and new installs. Same-day service, flat rate, real 24/7 emergency line. Call Carlisle at (816) 288-3574.",
     sections: [
-      {
-        title: "Three centuries of housing, one door crew.",
-        body: "Leavenworth's historic districts hold homes from the 1800s whose garages were carriage houses first, with openings and headroom no modern kit expects. We custom-fit those regularly. The city's newer neighborhoods, many housing Fort Leavenworth families, bring standard suburban service with a twist: military moves mean doors need fixing on a PCS timeline, and we hit those dates. Springs, openers, and full replacements all run at flat metro rates.",
-      },
+      { title: "Three centuries of housing, one door crew.", body: "Leavenworth's historic districts hold homes from the 1800s whose garages were carriage houses first, with openings and headroom no modern kit expects. We custom-fit those regularly. The city's newer neighborhoods, many housing Fort Leavenworth families, bring standard suburban service with a twist: military moves mean doors need fixing on a PCS timeline, and we hit those dates. Springs, openers, and full replacements all run at flat metro rates." },
+      { title: "Broken spring in Leavenworth? Don't fight the door", body: "The most common Leavenworth call we get is a garage door that suddenly weighs a ton: a snapped torsion spring, usually first thing on a cold morning. Trying to muscle it up is how people get hurt and how openers burn out. We bring the correct 20,000-cycle spring for your door, replace it in one visit, and rebalance so the opener stops straining. Same story with frayed cables, shredded rollers, and doors knocked off track. Search garage door repair near me from Leavenworth and you reach a real technician on our line, not a call center, plus a flat rate with no charge for the drive up K-7." },
+    ],
+    faqs: [
+      { q: "Do you cover Leavenworth, KS for garage door repair?", a: "Yes. Leavenworth is a regular stop on our Kansas route, reached up K-7 from Oak Grove. We handle spring and cable breaks, opener failures, off-track and dented doors, and full replacements for homes and businesses. The flat rate holds across the state line, with no distance surcharge." },
+      { q: "Is there someone available for a garage door emergency at night in Leavenworth?", a: "There is. Our 24/7 emergency line reaches an actual technician, not an answering service, so a door stuck open at midnight or a car trapped inside gets priority dispatch. We'll quote an honest arrival time up front and carry the parts to fix most problems on that first visit." },
+      { q: "How much is a garage door spring replacement in Leavenworth?", a: "Most run $200 to $400, depending on the door's size and weight, and we fit 20,000-cycle springs so you're not repeating the job in a few years. Broader repairs land between $150 and $450. We confirm the price in your driveway before any work begins." },
+      { q: "Can you install a new garage door for a Leavenworth home?", a: "Absolutely. We install Clopay, Amarr, and C.H.I. doors in styles that suit everything from historic districts to newer Fort Leavenworth-area builds. Estimates are free with samples brought to your driveway, old door haul-away is included, and most installs happen within one to two weeks of ordering." },
     ],
   },
   "lansing-ks": {
-    blurb:
-      "Growing steadily along the K-7 corridor south of Leavenworth, Lansing is young-family territory where the garage is the busiest door in the house.",
+    blurb: "Growing steadily along the K-7 corridor south of Leavenworth, Lansing is young-family territory where the garage is the busiest door in the house.",
+    response: "Lansing runs along the K-7 corridor just south of Leavenworth, and we fold it into the same northwest Kansas loop. It's a longer extended-ring drive, but repairs still land same-day when the truck is on route, and emergencies get priority any hour.",
+    metaDescription: "Garage door repair and installation in Lansing, KS: springs, openers, off-track doors, and new insulated doors. Same-day on route, flat rate. Call Carlisle at (816) 288-3574.",
     sections: [
-      {
-        title: "Family garages that cycle all day.",
-        body: "Lansing's subdivisions are full of households that open the garage more than the front door: school runs, bikes, sports gear, and the second fridge. That duty cycle eats builder springs in six or seven years. We swap them for 20,000-cycle hardware, tune openers so the door doesn't announce every departure, and quote insulated replacement doors for the many owners turning the garage into usable year-round space.",
-      },
+      { title: "Family garages that cycle all day.", body: "Lansing's subdivisions are full of households that open the garage more than the front door: school runs, bikes, sports gear, and the second fridge. That duty cycle eats builder springs in six or seven years. We swap them for 20,000-cycle hardware, tune openers so the door doesn't announce every departure, and quote insulated replacement doors for the many owners turning the garage into usable year-round space." },
+      { title: "Upgrading the plain builder door", body: "A lot of Lansing owners reach us not because something broke but because the builder door has finally worn out its welcome: a dented, uninsulated single-layer panel that bakes the garage in July and howls in January. We bring sample doors to the driveway, help match a style and color the neighborhood will approve of, and install insulated steel that makes an attached garage noticeably quieter and cheaper to heat. Add a belt-drive opener with battery backup and the loudest door in the house becomes the quietest. Estimates are free, the old door and its hardware leave with us, and most installs happen within a week or two." },
+    ],
+    faqs: [
+      { q: "Is it worth upgrading to an insulated garage door in Lansing?", a: "For an attached garage, usually yes. Lansing summers and winters both push through a thin single-layer door, and insulated steel holds temperature far better while cutting noise. It also resists dings from busy family use. We bring samples to your driveway and quote the door and install flat, with free estimates." },
+      { q: "How quickly can you reach Lansing for a repair?", a: "Lansing sits on our K-7 loop through Leavenworth County, so when the truck is routing that direction a morning call often gets a same-day fix. It's a longer extended-ring drive, so we'll give you an honest window when you call, and emergencies get priority dispatch around the clock." },
+      { q: "What's the fix for a garage door that reverses before it closes?", a: "Nine times out of ten it's the safety sensors: misaligned photo eyes, a dirty lens, or a loose wire near the floor bracket. Sometimes it's the opener's close-force setting. We diagnose the exact cause, realign or replace the sensors, and retest the auto-reverse so the door seals every time." },
+      { q: "My Lansing garage door spring broke: can you replace it same day?", a: "Often we can, if you catch us while we're routing the area. We carry 20,000-cycle springs sized for common door weights and replace them in a single visit, typically $200 to $400. Leave the door down until we arrive, since a door with a broken spring is dangerously heavy to lift." },
     ],
   },
   "tonganoxie-ks": {
-    blurb:
-      "Halfway between Lawrence and Leavenworth on the 24-40 corridor, Tonganoxie has boomed with families wanting acreage within commuting range, and their properties need both house and shop doors.",
+    blurb: "Halfway between Lawrence and Leavenworth on the 24-40 corridor, Tonganoxie has boomed with families wanting acreage within commuting range, and their properties need both house and shop doors.",
+    response: "Tonganoxie sits on the 24-40 corridor between Lawrence and Leavenworth, an easy pull for us off K-7 or I-70. Extended-ring routing keeps most repairs same-day, and emergency calls get priority dispatch overnight and on weekends.",
+    metaDescription: "Garage door repair in Tonganoxie, KS: broken springs, opener repair, off-track doors, and shop door installs. Same-day on route, flat rate, no surcharge. Call (816) 288-3574.",
     sections: [
-      {
-        title: "Acreage living, done with the right doors.",
-        body: "The Tonganoxie formula is a newer house plus a shop building or planning for one. We serve both halves: standard residential service on the house, and for the shop, doors sized to your actual equipment, 10 to 14 feet tall, insulated if you heat the space, with commercial track and openers that handle daily use. Building new? Call before the framing is done and we'll spec openings that save you money on the door.",
-      },
+      { title: "Acreage living, done with the right doors.", body: "The Tonganoxie formula is a newer house plus a shop building or planning for one. We serve both halves: standard residential service on the house, and for the shop, doors sized to your actual equipment, 10 to 14 feet tall, insulated if you heat the space, with commercial track and openers that handle daily use. Building new? Call before the framing is done and we'll spec openings that save you money on the door." },
+      { title: "The in-town half of Tonganoxie", body: "Not every Tonganoxie call comes with a pole barn attached. The subdivisions off Village Street and Washington keep us busy with the everyday stuff: a broken spring before the school run, an opener that hums but won't lift, a door dragging on one side, worn rollers that rattle the whole house at 6 a.m. Those repairs ride on the truck, so we finish them in one visit and quote the flat rate before we start. Tonganoxie sits close enough to our route along 24-40 that we don't tack on a drive charge, and a morning call usually earns a same-day slot rather than a wait." },
+    ],
+    faqs: [
+      { q: "Who repairs garage doors in Tonganoxie, KS?", a: "That's us. Working from Oak Grove, we route into Tonganoxie along the 24-40 corridor and handle broken springs, snapped cables, failed openers, and off-track doors for homes, plus shop and outbuilding doors on the surrounding acreages. Most repairs finish in one visit at a flat, quoted rate." },
+      { q: "Can I get same-day garage door service in Tonganoxie?", a: "Often, yes. Tonganoxie is a convenient stop between Lawrence and Leavenworth, so morning calls typically get a same-day slot when we're routing that way. We'll give you a straight arrival window, and true emergencies, like a door stuck open, get priority dispatch around the clock." },
+      { q: "I'm building a shop near Tonganoxie: what door do I need?", a: "Call before the framing is finished. We'll spec door height to your actual equipment, usually 10 to 14 feet, add insulation if you'll heat the space, and match commercial-grade track and openers to daily use. Sizing the opening early often saves money on the door itself." },
+      { q: "What will I pay for a typical garage door fix here?", a: "Most repairs land between $150 and $450, with spring replacements running $200 to $400 depending on door size. We charge flat rates with no surcharge for the drive out to Leavenworth County, and we confirm the exact number in your driveway before any work starts." },
     ],
   },
   "paola-ks": {
-    blurb:
-      "The Miami County seat with its classic park square anchors our southwest routes, serving a town-and-country mix where garage doors and barn doors share the same call sheet.",
+    blurb: "The Miami County seat with its classic park square anchors our southwest routes, serving a town-and-country mix where garage doors and barn doors share the same call sheet.",
+    response: "Paola is the Miami County seat, reached down US-169 on the K-10 and I-35 side of our Kansas territory. It's a longer extended-ring run, so we route it deliberately, but same-day repairs are common and emergencies get around-the-clock priority.",
+    metaDescription: "Garage door repair and installation in Paola, KS: springs, openers, off-track doors, and new doors across Miami County. Same-day on route, flat rate. Call Carlisle at (816) 288-3574.",
     sections: [
-      {
-        title: "Square-town charm, farm-country function.",
-        body: "Paola's older in-town homes call for well-fitted traditional doors and the occasional custom size, while the surrounding county brings equipment sheds, horse barns, and shop buildings needing tall, heavy-duty doors. We run Miami County on a regular loop, quote everything flat-rate, and treat a farmer's stuck equipment-bay door in planting season with the urgency it deserves.",
-      },
+      { title: "Square-town charm, farm-country function.", body: "Paola's older in-town homes call for well-fitted traditional doors and the occasional custom size, while the surrounding county brings equipment sheds, horse barns, and shop buildings needing tall, heavy-duty doors. We run Miami County on a regular loop, quote everything flat-rate, and treat a farmer's stuck equipment-bay door in planting season with the urgency it deserves." },
+      { title: "The repairs that bring us to Paola most", body: "Around the Paola square and the newer streets off Baptiste Drive, the calls are the everyday kind: a torsion spring that let go overnight, an opener whose gears finally stripped, cables fraying off the drum, a door that binds against the jamb every cold morning. We keep the truck stocked for exactly this, so a Paola repair is usually a single visit, not a diagnosis followed by a return trip. We quote the flat rate up front, fit 20,000-cycle springs when one needs replacing, and test the door's balance and safety reverse before we pack up. No surcharge for the drive down US-169." },
+    ],
+    faqs: [
+      { q: "Does Carlisle service Paola, KS?", a: "Yes, regularly. Paola is a stop on our Miami County loop, run down US-169 from Oak Grove. We handle spring and cable breaks, opener repair, off-track doors, panel damage, and full installs for homes, businesses, and farm buildings. The flat rate holds this far out, with no distance surcharge." },
+      { q: "How long until a technician reaches Paola?", a: "Paola is a longer extended-ring drive, so we route it deliberately rather than same-hour. Morning calls often still earn a same-day slot when we're heading that direction, and we'll quote an honest window up front. Genuine emergencies get priority dispatch, day or night." },
+      { q: "What causes a garage door to open on its own or stop responding?", a: "Common culprits are a worn or misprogrammed remote, interference on the opener's frequency, a stuck wall button, or a failing logic board. We test the remotes, receiver, and wiring, reprogram or replace what's faulty, and confirm the door responds only when you tell it to." },
+      { q: "Can you match a new door to an older home near the Paola square?", a: "Yes. We stock traditional and carriage-house styles in insulated steel that suit older architecture, and we handle custom sizes for openings that predate standard sizing. Estimates are free, samples come to the driveway, and old door haul-away is included with every install." },
     ],
   },
   "osawatomie-ks": {
-    blurb:
-      "John Brown's old stomping grounds is a hard-working Miami County town where practical, durable, fairly priced door work is exactly what's wanted, and exactly what we do.",
+    blurb: "John Brown's old stomping grounds is a hard-working Miami County town where practical, durable, fairly priced door work is exactly what's wanted, and exactly what we do.",
+    response: "Osawatomie sits southwest of Paola in Miami County, reached on the same K-7 and US-169 loop we run down that way. It's a longer extended-ring pull, so we schedule it smart, but repairs land quickly on route and emergencies get priority any hour.",
+    metaDescription: "Garage door repair in Osawatomie, KS: broken springs, opener fixes, off-track doors, and new installs. Flat rate, same-day on route, real emergency line. Call (816) 288-3574.",
     sections: [
-      {
-        title: "Durable and fair, no frills required.",
-        body: "Osawatomie homeowners mostly want the door to work, the price to be honest, and the crew to show up when promised. Done. We repair aging hardware on the town's older housing stock, replace doors with solid insulated steel that doesn't need pampering, and handle the rural outbuildings across the surrounding county. Flat rates, no distance surcharge, and scheduled visits that respect your time.",
-      },
+      { title: "Durable and fair, no frills required.", body: "Osawatomie homeowners mostly want the door to work, the price to be honest, and the crew to show up when promised. Done. We repair aging hardware on the town's older housing stock, replace doors with solid insulated steel that doesn't need pampering, and handle the rural outbuildings across the surrounding county. Flat rates, no distance surcharge, and scheduled visits that respect your time." },
+      { title: "When the door quits at the worst time", body: "A garage door usually fails when you need it most: leaving for work, coming home in the dark, a storm rolling in with the door stuck half-open. Osawatomie is a fair drive from our Oak Grove base, but our emergency line reaches a real technician, not an answering service, and we'll give you an honest arrival time instead of a vague promise. The truck carries springs, cables, rollers, and common opener parts, so most breakdowns get solved on that first visit rather than dragging into a second trip. Flat rate, quoted before we start, with nothing added for the miles." },
+    ],
+    faqs: [
+      { q: "Do you come out to Osawatomie, KS?", a: "We do. Osawatomie is part of our Miami County route, and we serve it on scheduled loops with fully stocked trucks so jobs finish in one visit. Spring breaks, opener failures, off-track doors, and new installs all run at the same flat rate we charge in the metro, no surcharge for the distance." },
+      { q: "Is anyone reachable after hours for a stuck garage door in Osawatomie?", a: "Yes. Our 24/7 line puts you through to an actual technician who can talk you through making the door safe and set a priority dispatch. A car trapped inside or a door that won't close overnight moves to the front of the line, with an honest arrival time quoted before we roll." },
+      { q: "My opener runs but the door won't move: what's wrong?", a: "Usually the trolley has disconnected from the carriage, or the opener gear and sprocket have stripped. Sometimes a broken spring is the real culprit and the opener simply can't lift the dead weight. We pinpoint which it is and fix it that visit rather than guessing." },
+      { q: "What kind of door holds up best out here?", a: "For Osawatomie's weather and daily use, we usually recommend insulated steel: it resists dents, holds temperature, and doesn't need pampering. Paired with 20,000-cycle springs, it's a door you can forget about for years. We'll quote it flat, with a free estimate and samples brought to your driveway." },
     ],
   },
   "louisburg-ks": {
-    blurb:
-      "Known metro-wide for its cider mill, Louisburg is Miami County acreage country: newer homes on big lots, with shops and barns that need doors as capable as the houses are comfortable.",
+    blurb: "Known metro-wide for its cider mill, Louisburg is Miami County acreage country: newer homes on big lots, with shops and barns that need doors as capable as the houses are comfortable.",
+    response: "Louisburg lines up along US-69 in northern Miami County, on our southbound Kansas loop. It's an extended-ring drive we route with care, but same-day repairs are common when the truck is on route and emergencies get priority around the clock.",
+    metaDescription: "Garage door repair and installation in Louisburg, KS: springs, openers, oversized and shop doors. Same-day on route, flat rate, family-run. Call Carlisle at (816) 288-3574.",
     sections: [
-      {
-        title: "Big lots, big doors.",
-        body: "Louisburg properties run large, and so do their door needs: three-car garages, RV-height bays, and shop buildings that homeowners actually use. We install oversized and high-lift doors, spec insulation for heated shops, and put commercial-grade hardware on anything that cycles daily. The house garage gets the same attention, with high-cycle springs and quiet openers standard on our replacements.",
-      },
+      { title: "Big lots, big doors.", body: "Louisburg properties run large, and so do their door needs: three-car garages, RV-height bays, and shop buildings that homeowners actually use. We install oversized and high-lift doors, spec insulation for heated shops, and put commercial-grade hardware on anything that cycles daily. The house garage gets the same attention, with high-cycle springs and quiet openers standard on our replacements." },
+      { title: "Everyday fixes, not just the three-car builds", body: "The oversized bays and shop doors get a lot of attention out here, but plenty of Louisburg calls are the ordinary ones: a spring that snapped overnight, an opener that finally gave out, a door dragging off track after a bump. We run US-69 through town on our Miami County loop, so those repairs slot into the route and finish in a single visit from truck stock. We fit 20,000-cycle springs when one needs replacing, rebalance the door so the opener isn't straining, and quote the flat rate before we start. The drive down doesn't cost you a dime extra." },
+    ],
+    faqs: [
+      { q: "Who fixes garage doors in Louisburg, KS?", a: "That's our route. We run US-69 through Louisburg on the Miami County loop and handle broken springs, worn openers, snapped cables, and off-track or dented doors for homes, plus oversized and shop doors on the larger properties. Most repairs finish in one flat-rate visit." },
+      { q: "Can you build a garage door tall enough for an RV or boat in Louisburg?", a: "Yes, that's common on Louisburg's bigger lots. We install 8, 9, and taller doors, RV-height bays, and high-lift setups for tall ceilings, with the framing work quoted in. Tell us the height you need to clear and we'll spec the door and track to fit. Free estimates." },
+      { q: "How fast can you get to Louisburg?", a: "Louisburg is an extended-ring drive we route deliberately, so we'll quote you an honest window rather than promise same-hour. When the truck is heading down US-69, morning calls often earn a same-day fix, and genuine emergencies get priority dispatch overnight and on weekends." },
+      { q: "What does it cost to replace a broken spring in Louisburg?", a: "Plan on $200 to $400 for most spring replacements, set by the door's size and weight, and we fit 20,000-cycle springs so the next one is years away. Larger and oversized doors sit at the upper end. We confirm the exact price in your driveway before starting, with nothing added for the miles." },
     ],
   },
   "lawrence-ks": {
-    blurb:
-      "Between KU rentals, historic Old West Lawrence homes, and new construction on the west side, Lawrence has three distinct door markets, and we work all three.",
+    blurb: "Between KU rentals, historic Old West Lawrence homes, and new construction on the west side, Lawrence has three distinct door markets, and we work all three.",
+    response: "Lawrence sits west on K-10 in Douglas County, a route our Johnson County crews run regularly, so it's one of the more reliable extended-ring stops. Most repairs land same-day, and emergency calls get priority dispatch around the clock.",
+    metaDescription: "Garage door repair in Lawrence, KS: overhead door service, spring replacement, commercial and glass garage doors, new installs. Same-day, flat rate. Call Carlisle at (816) 288-3574.",
     sections: [
-      {
-        title: "College town, three door markets.",
-        body: "Lawrence rental properties need doors fixed fast, priced fairly, and documented for property managers, and we handle portfolios across town. Old West Lawrence and East Lawrence historic homes need custom fits and period-appropriate styles. West Lawrence's newer subdivisions bring standard suburban service, with builder doors aging into spring replacements. One call covers all of it, and K-10 makes Lawrence an easy regular route for our Johnson County crews.",
-      },
+      { title: "College town, three door markets.", body: "Lawrence rental properties need doors fixed fast, priced fairly, and documented for property managers, and we handle portfolios across town. Old West Lawrence and East Lawrence historic homes need custom fits and period-appropriate styles. West Lawrence's newer subdivisions bring standard suburban service, with builder doors aging into spring replacements. One call covers all of it, and K-10 makes Lawrence an easy regular route for our Johnson County crews." },
+      { title: "Commercial and glass garage doors, too", body: "Lawrence isn't only houses. We handle commercial garage door repair across town, from Massachusetts Street storefronts to the warehouses and service bays off the K-10 loop, keeping rolling steel, sectional, and dock doors moving when downtime costs money. On the residential side, more Lawrence owners are asking about glass garage doors: full-view aluminum and glass panels that flood a garage gym or studio with light and give a modern facade real presence. We install and service both, quote flat rates with no charge for the drive from our Douglas County route, and keep a real technician on the emergency line when a business bay goes down after hours." },
+    ],
+    faqs: [
+      { q: "Where do I get overhead door repair in Lawrence, KS?", a: "We handle it off K-10. Carlisle repairs residential and commercial overhead doors in Lawrence: broken springs, snapped cables, failed openers, off-track and dented sections, and worn rollers. Most jobs finish in one visit from truck stock, and we quote the flat rate before any work begins." },
+      { q: "Do you do commercial garage door repair in Lawrence?", a: "Yes. We service rolling steel, sectional, and dock doors for Lawrence businesses, and we prioritize down-door calls because a stuck bay stops revenue. We also offer planned maintenance that catches spring fatigue before it strands you. Our after-hours line reaches a real technician, not a call center." },
+      { q: "Can you install glass garage doors in Lawrence?", a: "We can. Full-view glass and aluminum doors are increasingly popular on Lawrence homes and storefronts, and we install them in clear, frosted, or tinted panels to fit the look you want. Estimates are free with samples brought to you, and old door haul-away is included." },
+      { q: "How quickly can you handle a garage door service call in Lawrence?", a: "Lawrence sits on a route our crews run often via K-10, so morning calls usually get a same-day slot rather than a wait. We carry springs, cables, rollers, and opener parts to finish most repairs on the first visit, and emergencies get priority dispatch day or night." },
     ],
   },
   "atchison-ks": {
-    blurb:
-      "Amelia Earhart's hometown climbs from the Missouri River in tiers of Victorian architecture, and its hillside garages are as characterful and as nonstandard as the houses above them.",
+    blurb: "Amelia Earhart's hometown climbs from the Missouri River in tiers of Victorian architecture, and its hillside garages are as characterful and as nonstandard as the houses above them.",
+    response: "Atchison rises from the Missouri River in the far northwest corner of our range, reached up US-59 in Atchison County. We route the outer ring weekly for installs and scheduled repairs, and true emergencies get same-day dispatch with an honest drive-time window quoted first.",
+    metaDescription: "Garage door repair and installation in Atchison, KS: custom-fit doors for hillside Victorians, springs, openers, and farm doors. Flat rate, scheduled routes. Call (816) 288-3574.",
     sections: [
-      {
-        title: "Victorian hills, custom fits.",
-        body: "Atchison garages tuck into hillsides, alleys, and carriage-house footprints, and standard door sizing rarely applies. We measure every opening, build the fit with custom widths and low-headroom track, and match styles that don't argue with a Victorian streetscape. Benedictine-area rentals get quick, fair repair service, and the surrounding farmland brings regular outbuilding work. Scheduled visits are the norm at this distance; emergencies still get dispatched same-day.",
-      },
+      { title: "Victorian hills, custom fits.", body: "Atchison garages tuck into hillsides, alleys, and carriage-house footprints, and standard door sizing rarely applies. We measure every opening, build the fit with custom widths and low-headroom track, and match styles that don't argue with a Victorian streetscape. Benedictine-area rentals get quick, fair repair service, and the surrounding farmland brings regular outbuilding work. Scheduled visits are the norm at this distance; emergencies still get dispatched same-day." },
+      { title: "Custom-width doors for openings that never matched a catalog", body: "Atchison's Victorian housing stock hands us openings that predate every standard size chart: carriage-house footprints, tuck-under garages cut into the bluffs, and headroom no modern kit expects. That is the work we like. We measure each opening, order custom-width doors where stock sizes won't seat, and use low-headroom or high-lift track to make a door run in a space that was never designed for one. Behind the period-correct face go 20,000-cycle springs, quiet belt openers, and current safety hardware. Benedictine-area rentals get quick, documented repairs, and the surrounding farm country brings outbuilding doors we spec to real equipment heights." },
+    ],
+    faqs: [
+      { q: "Can you fit a garage door to an odd-sized opening on an older Atchison home?", a: "That's routine here. Atchison's Victorian and hillside garages rarely match standard sizes, so we measure the actual opening and order custom-width doors, using low-headroom or high-lift track where the framing demands it. You get a door that seals and runs smoothly instead of a stock size forced into a space it doesn't fit." },
+      { q: "Do you serve Atchison, KS, given how far north it is?", a: "We do, on scheduled weekly routes up US-59. Installs and non-urgent repairs are booked onto those loops, which keeps the flat rate honest despite the distance. A genuine emergency, like a door stuck open, gets same-day dispatch with an honest drive-time window quoted before we leave Oak Grove." },
+      { q: "Do you handle farm and outbuilding doors around Atchison County?", a: "Regularly. Beyond the in-town Victorians, the surrounding county brings machine sheds, shops, and equipment bays that need taller, heavier doors. We spec the door and track to your equipment height, add insulation where you heat the space, and quote it flat-rate on the same scheduled trip as any in-town work." },
+      { q: "What will a spring replacement cost this far out?", a: "The same as it does in the metro: roughly $200 to $400 depending on the door's size and weight, with 20,000-cycle springs standard. There's no distance surcharge on your bill. We confirm the flat price before starting and, if one spring failed, recommend doing the pair to save a second trip north." },
     ],
   },
-
-  /* ================= Outer Ring, 50 to 100 miles ================= */
-
   "st-joseph-mo": {
-    blurb:
-      "The Pony Express city has one of the great historic housing stocks in the Midwest, and its garages, carriage houses, and commercial buildings need doors that respect a lot of history.",
+    blurb: "The Pony Express city has one of the great historic housing stocks in the Midwest, and its garages, carriage houses, and commercial buildings need doors that respect a lot of history.",
+    response: "St. Joseph anchors the northwest corner of our range, an hour up I-29 in Buchanan County. We route the outer ring weekly for installs and scheduled repairs, and true emergencies get same-day dispatch with an honest drive-time window quoted on the phone.",
+    metaDescription: "Overhead door and garage door service in St. Joseph, MO: repair, installation, springs, and commercial doors. Flat rate, scheduled routes, real emergency line. Call (816) 288-3574.",
     sections: [
-      {
-        title: "Historic stock, industrial backbone.",
-        body: "St. Joseph splits between grand old neighborhoods where garages were an afterthought to the architecture and a working industrial base with dock and rolling steel doors that can't afford downtime. We schedule the city weekly: custom-fit residential doors and torsion conversions on the historic side, commercial service and planned maintenance on the industrial side. True emergencies, a door stuck open or a business bay down, get same-day dispatch despite the distance.",
-      },
+      { title: "Historic stock, industrial backbone.", body: "St. Joseph splits between grand old neighborhoods where garages were an afterthought to the architecture and a working industrial base with dock and rolling steel doors that can't afford downtime. We schedule the city weekly: custom-fit residential doors and torsion conversions on the historic side, commercial service and planned maintenance on the industrial side. True emergencies, a door stuck open or a business bay down, get same-day dispatch despite the distance." },
+      { title: "Overhead door service for St. Joseph's homes and shops", body: "St. Joseph searchers tend to use the trade term, overhead door, and they want the whole range: service, installation, and repair. We cover it. The city's grand old neighborhoods bring custom-fit residential doors and torsion conversions on garages that were an afterthought to the architecture. Its working industrial base brings dock and rolling steel doors that can't sit idle, so we prioritize commercial down-door calls and offer planned maintenance for the buildings that run doors hard all day. Whether you searched garage door service or overhead door service in St. Joseph, MO, you reach the same family-run crew and the same flat, quoted rate." },
+    ],
+    faqs: [
+      { q: "Do you offer overhead door service in St. Joseph, MO?", a: "Yes, and it's a regular part of our schedule up in Buchanan County. Overhead door is just the trade name for the sectional door that lifts up on tracks, and we service, install, and repair both residential and commercial ones. Springs, cables, rollers, panels, tracks, and openers all get handled from a stocked truck." },
+      { q: "Can you install a new garage door in St. Joseph?", a: "We install throughout St. Joseph, from custom-fit doors for the historic neighborhoods to standard and commercial doors elsewhere. Estimates are free, samples come to your driveway, every door gets 20,000-cycle springs, and we haul the old door away. New-door orders slot onto our scheduled St. Joseph route, usually within a week or two." },
+      { q: "How far is St. Joseph from your shop, and what does that add?", a: "St. Joseph is about an hour up I-29, and it adds nothing to your bill. We hold the same flat rates here as in the metro, running the city on weekly routes for installs and non-urgent repairs. A door stuck open or a business bay down gets same-day dispatch with the drive time quoted honestly up front." },
+      { q: "Do you service commercial and dock doors for St. Joseph businesses?", a: "We do. St. Joseph's industrial base runs rolling steel, sectional, and dock doors that can't afford downtime, so we prioritize down-door calls and offer planned maintenance to catch spring and cable fatigue early. We keep commercial parts and heavy springs on the truck to get a bay cycling again on the first visit when we can." },
     ],
   },
   "warrensburg-mo": {
-    blurb:
-      "Between the University of Central Missouri and Whiteman AFB down the road, Warrensburg mixes college rentals, military families, and Johnson County farmland, and all three need door work.",
+    blurb: "Between the University of Central Missouri and Whiteman AFB down the road, Warrensburg mixes college rentals, military families, and Johnson County farmland, and all three need door work.",
+    response: "Warrensburg sits down US-50 in Johnson County, Missouri, home to Central Missouri and near Whiteman AFB. It's an outer-ring town we route weekly for installs and scheduled repairs, with true emergencies dispatched same-day and an honest drive-time window quoted first.",
+    metaDescription: "Garage door repair and installation in Warrensburg, MO: rental-property service, springs, openers, and farm doors across Johnson County. Flat rate. Call Carlisle at (816) 288-3574.",
     sections: [
-      {
-        title: "Rentals, PCS timelines, and farm shops.",
-        body: "Warrensburg property managers need rental doors fixed fast with clean documentation, and we deliver both. Military families near Whiteman work on move timelines, so we hit scheduled dates reliably. Outside town, it's classic west-central Missouri: machine sheds and shops needing tall doors and heavy hardware. We route the area regularly from Oak Grove down US-50, and flat rates hold this far out too.",
-      },
+      { title: "Rentals, PCS timelines, and farm shops.", body: "Warrensburg property managers need rental doors fixed fast with clean documentation, and we deliver both. Military families near Whiteman work on move timelines, so we hit scheduled dates reliably. Outside town, it's classic west-central Missouri: machine sheds and shops needing tall doors and heavy hardware. We route the area regularly from Oak Grove down US-50, and flat rates hold this far out too." },
+      { title: "Rentals, move timelines, and machine sheds", body: "Warrensburg's mix is unusual, and we're set up for all of it. Property managers renting to Central Missouri students need doors fixed fast with clean documentation, and we deliver both. Military families near Whiteman work on PCS move timelines, so we hit scheduled dates reliably rather than leaving a door hanging when the truck is loaded. Out past town, west-central Missouri farmland brings machine sheds and shops that need tall doors and heavy hardware. One crew, stocked truck, flat rates that don't change for the drive down US-50, and jobs finished in a single visit whenever the parts are common, which they usually are." },
+    ],
+    faqs: [
+      { q: "Do you handle rental-property garage doors in Warrensburg?", a: "Regularly. We service rental and student-housing doors across Warrensburg with fast turnaround and clean documentation for property managers and owners. Broken springs, worn openers, and off-track doors are stock repairs we finish in one visit, and we bill at flat rates with no surcharge for the drive down US-50." },
+      { q: "Can you meet a move-out or PCS deadline near Whiteman?", a: "Yes. Military families and landlords on tight timelines are common here, so we hold scheduled dates and don't leave a door half-fixed. Tell us your deadline when you call and we'll fit the work into our Johnson County route to meet it, whether that's a repair, an opener swap, or a full door replacement." },
+      { q: "How does service work this far from your shop?", a: "Warrensburg is an outer-ring town, so we run it on weekly routes for installs and non-urgent repairs, which keeps the flat rate honest. A genuine emergency, like a door stuck open or a car trapped inside, gets same-day dispatch with an honest drive-time window quoted before we head down US-50." },
+      { q: "Do you install doors on farm shops around Warrensburg?", a: "We do. The farmland around Warrensburg brings machine sheds, equipment bays, and shop buildings that need taller, heavier doors than a house garage. We spec the door and track to your equipment height, add insulation for heated shops, and quote it flat-rate on the same scheduled trip as any in-town work." },
     ],
   },
   "sedalia-mo": {
-    blurb:
-      "Home of the Missouri State Fair and Scott Joplin's ragtime, Sedalia has sturdy century homes, post-war blocks, and enough fairground-area commerce to keep commercial doors on our schedule.",
+    blurb: "Home of the Missouri State Fair and Scott Joplin's ragtime, Sedalia has sturdy century homes, post-war blocks, and enough fairground-area commerce to keep commercial doors on our schedule.",
+    response: "Sedalia sits down US-50 in Pettis County, home of the Missouri State Fair, at the southeast edge of our range. We route it on scheduled weekly loops for installs and repairs, and true emergencies get same-day dispatch with an honest drive-time window quoted up front.",
+    metaDescription: "Garage door repair and installation in Sedalia, MO: springs, openers, commercial and fairground-area doors. Flat rate, scheduled routes, family-run. Call (816) 288-3574.",
     sections: [
-      {
-        title: "State Fair city, full-service route.",
-        body: "Sedalia's housing spans from stately older neighborhoods to mid-century blocks, and its doors span the same century of hardware. We run scheduled routes here for repairs, replacements, and the commercial doors on shops and warehouses around town. Older homes get custom fits and torsion conversions; newer ones get high-cycle springs and quiet openers. Combining neighbors' jobs on one trip keeps everyone's cost down, so mention if the folks next door have a door problem too.",
-      },
+      { title: "State Fair city, full-service route.", body: "Sedalia's housing spans from stately older neighborhoods to mid-century blocks, and its doors span the same century of hardware. We run scheduled routes here for repairs, replacements, and the commercial doors on shops and warehouses around town. Older homes get custom fits and torsion conversions; newer ones get high-cycle springs and quiet openers. Combining neighbors' jobs on one trip keeps everyone's cost down, so mention if the folks next door have a door problem too." },
+      { title: "Century homes and fairground-area commerce", body: "Sedalia's housing runs from stately older neighborhoods to mid-century blocks, and its doors span the same century of hardware. We fit the older homes with custom sizes and torsion conversions, and give the newer ones 20,000-cycle springs and quiet openers. The commercial side keeps us busy too: the shops, warehouses, and fairground-adjacent businesses around town run overhead and rolling doors that can't sit stuck during an event or a shift. Because Sedalia is an outer-ring stop, combining neighbors' jobs on one scheduled trip keeps everyone's cost down, so mention if the folks next door have a door problem too." },
+    ],
+    faqs: [
+      { q: "Does Carlisle service garage doors in Sedalia, MO?", a: "Yes, on scheduled weekly routes down US-50 into Pettis County. We repair springs, cables, rollers, tracks, and openers, and install new residential and commercial doors. The trucks come stocked so most Sedalia jobs finish in one visit, and the flat rate is the same as we charge in the metro, no distance surcharge." },
+      { q: "Can you work on older homes near downtown Sedalia?", a: "That's a lot of our Sedalia work. The older neighborhoods have openings that predate standard sizing and doors still on tired original springs, so we custom-fit replacements and convert dangerous extension setups to enclosed torsion springs. You get a period-appropriate look out front with quiet, current hardware behind it." },
+      { q: "How soon can you reach Sedalia in an emergency?", a: "For a genuine emergency, a door stuck open, off track, or a spring that trapped your car, we dispatch same-day and quote an honest drive-time window from Oak Grove before we roll. Non-urgent repairs and installs are booked onto our next scheduled Pettis County loop, usually within a week." },
+      { q: "Do you service commercial doors for Sedalia businesses?", a: "We do. The shops, warehouses, and fairground-area businesses run overhead, rolling steel, and dock doors that can't afford downtime, so we prioritize down-door calls and offer planned maintenance to catch fatigue early. We keep commercial parts on the truck to get a bay cycling again on the first visit when we can." },
     ],
   },
   "marshall-mo": {
-    blurb:
-      "The Saline County seat, home of Missouri Valley College and the legend of Jim the Wonder Dog, sits in prime farm country where equipment doors matter as much as garage doors.",
+    blurb: "The Saline County seat, home of Missouri Valley College and the legend of Jim the Wonder Dog, sits in prime farm country where equipment doors matter as much as garage doors.",
+    response: "Marshall is the Saline County seat, reached up US-65 in prime farm country at the eastern edge of our range. We route the outer ring weekly for installs and scheduled repairs, and true emergencies get same-day dispatch with an honest drive-time window quoted first.",
+    metaDescription: "Marshall garage door repair and installation, MO: springs, openers, farm and equipment doors across Saline County. Flat rate, scheduled routes. Call Carlisle at (816) 288-3574.",
     sections: [
-      {
-        title: "County-seat homes, working farmland.",
-        body: "In-town Marshall runs the classic county-seat mix of century homes and post-war blocks, with door work to match: custom fits, torsion conversions, and honest repair-or-replace advice. The surrounding Saline County farmland brings the heavy work, including machine-shed doors, grain-operation buildings, and shop doors that see daily equipment traffic. We schedule the area efficiently and treat harvest-season breakdowns as the emergencies they are.",
-      },
+      { title: "County-seat homes, working farmland.", body: "In-town Marshall runs the classic county-seat mix of century homes and post-war blocks, with door work to match: custom fits, torsion conversions, and honest repair-or-replace advice. The surrounding Saline County farmland brings the heavy work, including machine-shed doors, grain-operation buildings, and shop doors that see daily equipment traffic. We schedule the area efficiently and treat harvest-season breakdowns as the emergencies they are." },
+      { title: "When the equipment door goes down at harvest", body: "Around Marshall, a machine-shed or grain-operation door that won't open isn't an inconvenience, it's a stalled harvest. We treat those breakdowns as the emergencies they are, dispatching same-day even at the edge of our range and quoting an honest drive time up front. The everyday work runs alongside it: in-town century homes needing custom fits and torsion conversions, post-war blocks needing 20,000-cycle springs and quiet openers, and shop doors that see daily equipment traffic. We schedule Saline County efficiently, carry heavy hardware for the farm doors and standard parts for the house doors, and hold flat rates no matter the distance up US-65." },
+    ],
+    faqs: [
+      { q: "Who does garage door repair in Marshall, MO?", a: "We do, on scheduled routes up US-65 into Saline County. Carlisle handles broken springs, cables, rollers, tracks, and openers on both in-town homes and farm buildings. The truck comes stocked, so most Marshall repairs finish in one visit, and the flat rate holds the same as it does in the metro." },
+      { q: "Can you get to a stuck equipment-shed door quickly during harvest?", a: "We try hard to. A down equipment door at harvest is a real emergency, so we dispatch same-day even at this distance and quote an honest drive-time window before we leave Oak Grove. We carry heavy commercial-grade springs and track for farm doors, so a barn or shed bay usually gets moving again on that first visit." },
+      { q: "Do you install new garage doors for older homes in Marshall?", a: "Yes. Marshall's century homes and post-war blocks often need custom-fit doors, and we measure and order to the actual opening rather than forcing a stock size. Estimates are free, samples come to your driveway, every door gets 20,000-cycle springs, and we haul the old one away on the same scheduled trip." },
+      { q: "Is there a distance charge to reach Marshall?", a: "None. We hold flat rates whether you're in Oak Grove or out in Saline County. Installs and non-urgent repairs ride our weekly route to keep costs down, and genuine emergencies get same-day dispatch with the drive time quoted honestly up front, never added as a surcharge to your bill." },
     ],
   },
   "clinton-mo": {
-    blurb:
-      "The gateway to Truman Lake pairs a classic courthouse square with lake-country properties, and garage doors here range from historic in-town fits to boat-depth bays.",
+    blurb: "The gateway to Truman Lake pairs a classic courthouse square with lake-country properties, and garage doors here range from historic in-town fits to boat-depth bays.",
+    response: "Clinton is the Henry County seat and gateway to Truman Lake, reached down MO-7 at the southern edge of our range. We route the outer ring weekly for installs and scheduled repairs, and true emergencies get same-day dispatch with an honest drive-time window quoted first.",
+    metaDescription: "Garage door repair in Clinton, MO and Henry County: springs, openers, lake-country and square-town doors. Flat rate, scheduled routes, family-run. Call (816) 288-3574.",
     sections: [
-      {
-        title: "Square-town service, lake-country doors.",
-        body: "Clinton's older homes around the square need thoughtful fits and styles that suit the streetscape. Out toward the lake, garages get deeper and taller for boats and campers, and detached shops are the rule. We quote oversized doors with the framing conversation included, put corrosion-resistant hardware on anything living near the water, and run the area on scheduled routes with same-day dispatch reserved for true emergencies.",
-      },
+      { title: "Square-town service, lake-country doors.", body: "Clinton's older homes around the square need thoughtful fits and styles that suit the streetscape. Out toward the lake, garages get deeper and taller for boats and campers, and detached shops are the rule. We quote oversized doors with the framing conversation included, put corrosion-resistant hardware on anything living near the water, and run the area on scheduled routes with same-day dispatch reserved for true emergencies." },
+      { title: "Square-town homes and lake-country bays", body: "Clinton splits between its classic courthouse-square neighborhoods and the lake-country properties out toward Truman Lake, and the door work splits with it. Older homes around the square need thoughtful custom fits and styles that suit the streetscape, plus torsion conversions on aging hardware. Out by the water, garages run deeper and taller for boats and campers, and detached shops are the rule, so we spec oversized doors with the framing conversation included and lean on corrosion-resistant hardware for anything living near the lake. Clinton rides our scheduled Henry County route, with same-day dispatch reserved for true emergencies like a door stuck open." },
+    ],
+    faqs: [
+      { q: "Do you repair garage doors in Clinton, MO?", a: "Yes. Carlisle serves Clinton and the surrounding Henry County on scheduled routes down MO-7. We handle broken springs, cables, rollers, tracks, and openers on square-town homes, lake properties, and shop buildings alike. The truck comes stocked, so most Clinton repairs finish in one visit at a flat, quoted rate." },
+      { q: "Can you fit a taller door for a boat or camper near Truman Lake?", a: "Regularly. Lake-country garages often need 8-foot or taller doors and deeper bays to clear boats and campers, and we quote the framing changes right along with the door. For anything near the water we also recommend corrosion-resistant hardware so damp lake air doesn't chew through springs and rollers early." },
+      { q: "How does service work given the distance to Clinton?", a: "Clinton is an outer-ring town, so we run it on weekly routes for installs and non-urgent repairs, which keeps the flat rate honest. A genuine emergency, a door stuck open, off track, or a car trapped inside, gets same-day dispatch with an honest drive-time window quoted before we head down MO-7." },
+      { q: "Can you match a new door to an older home on the Clinton square?", a: "Yes. The neighborhoods around the courthouse square look best with traditional and carriage-house styles, and we stock those in insulated steel with custom sizing for older openings. Estimates are free, samples come to your driveway, and we haul the old door away on the same scheduled trip." },
     ],
   },
   "butler-mo": {
-    blurb:
-      "The Bates County seat is farm country through and through, and our door work here leans toward machine sheds, shops, and in-town homes that value function over flash.",
+    blurb: "The Bates County seat is farm country through and through, and our door work here leans toward machine sheds, shops, and in-town homes that value function over flash.",
+    response: "Butler is the Bates County seat, reached down US-71 in farm country at the southern edge of our range. We route the outer ring weekly for installs and scheduled repairs, and true emergencies get same-day dispatch with an honest drive-time window quoted first.",
+    metaDescription: "Butler garage doors and repair, MO: springs, openers, farm and shop doors across Bates County. Flat rate, scheduled routes, family-run. Call Carlisle at (816) 288-3574.",
     sections: [
-      {
-        title: "Function-first doors for Bates County.",
-        body: "Butler calls are refreshingly direct: the door needs to lift, seal, and last. We install heavier-gauge steel that handles real use, tall doors for equipment buildings, and high-cycle springs across the board. In-town homes get the same practical treatment with insulated doors that tame summer heat and winter wind. We schedule Bates County regularly down 71 Highway, and flat rates make the distance irrelevant to your bill.",
-      },
+      { title: "Function-first doors for Bates County.", body: "Butler calls are refreshingly direct: the door needs to lift, seal, and last. We install heavier-gauge steel that handles real use, tall doors for equipment buildings, and high-cycle springs across the board. In-town homes get the same practical treatment with insulated doors that tame summer heat and winter wind. We schedule Bates County regularly down 71 Highway, and flat rates make the distance irrelevant to your bill." },
+      { title: "Function-first garage doors for Bates County", body: "Butler calls are refreshingly direct: the door needs to lift, seal, and last. On the residential side that means broken-spring swaps with 20,000-cycle hardware, quiet openers, and insulated steel doors that tame summer heat and winter wind without a premium markup. Out on the farmland, it means heavier-gauge doors, tall equipment bays, and commercial track built for daily use. We stock the truck for both kinds of Butler work and finish most jobs in one visit, so a second trip down US-71 is rare. Flat rates make the distance irrelevant to your bill, and a stuck door during planting or harvest jumps the line." },
+    ],
+    faqs: [
+      { q: "Who does garage door repair in Butler, MO?", a: "We do, on scheduled routes down US-71 into Bates County. Carlisle handles broken springs, cables, rollers, tracks, and openers on both in-town homes and farm buildings. The truck comes stocked, so most Butler repairs finish in a single visit, and the flat rate is identical to what we charge in the metro." },
+      { q: "Where can I get new garage doors in Butler?", a: "From us, delivered and installed. We bring Clopay, Amarr, and C.H.I. samples to your driveway so you can judge style and color against your house, quote a flat all-in price, and install with 20,000-cycle springs and old-door haul-away included. For shops and machine sheds we spec taller, heavier doors sized to your equipment." },
+      { q: "What holds up best on a working Butler-area property?", a: "For daily farm and shop use, we lean on heavier-gauge steel doors, commercial-grade track, and high-cycle springs that take real abuse. On the house, insulated steel handles Bates County's summer heat and winter wind and resists dents. We'll spec each door to how hard it actually gets used rather than overselling either one." },
+      { q: "Does the drive to Butler cost extra?", a: "No. Flat rates hold whether you're in Oak Grove or down in Bates County. Installs and non-urgent repairs ride our weekly US-71 route to keep costs down, and a genuine emergency gets same-day dispatch with the drive time quoted honestly up front, never tacked onto your bill as a surcharge." },
     ],
   },
   "nevada-mo": {
-    blurb:
-      "Pronounced Ne-VAY-da, thank you, the Vernon County seat and home of Cottey College anchors the southern edge of our range, where practical rural door work is the daily bread.",
+    blurb: "Pronounced Ne-VAY-da, thank you, the Vernon County seat and home of Cottey College anchors the southern edge of our range, where practical rural door work is the daily bread.",
+    response: "Nevada, pronounced Ne-VAY-da, is the Vernon County seat down US-71 near the southern edge of our range. We route the outer ring weekly for installs and scheduled repairs, and true emergencies get same-day dispatch with an honest drive-time window quoted first.",
+    metaDescription: "Garage door repair in Nevada, MO and Vernon County: garage doors, springs, openers, and farm doors at flat rates. Scheduled routes, family-run. Call Carlisle at (816) 288-3574.",
     sections: [
-      {
-        title: "The southern edge, served properly.",
-        body: "Nevada sits at the far end of our service radius, and we make the distance count by scheduling smart: grouped visits, thorough trucks, and jobs finished in one trip. The work is classic rural Missouri, including farm buildings needing tall doors, in-town homes with aging hardware, and shops that want insulation and a quiet opener. Emergencies still get dispatched, with an honest ETA quoted on the phone before we roll.",
-      },
+      { title: "The southern edge, served properly.", body: "Nevada sits at the far end of our service radius, and we make the distance count by scheduling smart: grouped visits, thorough trucks, and jobs finished in one trip. The work is classic rural Missouri, including farm buildings needing tall doors, in-town homes with aging hardware, and shops that want insulation and a quiet opener. Emergencies still get dispatched, with an honest ETA quoted on the phone before we roll." },
+      { title: "Nevada garage doors, serviced and sold", body: "Plenty of Nevada searches are simply for garage doors, folks weighing a new door against another repair on a tired one. We make the choice easy: samples brought to your driveway, an honest read on whether repair or replacement wins over five years, and flat quotes with haul-away built in. Clopay, Amarr, and C.H.I. cover clean traditional styles for the in-town homes and heavier insulated doors for the shops and barns around Vernon County. On the repair side, the truck carries springs, cables, rollers, and opener parts, so a Nevada breakdown usually gets solved in one visit despite the drive down US-71." },
+    ],
+    faqs: [
+      { q: "Do you repair garage doors in Nevada, MO?", a: "Yes. Carlisle serves Nevada and Vernon County on scheduled routes down US-71. We handle broken springs, cables, rollers, tracks, and openers on in-town homes and farm buildings, and the truck comes stocked so most Nevada repairs finish in one visit. Flat rates hold the same as they do in the metro." },
+      { q: "Where can I buy new garage doors in Nevada?", a: "We bring the doors to you. Instead of a store trip, you get Clopay, Amarr, and C.H.I. samples in your own driveway, held against the house so you can judge style and color. We quote a flat all-in price with 20,000-cycle springs and old-door haul-away included, and install on our next scheduled Vernon County trip." },
+      { q: "How does garage door service work this far south?", a: "Nevada is near the southern edge of our range, so we schedule it on weekly routes for installs and non-urgent repairs, which keeps the flat rate honest. A genuine emergency, a door stuck open or a car trapped inside, gets same-day dispatch with an honest drive-time window quoted before we leave Oak Grove." },
+      { q: "Do you service farm and shop doors around Nevada?", a: "Regularly. Vernon County farmland brings machine sheds, equipment bays, and shop buildings that need taller, heavier doors than a house garage. We spec the door and commercial track to your equipment height, add insulation for heated shops, and handle it on the same scheduled trip as any in-town work, all at flat rates." },
     ],
   },
   "chillicothe-mo": {
-    blurb:
-      "The Home of Sliced Bread deserves doors as reliable as its claim to fame. Chillicothe anchors our north-central Missouri route through solid farm country.",
+    blurb: "The Home of Sliced Bread deserves doors as reliable as its claim to fame. Chillicothe anchors our north-central Missouri route through solid farm country.",
+    response: "Chillicothe, the Home of Sliced Bread, is the Livingston County seat up US-65 in north-central Missouri farm country. We route the outer ring weekly for installs and scheduled repairs, and true emergencies get same-day dispatch with an honest drive-time window quoted first.",
+    metaDescription: "Garage door repair and installation in Chillicothe, MO: springs, openers, farm and shop doors across Livingston County. Flat rate, scheduled routes. Call (816) 288-3574.",
     sections: [
-      {
-        title: "Best thing since... you know.",
-        body: "Chillicothe's in-town housing runs from historic blocks to post-war neighborhoods, and the surrounding Livingston County farmland brings steady outbuilding work: machine sheds, shops, and barns getting proper overhead doors. We schedule the area in efficient loops, carry rural-duty hardware as standard stock, and quote flat rates that don't inflate with the mileage. A stuck door during harvest gets moved to the front of the line.",
-      },
+      { title: "Best thing since... you know.", body: "Chillicothe's in-town housing runs from historic blocks to post-war neighborhoods, and the surrounding Livingston County farmland brings steady outbuilding work: machine sheds, shops, and barns getting proper overhead doors. We schedule the area in efficient loops, carry rural-duty hardware as standard stock, and quote flat rates that don't inflate with the mileage. A stuck door during harvest gets moved to the front of the line." },
+      { title: "In-town blocks and the farmland around them", body: "Chillicothe's in-town housing runs from historic blocks to post-war neighborhoods, and the doors span the same range of hardware. We fit the older homes with custom sizes and torsion conversions, and give the newer ones 20,000-cycle springs and quiet belt openers. The surrounding Livingston County farmland brings steady outbuilding work: machine sheds, shops, and barns getting proper overhead doors, some for the first time. We schedule the area in efficient loops so the flat rate never inflates with the mileage, carry rural-duty hardware as standard truck stock, and move a stuck door during harvest to the front of the line." },
+    ],
+    faqs: [
+      { q: "Do you serve Chillicothe, MO for garage door repair?", a: "Yes, on scheduled routes up US-65 into Livingston County. Carlisle handles broken springs, cables, rollers, tracks, and openers on in-town homes and farm buildings. The truck comes stocked with rural-duty hardware, so most Chillicothe repairs finish in one visit, and the flat rate is the same as we charge in the metro." },
+      { q: "Can you put a proper overhead door on a barn or machine shed near Chillicothe?", a: "Regularly, sometimes for the first time on an older building. We spec 12- to 14-foot doors and heavier commercial track sized to your equipment, add insulation where you heat the space, and handle any framing the opening needs. It's booked on the same scheduled Livingston County trip as any in-town work, at flat rates." },
+      { q: "How fast can you reach Chillicothe in an emergency?", a: "For a genuine emergency, a door stuck open, off track, or a spring that trapped your vehicle, we dispatch same-day and quote an honest drive-time window from Oak Grove before we roll. Non-urgent repairs and installs ride our next scheduled north-central route, usually within a week." },
+      { q: "Is there a surcharge for the drive to Chillicothe?", a: "No. Flat rates hold whether you're in the metro or up in Livingston County. We schedule the area in efficient loops to keep costs down, and the price we quote before starting is the price you pay, with the mileage on us rather than added to your bill." },
     ],
   },
   "maryville-mo": {
-    blurb:
-      "Home of Northwest Missouri State, Maryville is the far northwest anchor of our service area, where college rentals and Nodaway County farms both keep doors cycling.",
+    blurb: "Home of Northwest Missouri State, Maryville is the far northwest anchor of our service area, where college rentals and Nodaway County farms both keep doors cycling.",
+    response: "Maryville, home of Northwest Missouri State, is the far northwest anchor of our range, up US-71 in Nodaway County. We route the outer ring weekly for installs and scheduled repairs, and true emergencies get same-day dispatch with an honest drive-time window quoted first.",
+    metaDescription: "Garage doors of Maryville, MO: repair, installation, springs, and rental-property service across Nodaway County. Flat rate, scheduled routes. Call Carlisle at (816) 288-3574.",
     sections: [
-      {
-        title: "Bearcat country's door crew.",
-        body: "Maryville splits between rental properties that need fast, documented repairs for property managers and the surrounding farm country's equipment buildings and shops. We schedule the area on planned routes, stock the truck for both kinds of work, and finish jobs in one visit because a second trip this far north helps nobody. Emergency dispatch is available around the clock, with the drive time quoted honestly when you call.",
-      },
+      { title: "Bearcat country's door crew.", body: "Maryville splits between rental properties that need fast, documented repairs for property managers and the surrounding farm country's equipment buildings and shops. We schedule the area on planned routes, stock the truck for both kinds of work, and finish jobs in one visit because a second trip this far north helps nobody. Emergency dispatch is available around the clock, with the drive time quoted honestly when you call." },
+      { title: "Bearcat rentals and Nodaway County farms", body: "Maryville splits between rental properties that need fast, documented repairs for property managers near Northwest Missouri State and the surrounding farm country's equipment buildings and shops. We're stocked for both on the same trip: standard springs, openers, and off-track fixes for the rentals and in-town homes, plus taller commercial-grade doors and heavier track for the machine sheds. We schedule the area on planned routes and finish jobs in one visit because a second trip this far north helps nobody. Emergency dispatch is available around the clock, with the drive time quoted honestly when you call, and the flat rate never changes for the distance." },
+    ],
+    faqs: [
+      { q: "Who does garage door repair in Maryville, MO?", a: "Carlisle does, on scheduled routes up US-71 into Nodaway County. We handle broken springs, cables, rollers, tracks, and openers on rentals, in-town homes, and farm buildings. The truck comes stocked so most Maryville repairs finish in one visit, and the flat rate is the same as we charge in the metro." },
+      { q: "Do you service rental-property doors near Northwest Missouri State?", a: "Regularly. Property managers around campus need doors fixed fast with clean documentation, and we deliver both. Broken springs, worn openers, and off-track doors are stock repairs we finish in one visit, booked onto our scheduled Nodaway County route and billed at flat rates with no distance surcharge." },
+      { q: "Can you install new garage doors in Maryville?", a: "Yes. We install residential doors for in-town homes and rentals plus taller, heavier doors for farm shops and equipment sheds. Estimates are free, samples come to your driveway, every door gets 20,000-cycle springs, and we haul the old one away, all on the same scheduled trip north." },
+      { q: "How fast can you get to Maryville in an emergency?", a: "For a genuine emergency, a door stuck open, off track, or a car trapped inside, we dispatch same-day even at this distance and quote an honest drive-time window from Oak Grove before we leave. Non-urgent repairs and installs ride our next scheduled Nodaway County loop, usually within a week." },
     ],
   },
   "carrollton-mo": {
-    blurb:
-      "The Carroll County seat sits in rich river-bottom farm country, where the garage door conversation usually includes at least one machine shed.",
+    blurb: "The Carroll County seat sits in rich river-bottom farm country, where the garage door conversation usually includes at least one machine shed.",
+    response: "Carrollton is a scheduled stop on our Carroll County loop, reached northeast from Oak Grove up US-24 and US-65 through the river bottoms. Installs and routine overhead door repairs ride the weekly route, while a true emergency brings same-day dispatch with an honest drive-time window quoted on the phone.",
+    metaDescription: "Overhead door repair in Carrollton, MO. Garage door company serving Carroll County: install, springs, and service at flat rates. Free estimates. (816) 288-3574.",
     sections: [
-      {
-        title: "River-bottom farms, rock-solid doors.",
-        body: "Carrollton work leans agricultural: tall equipment doors, shop buildings that want insulation for winter repairs, and hardware that stands up to grain-season traffic. In-town homes get full residential service with the same flat rates we charge in the metro. We route Carroll County on scheduled loops and combine neighboring jobs when we can, which keeps costs down for everyone on the route.",
-      },
+      { title: "River-bottom farms, rock-solid doors.", body: "Carrollton work leans agricultural: tall equipment doors, shop buildings that want insulation for winter repairs, and hardware that stands up to grain-season traffic. In-town homes get full residential service with the same flat rates we charge in the metro. We route Carroll County on scheduled loops and combine neighboring jobs when we can, which keeps costs down for everyone on the route." },
+      { title: "The overhead door company Carroll County calls.", body: "When folks around here search for a garage door company in Carroll County, they usually want one thing: someone who picks up, quotes a fair flat rate, and actually shows up. That is us. In-town Carrollton homes get full residential service, including broken-spring swaps, opener repair, worn rollers, and new insulated overhead doors from Clopay, Amarr, and C.H.I. Repairs typically run $150 to $450 and springs $200 to $400, the same prices we charge in the metro with no mileage markup. Estimates are free, and we haul the old door away." },
+    ],
+    faqs: [
+      { q: "Who does overhead door repair in Carrollton, MO?", a: "We do. Carlisle Overhead Doors is a family-run shop in Oak Grove that runs a regular route into Carroll County. We repair broken springs, cables, rollers, tracks, and openers on residential and shop overhead doors, carrying the common parts on the truck so most Carrollton jobs finish the same visit." },
+      { q: "Is there a garage door company that covers all of Carroll County?", a: "There is, and it is us. We cover Carrollton and the surrounding Carroll County farmland on scheduled weekly loops. In-town homes, acreages, machine sheds, and shop buildings all get service from the same truck at one flat rate. Booking ahead gets you the next loop; emergencies get same-day dispatch with the drive time quoted first." },
+      { q: "How much is a new overhead door installed in Carrollton?", a: "New door pricing depends on size, insulation, and style, so estimates are free and itemized before you commit. We install Clopay, Amarr, and C.H.I. doors sized to your opening, put 20,000-cycle springs on every one, and haul the old door off at no charge. For farm and shop buildings, we spec taller doors and heavier track to match your equipment." },
+      { q: "My garage door spring broke, can you replace it in Carrollton?", a: "We can, and it is one of our most common Carroll County calls. A snapped torsion spring runs roughly $200 to $400 installed, and we fit 20,000-cycle springs so the next failure is decades out, not years. If the broken spring has trapped your vehicle, tell us on the phone and we will dispatch same-day rather than wait for the route." },
     ],
   },
   "topeka-ks": {
-    blurb:
-      "The state capital has everything from Potwin's Victorian streets to state-government-era ranch neighborhoods and a working warehouse base, and its doors need a crew that can handle all three.",
+    blurb: "The state capital has everything from Potwin's Victorian streets to state-government-era ranch neighborhoods and a working warehouse base, and its doors need a crew that can handle all three.",
+    response: "Topeka is about an hour west of our Oak Grove shop, an easy run out I-70 that we make on regular routes through the capital. Residential and commercial overhead door installs and non-urgent repairs are scheduled on those loops, while a stuck or down door gets same-day dispatch with an honest arrival window.",
+    metaDescription: "Overhead door repair in Topeka, KS. Commercial and residential garage door service, install, and springs. Flat rates, free estimates. Call (816) 288-3574.",
     sections: [
-      {
-        title: "Capital city, complete coverage.",
-        body: "Topeka's older neighborhoods bring custom fits and period styles, its mid-century blocks bring aging hardware ready for torsion conversions and quiet openers, and its commercial corridors bring dock and rolling steel work. We run the city on regular routes down I-70 from our shop, an hour door to door, with flat metro rates and scheduled installs that hit their dates. Washburn-area rentals get the fast, documented service property managers need.",
-      },
+      { title: "Capital city, complete coverage.", body: "Topeka's older neighborhoods bring custom fits and period styles, its mid-century blocks bring aging hardware ready for torsion conversions and quiet openers, and its commercial corridors bring dock and rolling steel work. We run the city on regular routes down I-70 from our shop, an hour door to door, with flat metro rates and scheduled installs that hit their dates. Washburn-area rentals get the fast, documented service property managers need." },
+      { title: "Commercial overhead door repair, Topeka bays back in service.", body: "Topeka's warehouse and shop corridors run on overhead doors that cannot afford a down day. We service commercial sectional, rolling steel, and dock doors across the city, replacing broken springs and cables, straightening tracks, and fixing openers that leave a bay stuck. Planned maintenance catches spring fatigue before it strands a loading dock. For storefronts and shops, we also install new commercial overhead doors sized to the opening. Down-door business calls get priority on the schedule, and the flat rate holds the same in Topeka as it does in Oak Grove." },
+    ],
+    faqs: [
+      { q: "Where can I get overhead door repair in Topeka, KS?", a: "Right here. We run regular routes into Topeka for overhead door repair on homes and businesses, handling broken springs, snapped cables, off-track doors, and failed openers. The trucks carry Clopay, Amarr, and C.H.I. parts plus high-cycle springs, so most Topeka repairs are quoted and finished in one visit." },
+      { q: "Do you handle commercial garage door repair in Topeka?", a: "Yes, commercial work is a big part of our Topeka schedule. We repair and maintain rolling steel, sectional, and dock doors for warehouses, shops, and storefronts, and we prioritize a down-door call that is holding up business. Ask about planned maintenance to keep your bays off the emergency list entirely." },
+      { q: "Can you install a garage door in Topeka, KS?", a: "We install residential and commercial overhead doors throughout Topeka, from insulated steel carriage styles for homes to heavier commercial doors for shops. Every install includes free measurement, samples brought to you, 20,000-cycle springs, and old-door haul-away. New-door orders slot into our scheduled Topeka route, typically within a week or two." },
+      { q: "Do you replace garage door openers in Topeka?", a: "That is routine for us. Chain, belt, and side-mount opener installs and repairs run on our Topeka route, whether an old unit finally quit or you want a quieter belt drive with battery backup. We match the opener to the door's weight and haul the old one off. A door that will not open at all gets same-day dispatch." },
     ],
   },
   "ottawa-ks": {
-    blurb:
-      "The Franklin County seat, with its university and classic Main Street, anchors our southwest Kansas routes where town homes and farm buildings split the call sheet.",
+    blurb: "The Franklin County seat, with its university and classic Main Street, anchors our southwest Kansas routes where town homes and farm buildings split the call sheet.",
+    response: "Ottawa sits southwest of the metro in Franklin County, a straight shot down I-35 that we work on scheduled loops. Garage door installs and routine repairs are booked on the weekly route, and a genuine emergency, like a door jammed open overnight, brings same-day dispatch with the drive time quoted honestly.",
+    metaDescription: "Garage door and overhead door repair in Ottawa, KS. Install, springs, and service across Franklin County at flat rates. Free estimates. (816) 288-3574.",
     sections: [
-      {
-        title: "Main Street to the section roads.",
-        body: "Ottawa's in-town housing spans a century, and its doors need everything from custom-width fits to standard spring service. Outside town, Franklin County farms bring equipment sheds and shop buildings that need tall, heavy-duty doors. We run the area on scheduled loops along I-35, treat harvest-season breakdowns as priority calls, and hold the same flat rates we charge in Johnson County.",
-      },
+      { title: "Main Street to the section roads.", body: "Ottawa's in-town housing spans a century, and its doors need everything from custom-width fits to standard spring service. Outside town, Franklin County farms bring equipment sheds and shop buildings that need tall, heavy-duty doors. We run the area on scheduled loops along I-35, treat harvest-season breakdowns as priority calls, and hold the same flat rates we charge in Johnson County." },
+      { title: "Door repair in Ottawa, done in one trip.", body: "Most Ottawa calls are straightforward repair work, and we come stocked to finish it the same visit: broken torsion springs, frayed lift cables, rollers worn to nothing, bent bottom sections, and openers that gave out. The trucks carry parts for Clopay, Amarr, and C.H.I. doors, so there is rarely a second trip down I-35. Repairs run a flat $150 to $450, springs $200 to $400, the same numbers we quote in Johnson County. If a door is stuck and the car is trapped inside, say so on the phone and we will prioritize the dispatch." },
+    ],
+    faqs: [
+      { q: "Who does garage door repair in Ottawa, KS?", a: "We handle it. Carlisle Overhead Doors runs a regular Franklin County route from our Oak Grove base, repairing springs, cables, tracks, rollers, and openers on Ottawa homes and shop buildings. Common parts ride the truck, so most repairs are quoted up front and finished without a return trip." },
+      { q: "Can you put in a new garage door in Ottawa?", a: "We install throughout Ottawa: insulated residential doors and heavier shop and farm doors, all from Clopay, Amarr, and C.H.I. Estimates are free, samples come to your driveway, and every door gets 20,000-cycle springs with the old door hauled away at no charge." },
+      { q: "How quickly can you reach Ottawa for a repair?", a: "Routine repairs and installs are scheduled on our weekly loop down I-35, usually within a few days. A true emergency, a door stuck open, off its track, or a spring that trapped your vehicle, gets a technician dispatched the same day, with an honest drive-time window from Oak Grove quoted before we leave." },
+      { q: "What does it cost to fix a broken spring in Ottawa?", a: "A broken spring runs about $200 to $400 replaced, and we install 20,000-cycle springs so it lasts far longer than the builder-grade part that failed. The flat rate does not change for the drive to Ottawa. If both springs are worn, replacing the pair together saves you a second service call down the road." },
     ],
   },
   "emporia-ks": {
-    blurb:
-      "Where the Flint Hills begin, Emporia is a university town and a ranching hub at the far southwest edge of our range, and both sides of that identity need working doors.",
+    blurb: "Where the Flint Hills begin, Emporia is a university town and a ranching hub at the far southwest edge of our range, and both sides of that identity need working doors.",
+    response: "Emporia marks the far southwest corner of our range, where the Flint Hills begin, reached down I-35 through Lyon County. We batch installs and non-urgent repairs onto scheduled trips so every visit is worth the drive, and we still dispatch same-day for real emergencies with an honest arrival time quoted up front.",
+    metaDescription: "Garage door and overhead door repair in Emporia, KS. Install, springs, and same-day emergency service in Lyon County. Flat rates, free estimates. (816) 288-3574.",
     sections: [
-      {
-        title: "Flint Hills far post.",
-        body: "Emporia marks the edge of our 100-mile radius, so we make every trip count: scheduled routes, fully stocked trucks, and jobs done in one visit. ESU-area rentals get quick documented repairs, in-town homes get the full residential service, and the surrounding ranch country brings barn and shop door work built to handle real use. Call ahead and we'll slot you into the next Lyon County loop with an honest date.",
-      },
+      { title: "Flint Hills far post.", body: "Emporia marks the edge of our 100-mile radius, so we make every trip count: scheduled routes, fully stocked trucks, and jobs done in one visit. ESU-area rentals get quick documented repairs, in-town homes get the full residential service, and the surrounding ranch country brings barn and shop door work built to handle real use. Call ahead and we'll slot you into the next Lyon County loop with an honest date." },
+      { title: "New doors worth the trip to Emporia.", body: "Plenty of Emporia homeowners are ready to retire a dented, uninsulated builder door, and a scheduled route makes that easy to do right. We bring Clopay, Amarr, and C.H.I. samples to your driveway, measure the opening, and quote a flat price with no mileage added for the distance. Insulated steel makes an attached Emporia garage noticeably quieter and cheaper to heat through a Flint Hills winter, and every new door leaves on 20,000-cycle springs with the old one hauled off. Ranch and shop buildings get taller, heavier doors spec'd to the equipment inside." },
+    ],
+    faqs: [
+      { q: "Can I get garage door service out in Emporia, KS?", a: "Yes. Even at the edge of our 100-mile radius, Emporia gets full service: spring and cable repair, opener work, off-track fixes, and new overhead door installs. We schedule the area on planned Lyon County loops with a fully stocked truck so the job finishes in one trip, and emergencies get same-day dispatch." },
+      { q: "My garage door spring snapped in Emporia, what now?", a: "Call it in and we will get you on the schedule fast; a trapped car bumps you to same-day dispatch. A replacement torsion spring runs roughly $200 to $400 installed, and we fit 20,000-cycle springs rated for far more use than the original. The flat rate is identical to what a metro customer pays." },
+      { q: "Is there a garage door company near Emporia that comes this far?", a: "We do, from Oak Grove down I-35. Emporia is a regular stop on our southwest Kansas route, not an occasional exception, so you are not paying a premium or waiting weeks. Routine work books within a week; genuine emergencies get a technician the same day with the drive time quoted honestly." },
+      { q: "How do I get a quote for a new garage door in Emporia?", a: "Just call and we will schedule a free estimate on our next Lyon County loop. We measure your opening, bring style and color samples to you, and hand you a flat, itemized price before any work starts. Installs cover insulated residential doors and taller farm or shop doors, old-door haul-away included." },
     ],
   },
   "fort-scott-ks": {
-    blurb:
-      "Built around a national historic site, Fort Scott's brick downtown and Victorian homes are the real thing, and its garage doors deserve better than an off-the-shelf mismatch.",
+    blurb: "Built around a national historic site, Fort Scott's brick downtown and Victorian homes are the real thing, and its garage doors deserve better than an off-the-shelf mismatch.",
+    response: "Fort Scott is a straight run south down US-69 into Bourbon County, at the outer edge of our weekly Kansas routes. Installs and non-urgent repairs ride the scheduled loop, and true emergencies get same-day dispatch from a real technician with an honest drive-time window quoted up front.",
+    metaDescription: "Garage door repair in Fort Scott, KS. Overhead door install, service, and springs for ft scott ks and Bourbon County. Flat rates, free estimates. (816) 288-3574.",
     sections: [
-      {
-        title: "History out front, hardware done right.",
-        body: "Fort Scott's historic housing calls for doors that don't clash: carriage-house styles, sympathetic colors, and custom fits for openings that predate every standard. We stock those catalogs and measure properly. The surrounding Bourbon County farmland brings the practical work of shed and shop doors that lift heavy and last long. Scheduled routes keep the distance affordable, and flat rates keep the quote predictable.",
-      },
+      { title: "History out front, hardware done right.", body: "Fort Scott's historic housing calls for doors that don't clash: carriage-house styles, sympathetic colors, and custom fits for openings that predate every standard. We stock those catalogs and measure properly. The surrounding Bourbon County farmland brings the practical work of shed and shop doors that lift heavy and last long. Scheduled routes keep the distance affordable, and flat rates keep the quote predictable." },
+      { title: "The repairs that keep ft scott ks doors moving.", body: "Most calls we get from ft scott ks are the practical kind: a snapped torsion spring, frayed cables, a door off its track, or an opener that hums but will not lift. Our trucks carry Clopay, Amarr, and C.H.I. parts plus 20,000-cycle springs, so most Fort Scott repairs finish in one visit at a flat rate, typically $150 to $450, with springs running $200 to $400. New door installs come with free estimates and old-door haul-away. Non-urgent work rides our weekly Bourbon County loop; a door stuck open or off track overnight gets same-day dispatch with the drive time quoted honestly when you call." },
+    ],
+    faqs: [
+      { q: "Do you repair garage doors in Fort Scott, KS?", a: "Yes. Garage door repair is the bulk of our Fort Scott work, from broken springs and cables to bent tracks, worn rollers, and openers that quit. We stock the common parts on the truck, so most ft scott ks repairs wrap in a single visit at a flat rate, with no distance surcharge added for the drive south." },
+      { q: "Can you install a new garage door in ft scott ks?", a: "Absolutely. We install residential, commercial, and shop doors from Clopay, Amarr, and C.H.I., measured to your opening with old-door haul-away included. Estimates are free. New installs ride our scheduled Bourbon County route, and we bring style and color samples to your driveway so the door suits a historic Fort Scott street or a working farmstead." },
+      { q: "How soon can you get to a garage door in Fort Scott?", a: "Fort Scott sits at the far end of our range, so routine service and installs are booked on our weekly southern-Kansas loop, usually within a week. If your door is stuck open, off track, or a spring lets go and traps the car, we dispatch a technician same-day and quote the drive time from Oak Grove before we roll." },
+      { q: "Do you service overhead doors on shops and farms around Bourbon County?", a: "Regularly, yes. Beyond in-town garages we handle overhead doors on machine sheds, shops, and equipment bays across Bourbon County, sizing taller doors and heavier track for real use. Harvest-season breakdowns move to the front of the line, and whether it is a home in ft scott ks or a barn on the section roads, the flat rate holds." },
     ],
   },
   "garnett-ks": {
-    blurb:
-      "The Anderson County seat is quiet farm country on the Prairie Spirit Trail, where a door that works every time matters more than anything a brochure says.",
+    blurb: "The Anderson County seat is quiet farm country on the Prairie Spirit Trail, where a door that works every time matters more than anything a brochure says.",
+    response: "Garnett is quiet Anderson County farm country south of Ottawa, folded into our scheduled Kansas loops down I-35 and US-59. Installs and non-urgent repairs ride the weekly route at flat rates, and a true emergency still earns same-day dispatch with an honest drive-time window from Oak Grove.",
+    metaDescription: "Garage door repair in Garnett, KS. Overhead door install, spring replacement, and service across Anderson County at flat rates. Free estimates. (816) 288-3574.",
     sections: [
-      {
-        title: "Dependable doors for Anderson County.",
-        body: "Garnett work is honest and rural: in-town homes with aging hardware, farmsteads with machine sheds, and shops where projects happen all winter. We bring hardware built for that life, including heavier-gauge doors, high-cycle springs, and insulation that makes a heated shop affordable to keep warm. Scheduled loop visits keep our prices flat despite the distance, and one trip finishes the job.",
-      },
+      { title: "Dependable doors for Anderson County.", body: "Garnett work is honest and rural: in-town homes with aging hardware, farmsteads with machine sheds, and shops where projects happen all winter. We bring hardware built for that life, including heavier-gauge doors, high-cycle springs, and insulation that makes a heated shop affordable to keep warm. Scheduled loop visits keep our prices flat despite the distance, and one trip finishes the job." },
+      { title: "In-town Garnett garages, fixed right.", body: "Around the Garnett square and the neighborhoods off it, the common calls are the ones that strand a car: a broken spring, a cable off the drum, an opener that clicks but will not pull. We come stocked to handle all of it in one visit, with parts for Clopay, Amarr, and C.H.I. doors and 20,000-cycle springs on the truck. Repairs hold at a flat $150 to $450 no matter the distance from the metro. Want to replace an old door entirely? Estimates are free, samples come to you, and we haul the worn door away." },
+    ],
+    faqs: [
+      { q: "Does anyone do garage door repair in Garnett, KS?", a: "That would be us. Garnett is a scheduled stop on our Anderson County route, and we repair springs, cables, rollers, tracks, and openers on both in-town homes and farm buildings. The truck carries the common parts, so most Garnett repairs are quoted on arrival and finished the same visit, no return trip needed." },
+      { q: "Can you install a new garage or shop door in Garnett?", a: "Yes. Residential installs cover insulated steel doors in styles that suit older Garnett homes, and for farmsteads we spec taller, heavier doors and commercial track for machine sheds and shops. Free estimates, driveway samples, 20,000-cycle springs standard, and old-door haul-away all come with it." },
+      { q: "What if my garage door breaks and I need it fixed fast in Garnett?", a: "Routine repairs are grouped onto our weekly loop to keep the flat rate honest, usually within a few days. If the door is stuck open, off track, or a snapped spring has trapped your vehicle, that is an emergency and we dispatch a technician same-day, quoting the drive time from Oak Grove before we head out." },
+      { q: "How long will a new garage door spring last out here?", a: "We install 20,000-cycle springs, which for a typical household means decades rather than the six or seven years a builder-grade spring gives. Replacement runs about $200 to $400 installed, the same price we charge in town. Doing both springs at once when one fails saves a second trip down the road." },
     ],
   },
   "baldwin-city-ks": {
-    blurb:
-      "Home to Baker University and one of the prettiest small downtowns in eastern Kansas, Baldwin City pairs historic charm with Douglas County acreage living.",
+    blurb: "Home to Baker University and one of the prettiest small downtowns in eastern Kansas, Baldwin City pairs historic charm with Douglas County acreage living.",
+    response: "Baldwin City sits in southern Douglas County, and we fold it into the same regular routes that carry us to Lawrence, down US-56 and I-35. Installs and routine repairs are scheduled on those loops at flat rates, while a genuine emergency brings same-day dispatch with the drive time quoted honestly on the phone.",
+    metaDescription: "Garage door repair in Baldwin City, KS. Overhead door install, springs, and service across Douglas County at flat rates. Free estimates. (816) 288-3574.",
     sections: [
-      {
-        title: "College-town charm, acreage-country needs.",
-        body: "Baldwin City's older in-town homes want doors that suit a historic street, and we fit carriage styles and custom sizes to match. The surrounding acreages want shop buildings outfitted properly, with tall doors, real track, and openers that handle daily use. We fold Baldwin City into our regular Douglas County routes along with Lawrence, so service here is quicker than the map suggests.",
-      },
+      { title: "College-town charm, acreage-country needs.", body: "Baldwin City's older in-town homes want doors that suit a historic street, and we fit carriage styles and custom sizes to match. The surrounding acreages want shop buildings outfitted properly, with tall doors, real track, and openers that handle daily use. We fold Baldwin City into our regular Douglas County routes along with Lawrence, so service here is quicker than the map suggests." },
+      { title: "The repairs Baldwin City calls about most.", body: "Between Baker University rentals and the family homes around downtown, the everyday Baldwin City calls are broken springs, worn rollers that turned the garage into a rattletrap, cables slipping off the drum, and openers past their prime. We arrive stocked with Clopay, Amarr, and C.H.I. parts and high-cycle springs, so most jobs finish the same visit at a flat $150 to $450. Because Baldwin City rides our Lawrence route, service here is quicker than the mileage suggests. Property managers get clean documentation for rental repairs, and homeowners get honest repair-or-replace advice with no upsell." },
+    ],
+    faqs: [
+      { q: "Who handles garage door repair in Baldwin City, KS?", a: "That is our territory. Springs, cables, rollers, bent tracks, and dead openers are all standard work for us in Baldwin City, on our regular Douglas County route. The truck carries the parts to finish most of them in a single stop, and flat rates apply with no surcharge for the drive from Oak Grove." },
+      { q: "Can you install a new garage door in Baldwin City?", a: "Absolutely. We fit carriage and traditional styles that suit Baldwin City's historic streets, plus taller, heavier doors for the shop buildings on surrounding acreages. Estimates are free, samples come to your driveway, every door gets 20,000-cycle springs, and we haul the old one away." },
+      { q: "How fast can you get to Baldwin City?", a: "Because Baldwin City shares our Lawrence loop, routine repairs and installs usually land within a few days. A real emergency, a door stuck open or a spring that trapped a car, gets same-day dispatch instead, and we quote an honest arrival window before the truck rolls." },
+      { q: "Do you replace noisy or broken garage door openers in Baldwin City?", a: "Yes. Whether an old chain drive finally quit or you want a quieter belt opener with battery backup, we install and repair openers throughout Baldwin City, matched to the door's weight with the old unit hauled off. Rentals near Baker University get fast turnaround with documentation for the property manager." },
     ],
   },
   "holton-ks": {
-    blurb:
-      "The Jackson County seat north of Topeka is courthouse-square Kansas at its best, surrounded by farmland where our door work leans tall, heavy, and built to last.",
+    blurb: "The Jackson County seat north of Topeka is courthouse-square Kansas at its best, surrounded by farmland where our door work leans tall, heavy, and built to last.",
+    response: "Holton anchors the northern end of our Kansas routes, in Jackson County just north of Topeka, reached out I-70 and up US-75. We schedule Holton garage door installs and routine repairs on those loops at flat rates, and true emergencies get same-day dispatch with an honest drive-time window quoted first.",
+    metaDescription: "Holton garage door repair and installation, KS. Overhead door service, springs, and openers across Jackson County at flat rates. Free estimates. (816) 288-3574.",
     sections: [
-      {
-        title: "Square-town service on the northern loop.",
-        body: "Holton anchors the northern end of our Kansas routes. In-town homes around the square get full residential service, from spring replacements to well-fitted new doors in styles that suit older architecture. The surrounding farms bring equipment-shed and shop-door work, where we spec for actual machinery heights and daily use. Scheduled visits keep costs flat, and we combine area jobs into single trips whenever we can.",
-      },
+      { title: "Square-town service on the northern loop.", body: "Holton anchors the northern end of our Kansas routes. In-town homes around the square get full residential service, from spring replacements to well-fitted new doors in styles that suit older architecture. The surrounding farms bring equipment-shed and shop-door work, where we spec for actual machinery heights and daily use. Scheduled visits keep costs flat, and we combine area jobs into single trips whenever we can." },
+      { title: "A Holton garage door that quit? Here is the fix.", body: "When a Holton garage door stops cooperating, it is usually a snapped spring, a cable off its drum, rollers ground down over the years, or an opener that hums without lifting. We roll in stocked with parts for Clopay, Amarr, and C.H.I. doors and 20,000-cycle springs, so the typical Holton repair is quoted on arrival and finished the same visit for a flat $150 to $450. Out on the surrounding Jackson County farms, the same truck handles overhead doors on machine sheds and shops. No mileage markup, and harvest-season breakdowns move to the front of the line." },
+    ],
+    faqs: [
+      { q: "Where do I get a Holton garage door repaired?", a: "With us. Carlisle Overhead Doors runs a northern Kansas route through Jackson County and repairs springs, cables, rollers, tracks, and openers on Holton homes and shop buildings. Common parts ride the truck, so most Holton garage door repairs are finished in one visit at a flat rate." },
+      { q: "Can you install a new garage door in Holton?", a: "Yes. We install insulated residential doors in styles that suit Holton's older square-town architecture, plus taller commercial-grade doors for farm and shop buildings. Free estimates, samples brought to you, 20,000-cycle springs on every door, and old-door haul-away are all part of the job." },
+      { q: "How soon can someone reach Holton for a broken door?", a: "Routine Holton work is scheduled on our weekly northern loop, usually within a few days, which keeps the flat rate honest. If a door is stuck open, off track, or a broken spring has trapped your vehicle, we treat it as an emergency and dispatch same-day with the drive time from Oak Grove quoted up front." },
+      { q: "My Holton garage door spring broke, can you replace it?", a: "We replace broken springs in Holton regularly, usually for $200 to $400 installed. We fit 20,000-cycle springs so the repair outlasts the original by decades, and if one spring failed we recommend doing the pair to save a second trip. A trapped car earns same-day dispatch rather than a scheduled slot." },
     ],
   },
   "falls-city-ne": {
-    blurb:
-      "The far northern tip of our service area reaches into Nebraska's southeast corner, where Falls City's homes and farms get the same flat rates as a house in Blue Springs.",
+    blurb: "The far northern tip of our service area reaches into Nebraska's southeast corner, where Falls City's homes and farms get the same flat rates as a house in Blue Springs.",
+    response: "Falls City reaches into the far southeast corner of Nebraska, in Richardson County, the northern tip of our service area up US-159 and I-29. We serve it on planned routes with fully stocked trucks so jobs finish in one trip, and real emergencies still get same-day dispatch with an honest drive-time window quoted on the phone.",
+    metaDescription: "Garage door repair in Falls City, NE. Overhead door install, spring replacement, and service across Richardson County at flat rates. Free estimates. (816) 288-3574.",
     sections: [
-      {
-        title: "Yes, we really do come this far.",
-        body: "Falls City sits at the edge of our 100-mile radius, and we serve it on planned routes with fully stocked trucks so everything finishes in one visit. The work is southeast Nebraska classic: solid older homes needing spring and opener service, farmsteads with machine sheds, and shops that work all winter. Call ahead, get an honest date on the next Richardson County loop, and pay the same flat rate as the metro. Distance is our problem, not yours.",
-      },
+      { title: "Yes, we really do come this far.", body: "Falls City sits at the edge of our 100-mile radius, and we serve it on planned routes with fully stocked trucks so everything finishes in one visit. The work is southeast Nebraska classic: solid older homes needing spring and opener service, farmsteads with machine sheds, and shops that work all winter. Call ahead, get an honest date on the next Richardson County loop, and pay the same flat rate as the metro. Distance is our problem, not yours." },
+      { title: "New overhead doors, hauled all the way to Falls City.", body: "Distance is no reason to keep limping along on a rusted, uninsulated door. On our scheduled Richardson County trips we bring Clopay, Amarr, and C.H.I. samples right to your driveway, measure the opening, and quote a flat price with no Nebraska surcharge tacked on. Insulated steel makes a real difference through a southeast Nebraska winter, cutting drafts and heating loss in an attached garage. Every install rides on 20,000-cycle springs and includes old-door haul-away, and farm shops get taller, heavier doors sized to the equipment that lives inside them." },
+    ],
+    faqs: [
+      { q: "Do you really service garage doors in Falls City, NE?", a: "We genuinely do. Falls City is the northern edge of our range, but it is a scheduled stop, not a maybe. We repair springs, cables, rollers, and openers and install new doors across Richardson County, running fully stocked trucks so the job finishes in one trip rather than two." },
+      { q: "Does the price go up because Falls City is in Nebraska?", a: "No. You pay the same flat rate as a customer in Blue Springs, with no distance or state-line surcharge. Repairs run $150 to $450 and spring replacements $200 to $400 wherever you are on our map. We absorb the drive time; the quote you hear on the phone is the quote you pay." },
+      { q: "What happens if my garage door breaks after hours in Falls City?", a: "A real technician answers around the clock. For a genuine emergency, a door stuck open, off track, or a spring that trapped your car, we dispatch same-day and quote an honest drive-time window from Oak Grove before we leave. Non-urgent repairs are booked onto the next Richardson County loop." },
+      { q: "Can you put an overhead door on a shop or machine shed near Falls City?", a: "Yes. Farm and shop doors are a big part of our southeast Nebraska work. We spec taller doors and heavier commercial track sized to your equipment, add insulation where you heat the space, and install openers built for daily use. It all rides the same scheduled route at the same flat rate as an in-town garage." },
     ],
   },
 };
